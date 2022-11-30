@@ -15,16 +15,16 @@
 
 from __future__ import print_function, unicode_literals
 
+import argparse
 import json
 import os
-import pudb
-import argparse
 from glob import glob
 # Dynamically imported actions
 from importlib import import_module
 
 # Phantom App imports
 import phantom.app as phantom
+import pudb
 # Usage of the consts file is recommended
 # from carbonblackcloudsplunksoaraoo_consts import *
 import requests
