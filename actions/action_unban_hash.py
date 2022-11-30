@@ -10,9 +10,10 @@
 """Unban Hash Class Action"""
 import traceback
 
-from actions import BaseAction
 import phantom.app as phantom
 from cbc_sdk.platform import ReputationOverride
+
+from actions import BaseAction
 
 
 class UnbanHashAction(BaseAction):

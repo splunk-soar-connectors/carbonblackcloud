@@ -9,12 +9,13 @@
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Binary File Metadata Action Class"""
 import traceback
+import copy
+
+import phantom.app as phantom
 from cbc_sdk.enterprise_edr.ubs import Binary
 from cbc_sdk.errors import ObjectNotFoundError
 
 from actions import BaseAction
-import phantom.app as phantom
-import copy
 
 
 class GetBinaryMetadataAction(BaseAction):

@@ -9,13 +9,13 @@
 # of the subcomponent's license, as noted in the LICENSE file.
 """Update operation over a Carbon Black Cloud's Watchlist"""
 import traceback
+from copy import deepcopy
 
 import phantom.app as phantom
 from cbc_sdk.enterprise_edr import Watchlist
 from cbc_sdk.errors import ObjectNotFoundError
 
 from actions import BaseAction
-from copy import deepcopy
 
 
 class UpdateWatchlistAction(BaseAction):

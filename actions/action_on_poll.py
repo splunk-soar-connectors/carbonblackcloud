@@ -8,13 +8,15 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Data Ingestion Action Class"""
-from actions import BaseAction
-from utils.artifact_utils import prepare_artifact
-import phantom.app as phantom
+import traceback
 import datetime
 from datetime import timezone
-import traceback
-from cbc_sdk.platform import BaseAlert
+
+import phantom.app as phantom
+    from cbc_sdk.platform import BaseAlert
+
+from actions import BaseAction
+from utils.artifact_utils import prepare_artifact
 
 
 class OnPollAction(BaseAction):

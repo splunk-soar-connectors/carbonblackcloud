@@ -8,10 +8,12 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Dismiss Alert Class Action"""
-from actions import BaseAction
-from cbc_sdk.platform import BaseAlert
-import phantom.app as phantom
 import traceback
+
+import phantom.app as phantom
+from cbc_sdk.platform import BaseAlert
+
+from actions import BaseAction
 
 
 class DismissAlertAction(BaseAction):

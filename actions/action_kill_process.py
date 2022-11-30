@@ -9,11 +9,12 @@
 # of the subcomponent's license, as noted in the LICENSE file.
 """Kill Process Action Class"""
 import traceback
+
+import phantom.app as phantom
 from cbc_sdk.platform import Device
 from cbc_sdk.platform import Process
 
 from actions import BaseAction
-import phantom.app as phantom
 
 
 class KillProcessAction(BaseAction):

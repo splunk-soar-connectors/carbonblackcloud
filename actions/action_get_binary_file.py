@@ -10,11 +10,11 @@
 """Get Binary File Action Class"""
 import traceback
 import urllib
-from cbc_sdk.enterprise_edr.ubs import Binary
 
+import phantom.app as phantom
+from cbc_sdk.enterprise_edr.ubs import Binary
 from actions import BaseAction
 from phantom.vault import Vault
-import phantom.app as phantom
 
 
 class GetBinaryFileAction(BaseAction):

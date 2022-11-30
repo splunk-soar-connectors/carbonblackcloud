@@ -10,10 +10,10 @@
 """List Processes Class Action"""
 import traceback
 
+import phantom.app as phantom
 from cbc_sdk.platform import Device
 
 from actions import BaseAction
-import phantom.app as phantom
 
 
 class ListProcessesAction(BaseAction):

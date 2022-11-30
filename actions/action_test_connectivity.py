@@ -8,9 +8,10 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Test Connectivity Action Class"""
-from actions import BaseAction
-import phantom.app as phantom
 import datetime
+
+import phantom.app as phantom
+from actions import BaseAction
 from cbc_sdk.platform import BaseAlert
 from cbc_sdk.errors import UnauthorizedError, TimeoutError, ConnectionError, CredentialError, ObjectNotFoundError
 

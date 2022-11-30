@@ -11,9 +11,10 @@
 import json
 import traceback
 
+import phantom.app as phantom
+
 from actions import BaseAction
 from utils.artifact_utils import prepare_artifact, delete_artifact
-import phantom.app as phantom
 
 
 class NormalizeArtifactAction(BaseAction):

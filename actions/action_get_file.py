@@ -9,11 +9,12 @@
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get File Action Class"""
 import traceback
+
+import phantom.app as phantom
 from cbc_sdk.platform import Device
+from phantom.vault import Vault
 
 from actions import BaseAction
-from phantom.vault import Vault
-import phantom.app as phantom
 
 
 class GetFileAction(BaseAction):

@@ -8,10 +8,12 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Set Device Policy Class Action"""
-from actions import BaseAction
-from cbc_sdk.platform import Policy, Device
-import phantom.app as phantom
 import traceback
+
+import phantom.app as phantom
+from cbc_sdk.platform import Policy, Device
+
+from actions import BaseAction
 
 
 class SetDevicePolicyAction(BaseAction):

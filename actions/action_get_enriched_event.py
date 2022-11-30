@@ -8,11 +8,13 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Enriched Events By Alert Class Action"""
-from actions import BaseAction
+import traceback
+
+import phantom.app as phantom
 from cbc_sdk.platform import CBAnalyticsAlert
 from cbc_sdk.errors import ObjectNotFoundError
-import phantom.app as phantom
-import traceback
+
+from actions import BaseAction
 
 
 class GetEnrichedEventAction(BaseAction):

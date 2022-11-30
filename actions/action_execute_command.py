@@ -9,11 +9,12 @@
 # of the subcomponent's license, as noted in the LICENSE file.
 """Execute Command Action Class"""
 import traceback
-from cbc_sdk.platform import Device
+
+import phantom.app as phantom
 from cbc_sdk.errors import TimeoutError
+from cbc_sdk.platform import Device
 
 from actions import BaseAction
-import phantom.app as phantom
 
 
 class ExecuteCommandAction(BaseAction):

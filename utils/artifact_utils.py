@@ -9,7 +9,9 @@
 # of the subcomponent's license, as noted in the LICENSE file.
 """Helper functions for artifact management"""
 import json
+
 import phantom.rules as phantom
+
 from cbcapp_consts import STANDARD_CEF_MAPPING, CEF_TYPES_MAPPING
 
 
