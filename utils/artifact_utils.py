@@ -14,6 +14,7 @@ import phantom.rules as phantom
 
 from cbcapp_consts import CEF_TYPES_MAPPING, STANDARD_CEF_MAPPING
 
+
 def prepare_artifact(alert, config, container_id=None):
     """Prepare artifact from CBC alert"""
     artifact = dict()
