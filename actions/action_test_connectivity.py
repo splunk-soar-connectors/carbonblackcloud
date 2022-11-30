@@ -11,9 +11,10 @@
 import datetime
 
 import phantom.app as phantom
-from actions import BaseAction
+from cbc_sdk.errors import ConnectionError, CredentialError, ObjectNotFoundError, TimeoutError, UnauthorizedError
 from cbc_sdk.platform import BaseAlert
-from cbc_sdk.errors import UnauthorizedError, TimeoutError, ConnectionError, CredentialError, ObjectNotFoundError
+
+from actions import BaseAction
 
 
 class CheckConnectivityAction(BaseAction):

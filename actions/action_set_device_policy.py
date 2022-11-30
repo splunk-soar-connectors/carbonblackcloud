@@ -11,7 +11,7 @@
 import traceback
 
 import phantom.app as phantom
-from cbc_sdk.platform import Policy, Device
+from cbc_sdk.platform import Device, Policy
 
 from actions import BaseAction
 

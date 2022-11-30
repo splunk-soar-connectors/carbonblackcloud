@@ -8,8 +8,8 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Binary File Metadata Action Class"""
-import traceback
 import copy
+import traceback
 
 import phantom.app as phantom
 from cbc_sdk.enterprise_edr.ubs import Binary

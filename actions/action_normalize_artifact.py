@@ -14,7 +14,7 @@ import traceback
 import phantom.app as phantom
 
 from actions import BaseAction
-from utils.artifact_utils import prepare_artifact, delete_artifact
+from utils.artifact_utils import delete_artifact, prepare_artifact
 
 
 class NormalizeArtifactAction(BaseAction):

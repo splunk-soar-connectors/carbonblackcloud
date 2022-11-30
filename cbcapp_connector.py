@@ -15,22 +15,22 @@
 
 from __future__ import print_function, unicode_literals
 
+import json
+import os
+import pudb
+import argparse
+from glob import glob
 # Dynamically imported actions
 from importlib import import_module
-from glob import glob
-from actions import BaseAction
 
 # Phantom App imports
 import phantom.app as phantom
-from phantom.base_connector import BaseConnector
-
-# from phantom.action_result import ActionResult
-
 # Usage of the consts file is recommended
 # from carbonblackcloudsplunksoaraoo_consts import *
 import requests
-import json
-import os
+from phantom.base_connector import BaseConnector
+
+from actions import BaseAction
 
 
 class RetVal(tuple):
@@ -67,7 +67,7 @@ class CarbonBlackCloudSplunkSoarAppConnector(BaseConnector):
         base = os.path.dirname(os.path.realpath(__file__)) + "/"
         path = base + "actions/action_*.py"
         for mod_path in glob(path):
-            module = mod_path.replace(base, "").replace("/", ".").replace(".py", "")
+            Bmodule = mod_path.replace(base, "").replace("/", ".").replace(".py", "")
             import_module(module, package="actions")
         actions = BaseAction.__subclasses__()
         action_name = "actions.action_" + action_id
@@ -108,9 +108,6 @@ class CarbonBlackCloudSplunkSoarAppConnector(BaseConnector):
 
 def main():
     """Main Entry"""
-    import pudb
-    import argparse
-
     pudb.set_trace()
 
     argparser = argparse.ArgumentParser()
@@ -118,12 +115,14 @@ def main():
     argparser.add_argument("input_test_json", help="Input Test JSON file")
     argparser.add_argument("-u", "--username", help="username", required=False)
     argparser.add_argument("-p", "--password", help="password", required=False)
+    argparser.add_argument('-v', '--verify', action='store_true', help='verify', required=False, default=False)
 
     args = argparser.parse_args()
     session_id = None
 
     username = args.username
     password = args.password
+    verify = args.verify
 
     if username is not None and password is None:
 
@@ -137,7 +136,7 @@ def main():
             login_url = (CarbonBlackCloudSplunkSoarAppConnector._get_phantom_base_url() + "/login")
 
             print("Accessing the Login page")
-            r = requests.get(login_url, verify=False)
+            r = requests.get(login_url, verify=verify)
             csrftoken = r.cookies["csrftoken"]
 
             data = dict()
@@ -150,7 +149,7 @@ def main():
             headers["Referer"] = login_url
 
             print("Logging into Platform to get the session id")
-            r2 = requests.post(login_url, verify=False, data=data, headers=headers)
+            r2 = requests.post(login_url, verify=verify, data=data, headers=headers)
             session_id = r2.cookies["sessionid"]
         except Exception as e:
             print("Unable to get session id from the platform. Error: " + str(e))

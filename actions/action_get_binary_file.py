@@ -13,8 +13,9 @@ import urllib
 
 import phantom.app as phantom
 from cbc_sdk.enterprise_edr.ubs import Binary
-from actions import BaseAction
 from phantom.vault import Vault
+
+from actions import BaseAction
 
 
 class GetBinaryFileAction(BaseAction):

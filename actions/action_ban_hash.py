@@ -10,11 +10,11 @@
 """Ban Hash Class Action"""
 import traceback
 
-from cbc_sdk.platform import ReputationOverride
+import phantom.app as phantom
 from cbc_sdk.enterprise_edr import Binary
+from cbc_sdk.platform import ReputationOverride
 
 from actions import BaseAction
-import phantom.app as phantom
 
 
 class BanHashAction(BaseAction):

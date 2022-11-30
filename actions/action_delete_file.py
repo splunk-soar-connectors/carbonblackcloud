@@ -11,8 +11,9 @@
 import traceback
 
 import phantom.app as phantom
-from cbc_sdk.platform import Device
 from cbc_sdk.live_response_api import LiveResponseError
+from cbc_sdk.platform import Device
+
 from actions import BaseAction
 
 

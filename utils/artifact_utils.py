@@ -12,8 +12,7 @@ import json
 
 import phantom.rules as phantom
 
-from cbcapp_consts import STANDARD_CEF_MAPPING, CEF_TYPES_MAPPING
-
+from cbcapp_consts import CEF_TYPES_MAPPING, STANDARD_CEF_MAPPING
 
 def prepare_artifact(alert, config, container_id=None):
     """Prepare artifact from CBC alert"""

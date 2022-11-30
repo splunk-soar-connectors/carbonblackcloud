@@ -11,8 +11,8 @@
 import traceback
 
 import phantom.app as phantom
-from cbc_sdk.platform import CBAnalyticsAlert
 from cbc_sdk.errors import ObjectNotFoundError
+from cbc_sdk.platform import CBAnalyticsAlert
 
 from actions import BaseAction
 
