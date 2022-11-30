@@ -67,7 +67,7 @@ class CarbonBlackCloudSplunkSoarAppConnector(BaseConnector):
         base = os.path.dirname(os.path.realpath(__file__)) + "/"
         path = base + "actions/action_*.py"
         for mod_path in glob(path):
-            Bmodule = mod_path.replace(base, "").replace("/", ".").replace(".py", "")
+            module = mod_path.replace(base, "").replace("/", ".").replace(".py", "")
             import_module(module, package="actions")
         actions = BaseAction.__subclasses__()
         action_name = "actions.action_" + action_id
