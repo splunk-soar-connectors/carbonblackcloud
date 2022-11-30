@@ -1,0 +1,2397 @@
+{
+    "appid": "d1896254-78f3-4c75-aa7b-d48359699641",
+    "name": "Carbon Black Cloud",
+    "description": "Carbon Black Cloud App for Splunk SOAR",
+    "type": "endpoint",
+    "product_vendor": "VMware",
+    "logo": "images/cbcapp.svg",
+    "logo_dark": "images/cbcapp.png",
+    "product_name": "Carbon Black Cloud",
+    "python_version": "3",
+    "product_version_regex": ".*",
+    "publisher": "VMware",
+    "contributors": [
+        {
+            "name": "Milen Rangelov",
+        }
+    ],
+    "license": "BSD-2",
+    "app_version": "1.0.0",
+    "utctime_updated": "2022-04-28T08:47:14.683021Z",
+    "package_name": "cbcapp",
+    "main_module": "cbcapp_connector.py",
+    "min_phantom_version": "4.10.2.47587",
+    "app_wizard_version": "1.0.0",
+    "configuration": {
+        "cbc_url": {
+            "description": "Carbon Black Cloud instance URL",
+            "data_type": "string",
+            "required": true,
+            "value_list": [],
+            "default": "",
+            "order": 0
+        },
+        "org_key": {
+            "description": "Carbon Black Cloud Org Key",
+            "data_type": "string",
+            "required": true,
+            "value_list": [],
+            "default": "",
+            "order": 1
+        },
+        "api_id": {
+            "description": "API ID",
+            "data_type": "string",
+            "required": true,
+            "value_list": [],
+            "default": "",
+            "order": 2
+        },
+        "api_secret_key": {
+            "description": "API Secret Key",
+            "data_type": "password",
+            "default": "",
+            "required": true,
+            "order": 3
+        },
+        "fetch_cb_analytics": {
+            "description": "Fetch CB_ANALYTICS alerts",
+            "data_type": "boolean",
+            "default": true,
+            "required": true,
+            "order": 4
+        },
+        "fetch_device_control": {
+            "description": "Fetch DEVICE_CONTROL alerts",
+            "data_type": "boolean",
+            "default": true,
+            "required": true,
+            "order": 5
+        },
+        "fetch_watchlist": {
+            "description": "Fetch WATCHLIST alerts (requires Enterprise EDR)",
+            "data_type": "boolean",
+            "default": false,
+            "required": true,
+            "order": 6
+        },
+        "fetch_container_runtime": {
+            "description": "Fetch CONTAINER_RUNTIME alerts",
+            "data_type": "boolean",
+            "default": false,
+            "required": true,
+            "order": 7
+        },
+        "min_severity": {
+            "description": "Minimum alerts severity",
+            "data_type": "numeric",
+            "default": 1,
+            "required": true,
+            "value_list": [1,2,3,4,5,6,7,8,9,10],
+            "order": 8
+        }
+    },
+    "actions": [
+        {
+            "action": "test connectivity",
+            "identifier": "test_connectivity",
+            "description": "Validate the asset configuration for connectivity with the supplied configuration",
+            "verbose": "",
+            "type": "test",
+            "read_only": true,
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "on poll",
+            "description": "Callback action for the on_poll ingest functionality.",
+            "type": "ingest",
+            "identifier": "on_poll",
+            "read_only": true,
+            "parameters": {
+                "container_id": {
+                    "data_type": "string",
+                    "order": 0,
+                    "description": "Container IDs to limit the ingestion to.",
+                    "allow_list": true
+                },
+                "start_time": {
+                    "data_type": "numeric",
+                    "order": 1,
+                    "description": "Start of time range, in epoch time (milliseconds)",
+                    "verbose": "If not specified, the default is past 10 days"
+                },
+                "end_time": {
+                    "data_type": "numeric",
+                    "order": 2,
+                    "description": "End of time range, in epoch time (milliseconds)",
+                    "verbose": "If not specified, the default is now"
+                },
+                "container_count": {
+                    "data_type": "numeric",
+                    "order": 3,
+                    "description": "Maximum number of container records to query for."
+                },
+                "artifact_count": {
+                    "data_type": "numeric",
+                    "order": 4,
+                    "description": "Maximum number of artifact records to query for."
+                }
+            },
+            "output": [],
+            "versions":"EQ(*)"
+        },
+        {
+            "action": "normalize artifact",
+            "description": "Normalize artifact ingested by Splunk App for Splunk Phantom",
+            "type": "generic",
+            "identifier": "normalize_artifact",
+            "read_only": false,
+            "parameters": {
+                "raw": {
+                    "data_type": "string",
+                    "order": 0,
+                    "description": "Artifact _raw data",
+                    "contains": ["cbc alert"]
+                },
+                "artifact_id": {
+                    "data_type": "numeric",
+                    "contains": ["phantom artifact id"],
+                    "order": 1,
+                    "description": "Artifact ID to process"
+                }
+            },
+            "render": {
+                "type": "table",
+                "title": "Normalize Artifact"
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "example_values": [
+                        "success",
+                        "failed"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.artifact_id",
+                    "data_type": "string",
+                    "contains": [
+                        "phantom artifact id"
+                    ],
+                    "column_name": "Artifact ID",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string",
+                    "column_name": "summary"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Artifact updated successfully."
+                    ]
+                }
+            ],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "dismiss alert",
+            "identifier": "dismiss_alert",
+            "description": "Dismiss Carbon Black Cloud alert",
+            "verbose": "Dismiss Alert in Carbon Black Cloud",
+            "type": "correct",
+            "read_only": false,
+            "parameters": {
+                "alert_id": {
+                    "description": "Carbon Black Cloud Alert ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc alert id"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.alert_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "alert_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get enriched event",
+            "identifier": "get_enriched_event",
+            "description": "Get Enriched Event",
+            "verbose": "Get enriched event from Carbon Black Cloud",
+            "type": "investigate",
+            "read_only": false,
+            "parameters": {
+                "alert_id": {
+                    "description": "CBC Alert ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc alert id"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.details.event_id",
+                    "data_type": "string",
+                    "column_name": "event_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.details.event_type",
+                    "data_type": "string",
+                    "column_name": "event_type",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.details.event_description",
+                    "data_type": "string",
+                    "column_name": "event_description",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.details.alert_id",
+                    "data_type": "string",
+                    "column_name": "alert_id",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.details.alert_category",
+                    "data_type": "string",
+                    "column_name": "alert_category",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.details.backend_timestamp",
+                    "data_type": "string",
+                    "column_name": "backend_timestamp",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.details.device_id",
+                    "data_type": "string",
+                    "column_name": "device_id",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.data.*.details.device_name",
+                    "data_type": "string",
+                    "column_name": "device_name",
+                    "column_order": 7
+                },
+                {
+                    "data_path": "action_result.data.*.details.device_os",
+                    "data_type": "string",
+                    "column_name": "device_os",
+                    "column_order": 8
+                },
+                {
+                    "data_path": "action_result.data.*.details.device_policy",
+                    "data_type": "string",
+                    "column_name": "device_policy",
+                    "column_order": 9
+                },
+                {
+                    "data_path": "action_result.data.*.details.process_name",
+                    "data_type": "string",
+                    "column_name": "process_name",
+                    "column_order": 10
+                },
+                {
+                    "data_path": "action_result.data.*.details.process_hash",
+                    "data_type": "string",
+                    "column_name": "process_hash",
+                    "column_order": 11
+                },
+                {
+                    "data_path": "action_result.data.*.details.parent_pid",
+                    "data_type": "string",
+                    "column_name": "parent_pid",
+                    "column_order": 12
+                },
+                {
+                    "data_path": "action_result.data.*.details.process_pid",
+                    "data_type": "string",
+                    "column_name": "process_pid",
+                    "column_order": 13
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get file",
+            "identifier": "get_file",
+            "description": "Get File",
+            "verbose": "Get file From Carbon Black Cloud endpoint",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "device_id": {
+                    "description": "CBC Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc device id"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "file_name": {
+                    "description": "File Name",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.vault_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "vault_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.file_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "filename",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.device_id",
+                    "data_type": "string",
+                    "contains": ["cbc device id"],
+                    "column_name": "device_id",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "delete file",
+            "identifier": "delete_file",
+            "description": "Delete File",
+            "verbose": "Delete file from Carbon Black Cloud endpoint",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "device_id": {
+                    "description": "CBC Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc device id"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "file_name": {
+                    "description": "File Name",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.device_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "device_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.file_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "filename",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get binary file",
+            "identifier": "get_binary_file",
+            "description": "Get Binary File",
+            "verbose": "Get binary file From Carbon Black Cloud endpoint",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "file_hash": {
+                    "description": "Binary file sha256 hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc process hash"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.vault_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "vault_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.file_hash",
+                    "data_type": "string",
+                    "contains": ["cbc process hash"],
+                    "column_name": "file_hash",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.file_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "file_name",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "kill process",
+            "identifier": "kill_process",
+            "description": "Kill process on Carbon Black Cloud endpoint",
+            "verbose": "Kill process on a Carbon Black Cloud endpoint by PID, process name, process hash or GUID",
+            "type": "contain",
+            "read_only": false,
+            "parameters": {
+                "device_id": {
+                    "description": "CBC Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc device id"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "process_pid": {
+                    "description": "Process PID",
+                    "data_type": "numeric",
+                    "required": false,
+                    "primary": false,
+                    "contains": ["pid"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "process_name": {
+                    "description": "Process Name",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "contains": ["process name"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                },
+                "process_hash": {
+                    "description": "Process Hash",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "contains": ["cbc process hash"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 3
+                },
+                "process_guid": {
+                    "description": "Process GUID",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": false,
+                    "contains": ["cbc process guid"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 4
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.process_pid",
+                    "data_type": "string",
+                    "contains": ["pid"],
+                    "column_name": "process_pid",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.process_name",
+                    "data_type": "string",
+                    "contains": ["process name"],
+                    "column_name": "process_name",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.process_killed",
+                    "data_type": "boolean",
+                    "contains": [],
+                    "column_name": "process_killed",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get binary metadata",
+            "identifier": "get_binary_metadata",
+            "description": "Get binary metadata from Carbon Black Cloud",
+            "verbose": "Get binary metadata from Carbon Black Cloud",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "file_hash": {
+                    "description": "Binary file sha256 hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc process hash"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.sha256",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "sha256",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.architecture",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "architecture",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.available_file_size",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "available_file_size",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.charset_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "charset_id",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.comments",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "comments",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.company_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "company_name",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.copyright",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "copyright",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.data.*.file_available",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "sha256",
+                    "column_order": 7
+                },
+                {
+                    "data_path": "action_result.data.*.file_description",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "sha256",
+                    "column_order": 8
+                },
+                {
+                    "data_path": "action_result.data.*.file_size",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "file_size",
+                    "column_order": 9
+                },
+                {
+                    "data_path": "action_result.data.*.file_version",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "file_version",
+                    "column_order": 10
+                },
+                {
+                    "data_path": "action_result.data.*.internal_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "internal_name",
+                    "column_order": 11
+                },
+                {
+                    "data_path": "action_result.data.*.lang_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "lang_id",
+                    "column_order": 12
+                },
+                {
+                    "data_path": "action_result.data.*.md5",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "md5",
+                    "column_order": 13
+                },
+                {
+                    "data_path": "action_result.data.*.original_filename",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "original_filename",
+                    "column_order": 14
+                },
+                {
+                    "data_path": "action_result.data.*.os_type",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "os_type",
+                    "column_order": 15
+                },
+                {
+                    "data_path": "action_result.data.*.private_build",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "private_build",
+                    "column_order": 16
+                },
+                {
+                    "data_path": "action_result.data.*.product_description",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "original_filename",
+                    "column_order": 17
+                },
+                {
+                    "data_path": "action_result.data.*.product_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "product_name",
+                    "column_order": 18
+                },
+                {
+                    "data_path": "action_result.data.*.product_version",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "product_version",
+                    "column_order": 19
+                },
+                {
+                    "data_path": "action_result.data.*.special_build",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "special_build",
+                    "column_order": 20
+                },
+                {
+                    "data_path": "action_result.data.*.trademark",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "trademark",
+                    "column_order": 21
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get process metadata",
+            "identifier": "get_process_metadata",
+            "description": "Get Process Metadata",
+            "verbose": "Get process metadata from Carbon Black Cloud",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "process_guid": {
+                    "description": "Process GUID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc process guid"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.details.process_name",
+                    "data_type": "string",
+                    "column_name": "process_name",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.details.process_sha256",
+                    "data_type": "string",
+                    "column_name": "process_sha256",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.details.process_pid",
+                    "data_type": "string",
+                    "column_name": "process_pid",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.details.process_cmdline",
+                    "data_type": "string",
+                    "column_name": "process_cmdline",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.details.parent_pid",
+                    "data_type": "string",
+                    "column_name": "parent_pid",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.details.alert_id",
+                    "data_type": "string",
+                    "column_name": "alert_id",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.details.alert_category",
+                    "data_type": "string",
+                    "column_name": "alert_category",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.data.*.details.backend_timestamp",
+                    "data_type": "string",
+                    "column_name": "backend_timestamp",
+                    "column_order": 7
+                },
+                {
+                    "data_path": "action_result.data.*.details.device_id",
+                    "data_type": "string",
+                    "column_name": "device_id",
+                    "column_order": 8
+                },
+                {
+                    "data_path": "action_result.data.*.details.device_name",
+                    "data_type": "string",
+                    "column_name": "device_name",
+                    "column_order": 9
+                },
+                {
+                    "data_path": "action_result.data.*.details.device_os",
+                    "data_type": "string",
+                    "column_name": "device_os",
+                    "column_order": 10
+                },
+                {
+                    "data_path": "action_result.data.*.details.device_policy",
+                    "data_type": "string",
+                    "column_name": "device_policy",
+                    "column_order": 11
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "quarantine device",
+            "identifier": "quarantine_device",
+            "description": "Quarantine device in Carbon Black Cloud",
+            "verbose": "Quarantine device in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": false,
+            "parameters": {
+                "device_id": {
+                    "description": "CBC Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc device id"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "device_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "unquarantine device",
+            "identifier": "unquarantine_device",
+            "description": "Unquarantine device in Carbon Black Cloud",
+            "verbose": "Unquarantine device in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": false,
+            "parameters": {
+                "device_id": {
+                    "description": "CBC Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc device id"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "device_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "ban hash",
+            "identifier": "ban_hash",
+            "description": "Ban process by hash in Carbon Black Cloud",
+            "verbose": "Ban process by hash in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": false,
+            "parameters": {
+                "process_hash": {
+                    "description": "CBC Process Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc process hash"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.process_hash",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "process_hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "unban hash",
+            "identifier": "unban_hash",
+            "description": "Unban process by hash in Carbon Black Cloud",
+            "verbose": "Unban process by hash in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": false,
+            "parameters": {
+                "process_hash": {
+                    "description": "CBC Process Hash",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc process hash"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.process_hash",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "process_hash",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "list policies",
+            "identifier": "list_policies",
+            "description": "List device policies in Carbon Black Cloud",
+            "verbose": "List device policies in Carbon Black Cloud",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {},
+            "output": [
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "numeric",
+                    "contains": [],
+                    "column_name": "id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "name",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.description",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "description",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.num_devices",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "description",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.priority_level",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "description",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "set device policy",
+            "identifier": "set_device_policy",
+            "description": "Set device policy of a Carbon Black Cloud endpoint",
+            "verbose": "Set device policy of a Carbon Black Cloud endpoint",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "device_id": {
+                    "description": "CBC Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc device id"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "policy_id": {
+                    "description": "Policy ID",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "policy_name": {
+                    "description": "Policy Name",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.policy_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "policy_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.policy_name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "policy_name",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.device_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "device_id",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "add ioc to feed or watchlist",
+            "identifier": "add_ioc",
+            "description": "Add IOC to feed/watchlist in Carbon Black Cloud",
+            "verbose": "Add IOC to feed/watchlist in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "feed_id": {
+                    "description": "Feed ID",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "watchlist_id": {
+                    "description": "Watchlist ID",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "report_id": {
+                    "description": "Report ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "ioc_id": {
+                    "description": "IOC ID",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                },
+                "cbc_field": {
+                    "description": "CBC IOC Field",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 3
+                },
+                "ioc_value": {
+                    "description": "CBC IOC Value",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 4
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "message",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.ioc_id",
+                    "data_type": "string",
+                    "column_name": "ioc_id",
+                    "column_order": 2
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "remove ioc from watchlist",
+            "identifier": "remove_ioc_watchlist",
+            "description": "Remove IOC from watchlist in Carbon Black Cloud",
+            "verbose": "Remove IOC from watchlist in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "watchlist_id": {
+                    "description": "Watchlist ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "report_id": {
+                    "description": "Report ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "ioc_id": {
+                    "description": "IOC ID",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                },
+                "ioc_value": {
+                    "description": "IOC Value",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 3
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "column_name": "message",
+                    "data_type": "string",
+                    "column_order": 1
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "remove ioc from feed",
+            "identifier": "remove_ioc_feed",
+            "description": "Remove IOC from feed in Carbon Black Cloud",
+            "verbose": "Remove IOC from feed in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "feed_id": {
+                    "description": "Feed ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "report_id": {
+                    "description": "Report ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "ioc_id": {
+                    "description": "IOC ID",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                },
+                "ioc_value": {
+                    "description": "IOC Value",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 3
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "column_name": "message",
+                    "data_type": "string",
+                    "column_order": 1
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "list processes",
+            "identifier": "list_processes",
+            "description": "List processes on a device in Carbon Black Cloud",
+            "verbose": "List processes on a device in Carbon Black Cloud",
+            "type": "investigate",
+            "read_only": false,
+            "parameters": {
+                "device_id": {
+                    "description": "CBC Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc device id"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.process_pid",
+                    "data_type": "numeric",
+                    "column_name": "process_pid",
+                    "contains": ["pid"],
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.process_path",
+                    "data_type": "string",
+                    "contains": ["process name"],
+                    "column_name": "process_path",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.sid",
+                    "data_type": "string",
+                    "column_name": "sid",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.parent_pid",
+                    "data_type": "numeric",
+                    "contains": ["pid"],
+                    "column_name": "parent_pid",
+                    "column_order": 3
+                },
+
+                {
+                    "data_path": "action_result.data.*.process_cmdline",
+                    "data_type": "string",
+                    "column_name": "process_cmdline",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.process_username",
+                    "data_type": "string",
+                    "column_name": "process_username",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.process_create_time",
+                    "data_type": "numeric",
+                    "column_name": "process_create_time",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.data.*.parent_create_time",
+                    "data_type": "numeric",
+                    "column_name": "process_create_time",
+                    "column_order": 7
+                }
+            ],
+            "versions": "EQ(*)",
+            "render": {
+                "title": "List Processes",
+                "type": "table"
+            }
+        },
+        {
+            "action": "execute command",
+            "identifier": "execute_command",
+            "description": "Execute command on a device in Carbon Black Cloud",
+            "verbose": "Execute command on a device in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "device_id": {
+                    "description": "CBC Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": ["cbc device id"],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "command_line": {
+                    "description": "Command Line",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "timeout": {
+                    "description": "Execution timeout (seconds)",
+                    "data_type": "numeric",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "work_dir": {
+                    "description": "Working directory",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.device_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "device_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.command_line",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "command_line",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.stdout",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "stdout",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "create report",
+            "identifier": "create_report",
+            "description": "Create a report in Carbon Black Cloud",
+            "verbose": "Create a report in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "feed_id": {
+                    "description": "Feed ID",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "report_save_as_watchlist": {
+                    "description": "Save as a Watchlist Report",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "report_name": {
+                    "description": "Report Name",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                },
+                "report_severity": {
+                    "description": "Report Severity",
+                    "data_type": "numeric",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 3
+                },
+                "report_summary": {
+                    "description": "Report Summary",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 4
+                },
+                "report_tags": {
+                    "description": "Comma Separated Report Tags",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 5
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "message",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string",
+                    "column_name": "report_id",
+                    "column_order": 2
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "delete report",
+            "identifier": "delete_report",
+            "description": "Delete a report in Carbon Black Cloud feed or watchlist",
+            "verbose": "Delete a report in Carbon Black Cloud feed or watchlist",
+            "type": "correct",
+            "read_only": true,
+            "parameters": {
+                "report_id": {
+                    "description": "Report ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "message",
+                    "column_order": 1
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "create feed",
+            "identifier": "create_feed",
+            "description": "Create a feed in Carbon Black Cloud",
+            "verbose": "Create a feed in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "feed_name": {
+                    "description": "Feed Name",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "feed_provider_url": {
+                    "description": "Feed Provider URL",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "feed_summary": {
+                    "description": "Feed Summary",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                },
+                "feed_category": {
+                    "description": "Feed Category",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 3
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "message",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string",
+                    "column_name": "feed_id",
+                    "column_order": 2
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "create watchlist",
+            "identifier": "create_watchlist",
+            "description": "Create a watchlist in Carbon Black Cloud",
+            "verbose": "Create a watchlist in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "watchlist_name": {
+                    "description": "Watchlist Name",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "watchlist_description": {
+                    "description": "Description",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "watchlist_tags_enabled": {
+                    "description": "Enable Tags",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                },
+                "watchlist_alerts_enabled": {
+                    "description": "Enable Alerts",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 3
+                },
+                "watchlist_report_ids": {
+                    "description": "Report IDs (CSV)",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 4
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "message",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string",
+                    "column_name": "watchlist_id",
+                    "column_order": 2
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "delete feed",
+            "identifier": "delete_feed",
+            "description": "Delete a feed in Carbon Black Cloud",
+            "verbose": "Delete a feed in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "feed_id": {
+                    "description": "Feed ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "message",
+                    "column_order": 1
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "delete watchlist",
+            "identifier": "delete_watchlist",
+            "description": "Delete a watchlist in Carbon Black Cloud",
+            "verbose": "Delete a watchlist in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "watchlist_id": {
+                    "description": "Watchlist ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "message",
+                    "column_order": 1
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "retrieve watchlist",
+            "identifier": "retrieve_watchlist",
+            "description": "Retrieve a watchlist in Carbon Black Cloud",
+            "verbose": "Retrieve a watchlist in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "watchlist_id": {
+                    "description": "Watchlist ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string",
+                    "column_name": "watchlist_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.name",
+                    "data_type": "string",
+                    "column_name": "name",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.description",
+                    "data_type": "string",
+                    "column_name": "description",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.tags_enabled",
+                    "data_type": "string",
+                    "column_name": "tags_enabled",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.alerts_enabled",
+                    "data_type": "string",
+                    "column_name": "alerts_enabled",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.create_timestamp",
+                    "data_type": "string",
+                    "column_name": "create_timestamp",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.last_update_timestamp",
+                    "data_type": "string",
+                    "column_name": "last_update_timestamp",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.data.*.report_ids",
+                    "data_type": "string",
+                    "column_name": "report_ids",
+                    "column_order": 7
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "retrieve feed",
+            "identifier": "retrieve_feed",
+            "description": "Retrieve a feed in Carbon Black Cloud",
+            "verbose": "Retrieve a feed in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "feed_id": {
+                    "description": "Feed ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string",
+                    "column_name": "feed_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.name",
+                    "data_type": "string",
+                    "column_name": "name",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.access",
+                    "data_type": "string",
+                    "column_name": "access",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                    "column_name": "summary",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.category",
+                    "data_type": "string",
+                    "column_name": "category",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.provider_url",
+                    "data_type": "string",
+                    "column_name": "provider_url",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.reports_count",
+                    "data_type": "string",
+                    "column_name": "reports_count",
+                    "column_order": 6
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "retrieve iocs",
+            "identifier": "retrieve_report_iocs",
+            "description": "Retrieve IOCs for a given report in Carbon Black Cloud",
+            "verbose": "Retrieve IOCs for a given report in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "watchlist_id": {
+                    "description": "Watchlist ID",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "feed_id": {
+                    "description": "Feed ID",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "report_id": {
+                    "description": "Report ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string",
+                    "column_name": "ioc_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.match_type",
+                    "data_type": "string",
+                    "column_name": "match_type",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.field",
+                    "data_type": "string",
+                    "column_name": "field",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.values",
+                    "data_type": "string",
+                    "column_name": "values",
+                    "column_order": 2
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "update feed",
+            "identifier": "update_feed",
+            "description": "Update a feed in Carbon Black Cloud",
+            "verbose": "Update a feed in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "feed_id": {
+                    "description": "Feed ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "feed_name": {
+                    "description": "Feed Name",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "feed_provider_url": {
+                    "description": "Feed Provider URL",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                },
+                "feed_summary": {
+                    "description": "Feed Summary",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 3
+                },
+                "feed_category": {
+                    "description": "Feed Category",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 4
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "message",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string",
+                    "column_name": "feed_id",
+                    "column_order": 2
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "update watchlist",
+            "identifier": "update_watchlist",
+            "description": "Update a watchlist in Carbon Black Cloud",
+            "verbose": "Update a watchlist in Carbon Black Cloud",
+            "type": "contain",
+            "read_only": true,
+            "parameters": {
+                "watchlist_id": {
+                    "description": "Watchlist ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "watchlist_name": {
+                    "description": "Watchlist Name",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "watchlist_description": {
+                    "description": "Description",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                },
+                "watchlist_tags_enabled": {
+                    "description": "Enable Tags",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 3
+                },
+                "watchlist_alerts_enabled": {
+                    "description": "Enable Alerts",
+                    "data_type": "boolean",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 4
+                },
+                "add_report_ids": {
+                    "description": "Comma Separated Report IDs",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 5
+                },
+                "remove_report_ids": {
+                    "description": "Comma Separated Report IDs",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 5
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "column_name": "message",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string",
+                    "column_name": "watchlist_id",
+                    "column_order": 2
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        }
+    ],
+    "pip3_dependencies": {
+        "pypi": [],
+        "wheel": [
+            {"module": "cbc_sdk", "input_file": "wheels/py3/carbon_black_cloud_sdk-1.4.0-py2.py3-none-any.whl"},
+            {"module": "pyyaml", "input_file": "wheels/py3/PyYAML-5.4.1-cp36-cp36m-manylinux1_x86_64.whl"},
+            {"module": "boto3", "input_file": "wheels/py3/boto3-1.21.14-py3-none-any.whl"},
+            {"module": "botocore", "input_file": "wheels/py3/botocore-1.24.14-py3-none-any.whl"},
+            {"module": "python_dateutil", "input_file": "wheels/py3/python_dateutil-2.8.1-py2.py3-none-any.whl"},
+            {"module": "requests", "input_file": "wheels/py3/requests-2.25.1-py2.py3-none-any.whl"},
+            {"module": "schema", "input_file": "wheels/py3/schema-0.7.4-py2.py3-none-any.whl"},
+            {"module": "solrq", "input_file": "wheels/py3/solrq-1.1.1-py2.py3-none-any.whl"},
+            {"module": "validators", "input_file": "wheels/py3/validators-0.18.2-py3-none-any.whl"},
+            {"module": "jmespath", "input_file": "wheels/py3/jmespath-0.10.0-py2.py3-none-any.whl"},
+            {"module": "decorator", "input_file": "wheels/py3/decorator-5.1.1-py3-none-any.whl"}
+        ]
+    }
+}
