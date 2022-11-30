@@ -13,7 +13,7 @@ import datetime
 from datetime import timezone
 
 import phantom.app as phantom
-    from cbc_sdk.platform import BaseAlert
+from cbc_sdk.platform import BaseAlert
 
 from actions import BaseAction
 from utils.artifact_utils import prepare_artifact
