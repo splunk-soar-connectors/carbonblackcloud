@@ -12,7 +12,7 @@
     "publisher": "VMware",
     "contributors": [
         {
-            "name": "Milen Rangelov",
+            "name": "Milen Rangelov"
         }
     ],
     "license": "BSD-2",
@@ -87,7 +87,18 @@
             "data_type": "numeric",
             "default": 1,
             "required": true,
-            "value_list": [1,2,3,4,5,6,7,8,9,10],
+            "value_list": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+            ],
             "order": 8
         }
     },
@@ -140,7 +151,7 @@
                 }
             },
             "output": [],
-            "versions":"EQ(*)"
+            "versions": "EQ(*)"
         },
         {
             "action": "normalize artifact",
@@ -153,11 +164,15 @@
                     "data_type": "string",
                     "order": 0,
                     "description": "Artifact _raw data",
-                    "contains": ["cbc alert"]
+                    "contains": [
+                        "cbc alert"
+                    ]
                 },
                 "artifact_id": {
                     "data_type": "numeric",
-                    "contains": ["phantom artifact id"],
+                    "contains": [
+                        "phantom artifact id"
+                    ],
                     "order": 1,
                     "description": "Artifact ID to process"
                 }
@@ -213,7 +228,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc alert id"],
+                    "contains": [
+                        "cbc alert id"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -256,7 +273,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc alert id"],
+                    "contains": [
+                        "cbc alert id"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -366,7 +385,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc device id"],
+                    "contains": [
+                        "cbc device id"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -400,7 +421,9 @@
                 {
                     "data_path": "action_result.data.*.device_id",
                     "data_type": "string",
-                    "contains": ["cbc device id"],
+                    "contains": [
+                        "cbc device id"
+                    ],
                     "column_name": "device_id",
                     "column_order": 2
                 },
@@ -433,7 +456,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc device id"],
+                    "contains": [
+                        "cbc device id"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -493,7 +518,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc process hash"],
+                    "contains": [
+                        "cbc process hash"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -510,7 +537,9 @@
                 {
                     "data_path": "action_result.data.*.file_hash",
                     "data_type": "string",
-                    "contains": ["cbc process hash"],
+                    "contains": [
+                        "cbc process hash"
+                    ],
                     "column_name": "file_hash",
                     "column_order": 1
                 },
@@ -550,7 +579,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc device id"],
+                    "contains": [
+                        "cbc device id"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -560,7 +591,9 @@
                     "data_type": "numeric",
                     "required": false,
                     "primary": false,
-                    "contains": ["pid"],
+                    "contains": [
+                        "pid"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 1
@@ -570,7 +603,9 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": ["process name"],
+                    "contains": [
+                        "process name"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 2
@@ -580,7 +615,9 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": ["cbc process hash"],
+                    "contains": [
+                        "cbc process hash"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 3
@@ -590,7 +627,9 @@
                     "data_type": "string",
                     "required": false,
                     "primary": false,
-                    "contains": ["cbc process guid"],
+                    "contains": [
+                        "cbc process guid"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 4
@@ -600,14 +639,18 @@
                 {
                     "data_path": "action_result.data.*.process_pid",
                     "data_type": "string",
-                    "contains": ["pid"],
+                    "contains": [
+                        "pid"
+                    ],
                     "column_name": "process_pid",
                     "column_order": 0
                 },
                 {
                     "data_path": "action_result.data.*.process_name",
                     "data_type": "string",
-                    "contains": ["process name"],
+                    "contains": [
+                        "process name"
+                    ],
                     "column_name": "process_name",
                     "column_order": 1
                 },
@@ -647,7 +690,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc process hash"],
+                    "contains": [
+                        "cbc process hash"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -827,7 +872,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc process guid"],
+                    "contains": [
+                        "cbc process guid"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -925,7 +972,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc device id"],
+                    "contains": [
+                        "cbc device id"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -968,7 +1017,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc device id"],
+                    "contains": [
+                        "cbc device id"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -1011,7 +1062,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc process hash"],
+                    "contains": [
+                        "cbc process hash"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -1054,7 +1107,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc process hash"],
+                    "contains": [
+                        "cbc process hash"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -1155,7 +1210,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc device id"],
+                    "contains": [
+                        "cbc device id"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -1458,7 +1515,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc device id"],
+                    "contains": [
+                        "cbc device id"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -1469,13 +1528,17 @@
                     "data_path": "action_result.data.*.process_pid",
                     "data_type": "numeric",
                     "column_name": "process_pid",
-                    "contains": ["pid"],
+                    "contains": [
+                        "pid"
+                    ],
                     "column_order": 0
                 },
                 {
                     "data_path": "action_result.data.*.process_path",
                     "data_type": "string",
-                    "contains": ["process name"],
+                    "contains": [
+                        "process name"
+                    ],
                     "column_name": "process_path",
                     "column_order": 1
                 },
@@ -1488,11 +1551,12 @@
                 {
                     "data_path": "action_result.data.*.parent_pid",
                     "data_type": "numeric",
-                    "contains": ["pid"],
+                    "contains": [
+                        "pid"
+                    ],
                     "column_name": "parent_pid",
                     "column_order": 3
                 },
-
                 {
                     "data_path": "action_result.data.*.process_cmdline",
                     "data_type": "string",
@@ -1537,7 +1601,9 @@
                     "data_type": "string",
                     "required": true,
                     "primary": true,
-                    "contains": ["cbc device id"],
+                    "contains": [
+                        "cbc device id"
+                    ],
                     "value_list": [],
                     "default": "",
                     "order": 0
@@ -2381,17 +2447,202 @@
     "pip3_dependencies": {
         "pypi": [],
         "wheel": [
-            {"module": "cbc_sdk", "input_file": "wheels/py3/carbon_black_cloud_sdk-1.4.0-py2.py3-none-any.whl"},
-            {"module": "pyyaml", "input_file": "wheels/py3/PyYAML-5.4.1-cp36-cp36m-manylinux1_x86_64.whl"},
-            {"module": "boto3", "input_file": "wheels/py3/boto3-1.21.14-py3-none-any.whl"},
-            {"module": "botocore", "input_file": "wheels/py3/botocore-1.24.14-py3-none-any.whl"},
-            {"module": "python_dateutil", "input_file": "wheels/py3/python_dateutil-2.8.1-py2.py3-none-any.whl"},
-            {"module": "requests", "input_file": "wheels/py3/requests-2.25.1-py2.py3-none-any.whl"},
-            {"module": "schema", "input_file": "wheels/py3/schema-0.7.4-py2.py3-none-any.whl"},
-            {"module": "solrq", "input_file": "wheels/py3/solrq-1.1.1-py2.py3-none-any.whl"},
-            {"module": "validators", "input_file": "wheels/py3/validators-0.18.2-py3-none-any.whl"},
-            {"module": "jmespath", "input_file": "wheels/py3/jmespath-0.10.0-py2.py3-none-any.whl"},
-            {"module": "decorator", "input_file": "wheels/py3/decorator-5.1.1-py3-none-any.whl"}
+            {
+                "module": "cbc_sdk",
+                "input_file": "wheels/py3/carbon_black_cloud_sdk-1.4.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "pyyaml",
+                "input_file": "wheels/py3/PyYAML-5.4.1-cp36-cp36m-manylinux1_x86_64.whl"
+            },
+            {
+                "module": "boto3",
+                "input_file": "wheels/py3/boto3-1.21.14-py3-none-any.whl"
+            },
+            {
+                "module": "botocore",
+                "input_file": "wheels/py3/botocore-1.24.14-py3-none-any.whl"
+            },
+            {
+                "module": "python_dateutil",
+                "input_file": "wheels/py3/python_dateutil-2.8.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "requests",
+                "input_file": "wheels/py3/requests-2.25.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "schema",
+                "input_file": "wheels/py3/schema-0.7.4-py2.py3-none-any.whl"
+            },
+            {
+                "module": "solrq",
+                "input_file": "wheels/py3/solrq-1.1.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "validators",
+                "input_file": "wheels/py3/validators-0.18.2-py3-none-any.whl"
+            },
+            {
+                "module": "jmespath",
+                "input_file": "wheels/py3/jmespath-0.10.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "decorator",
+                "input_file": "wheels/py3/decorator-5.1.1-py3-none-any.whl"
+            }
+        ]
+    },
+    "pip39_dependencies": {
+        "wheel": [
+            {
+                "module": "PyYAML",
+                "input_file": "wheels/py39/PyYAML-6.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+            },
+            {
+                "module": "attrs",
+                "input_file": "wheels/shared/attrs-22.1.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "boto3",
+                "input_file": "wheels/py3/boto3-1.26.20-py3-none-any.whl"
+            },
+            {
+                "module": "botocore",
+                "input_file": "wheels/py3/botocore-1.29.20-py3-none-any.whl"
+            },
+            {
+                "module": "carbon_black_cloud_sdk",
+                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.4.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "certifi",
+                "input_file": "wheels/py3/certifi-2022.9.24-py3-none-any.whl"
+            },
+            {
+                "module": "charset_normalizer",
+                "input_file": "wheels/py3/charset_normalizer-2.1.1-py3-none-any.whl"
+            },
+            {
+                "module": "contextlib2",
+                "input_file": "wheels/shared/contextlib2-21.6.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "coverage",
+                "input_file": "wheels/py39/coverage-6.2-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+            },
+            {
+                "module": "coveralls",
+                "input_file": "wheels/shared/coveralls-3.3.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "decorator",
+                "input_file": "wheels/py3/decorator-5.1.1-py3-none-any.whl"
+            },
+            {
+                "module": "docopt",
+                "input_file": "wheels/shared/docopt-0.6.2-py2.py3-none-any.whl"
+            },
+            {
+                "module": "flake8",
+                "input_file": "wheels/shared/flake8-4.0.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "flake8_colors",
+                "input_file": "wheels/py3/flake8_colors-0.1.9-py3-none-any.whl"
+            },
+            {
+                "module": "flake8_docstrings",
+                "input_file": "wheels/shared/flake8_docstrings-1.6.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "idna",
+                "input_file": "wheels/py3/idna-3.4-py3-none-any.whl"
+            },
+            {
+                "module": "iniconfig",
+                "input_file": "wheels/shared/iniconfig-1.1.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "jmespath",
+                "input_file": "wheels/py3/jmespath-1.0.1-py3-none-any.whl"
+            },
+            {
+                "module": "mccabe",
+                "input_file": "wheels/shared/mccabe-0.6.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "packaging",
+                "input_file": "wheels/py3/packaging-21.3-py3-none-any.whl"
+            },
+            {
+                "module": "pluggy",
+                "input_file": "wheels/shared/pluggy-1.0.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "py",
+                "input_file": "wheels/shared/py-1.11.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "pycodestyle",
+                "input_file": "wheels/shared/pycodestyle-2.8.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "pydocstyle",
+                "input_file": "wheels/py3/pydocstyle-6.1.1-py3-none-any.whl"
+            },
+            {
+                "module": "pyflakes",
+                "input_file": "wheels/shared/pyflakes-2.4.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "pyparsing",
+                "input_file": "wheels/py3/pyparsing-3.0.9-py3-none-any.whl"
+            },
+            {
+                "module": "pytest",
+                "input_file": "wheels/py3/pytest-6.2.5-py3-none-any.whl"
+            },
+            {
+                "module": "python_dateutil",
+                "input_file": "wheels/shared/python_dateutil-2.8.2-py2.py3-none-any.whl"
+            },
+            {
+                "module": "requests",
+                "input_file": "wheels/py3/requests-2.28.1-py3-none-any.whl"
+            },
+            {
+                "module": "s3transfer",
+                "input_file": "wheels/py3/s3transfer-0.6.0-py3-none-any.whl"
+            },
+            {
+                "module": "schema",
+                "input_file": "wheels/shared/schema-0.7.5-py2.py3-none-any.whl"
+            },
+            {
+                "module": "six",
+                "input_file": "wheels/shared/six-1.16.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "snowballstemmer",
+                "input_file": "wheels/shared/snowballstemmer-2.2.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "solrq",
+                "input_file": "wheels/shared/solrq-1.1.2-py2.py3-none-any.whl"
+            },
+            {
+                "module": "toml",
+                "input_file": "wheels/shared/toml-0.10.2-py2.py3-none-any.whl"
+            },
+            {
+                "module": "urllib3",
+                "input_file": "wheels/shared/urllib3-1.26.13-py2.py3-none-any.whl"
+            },
+            {
+                "module": "validators",
+                "input_file": "wheels/py3/validators-0.20.0-py3-none-any.whl"
+            }
         ]
     }
 }
