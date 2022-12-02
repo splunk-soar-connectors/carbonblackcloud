@@ -194,6 +194,7 @@
                     "data_path": "summary.total_objects_successful",
                     "data_type": "string"
                 },
+                {
                     "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
