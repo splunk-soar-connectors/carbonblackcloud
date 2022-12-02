@@ -16,7 +16,7 @@ import phantom.app as phantom
 from cbc_sdk.platform import BaseAlert
 
 from actions import BaseAction
-from utils.artifact_utils import prepare_artifact
+from utils.cbc_artifact_utils import prepare_artifact
 
 
 class OnPollAction(BaseAction):

@@ -1,7 +1,7 @@
 {
     "appid": "d1896254-78f3-4c75-aa7b-d48359699641",
     "name": "Carbon Black Cloud",
-    "description": "Carbon Black Cloud App for Splunk SOAR",
+    "description": "Carbon Black Cloud App for Splunk SOAR.",
     "type": "endpoint",
     "product_vendor": "VMware",
     "logo": "images/cbcapp.svg",
@@ -18,9 +18,9 @@
     "license": "BSD-2",
     "app_version": "1.0.0",
     "utctime_updated": "2022-04-28T08:47:14.683021Z",
-    "package_name": "cbcapp",
+    "package_name": "phantom_cbcapp",
     "main_module": "cbcapp_connector.py",
-    "min_phantom_version": "4.10.2.47587",
+    "min_phantom_version": "5.3.0",
     "app_wizard_version": "1.0.0",
     "configuration": {
         "cbc_url": {
@@ -106,8 +106,7 @@
         {
             "action": "test connectivity",
             "identifier": "test_connectivity",
-            "description": "Validate the asset configuration for connectivity with the supplied configuration",
-            "verbose": "",
+            "description": "Validate the asset configuration for connectivity with the supplied configuration.",
             "type": "test",
             "read_only": true,
             "parameters": {},
@@ -155,7 +154,7 @@
         },
         {
             "action": "normalize artifact",
-            "description": "Normalize artifact ingested by Splunk App for Splunk Phantom",
+            "description": "Normalize artifact ingested by Splunk App for Splunk Phantom.",
             "type": "generic",
             "identifier": "normalize_artifact",
             "read_only": false,
@@ -192,6 +191,10 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                },
+                {
                     "data_path": "action_result.parameter.artifact_id",
                     "data_type": "string",
                     "contains": [
@@ -218,8 +221,8 @@
         {
             "action": "dismiss alert",
             "identifier": "dismiss_alert",
-            "description": "Dismiss Carbon Black Cloud alert",
-            "verbose": "Dismiss Alert in Carbon Black Cloud",
+            "description": "Dismiss Carbon Black Cloud alert.",
+            "verbose": "Dismiss Alert in Carbon Black Cloud.",
             "type": "correct",
             "read_only": false,
             "parameters": {
@@ -251,6 +254,10 @@
                     "column_order": 1
                 },
                 {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                },
+                {
                     "data_path": "action_result.message",
                     "data_type": "string"
                 }
@@ -263,8 +270,8 @@
         {
             "action": "get enriched event",
             "identifier": "get_enriched_event",
-            "description": "Get Enriched Event",
-            "verbose": "Get enriched event from Carbon Black Cloud",
+            "description": "Get Enriched Event.",
+            "verbose": "Get enriched event from Carbon Black Cloud.",
             "type": "investigate",
             "read_only": false,
             "parameters": {
@@ -365,6 +372,10 @@
                     "data_type": "string",
                     "column_name": "process_pid",
                     "column_order": 13
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -375,8 +386,8 @@
         {
             "action": "get file",
             "identifier": "get_file",
-            "description": "Get File",
-            "verbose": "Get file From Carbon Black Cloud endpoint",
+            "description": "Get File.",
+            "verbose": "Get file From Carbon Black Cloud endpoint.",
             "type": "investigate",
             "read_only": true,
             "parameters": {
@@ -434,6 +445,10 @@
                     "column_order": 3
                 },
                 {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                },
+                {
                     "data_path": "action_result.message",
                     "data_type": "string"
                 }
@@ -446,8 +461,8 @@
         {
             "action": "delete file",
             "identifier": "delete_file",
-            "description": "Delete File",
-            "verbose": "Delete file from Carbon Black Cloud endpoint",
+            "description": "Delete File.",
+            "verbose": "Delete file from Carbon Black Cloud endpoint.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -496,6 +511,10 @@
                     "column_order": 2
                 },
                 {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                },
+                {
                     "data_path": "action_result.message",
                     "data_type": "string"
                 }
@@ -508,8 +527,8 @@
         {
             "action": "get binary file",
             "identifier": "get_binary_file",
-            "description": "Get Binary File",
-            "verbose": "Get binary file From Carbon Black Cloud endpoint",
+            "description": "Get Binary File.",
+            "verbose": "Get binary file From Carbon Black Cloud endpoint.",
             "type": "investigate",
             "read_only": true,
             "parameters": {
@@ -557,6 +576,10 @@
                     "column_order": 3
                 },
                 {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                },
+                {
                     "data_path": "action_result.message",
                     "data_type": "string"
                 }
@@ -569,8 +592,8 @@
         {
             "action": "kill process",
             "identifier": "kill_process",
-            "description": "Kill process on Carbon Black Cloud endpoint",
-            "verbose": "Kill process on a Carbon Black Cloud endpoint by PID, process name, process hash or GUID",
+            "description": "Kill process on Carbon Black Cloud endpoint.",
+            "verbose": "Kill process on a Carbon Black Cloud endpoint by PID, process name, process hash or GUID.",
             "type": "contain",
             "read_only": false,
             "parameters": {
@@ -668,6 +691,10 @@
                     "column_order": 3
                 },
                 {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                },
+                {
                     "data_path": "action_result.message",
                     "data_type": "string"
                 }
@@ -680,8 +707,8 @@
         {
             "action": "get binary metadata",
             "identifier": "get_binary_metadata",
-            "description": "Get binary metadata from Carbon Black Cloud",
-            "verbose": "Get binary metadata from Carbon Black Cloud",
+            "description": "Get binary metadata from Carbon Black Cloud.",
+            "verbose": "Get binary metadata from Carbon Black Cloud.",
             "type": "investigate",
             "read_only": true,
             "parameters": {
@@ -852,6 +879,10 @@
                     "contains": [],
                     "column_name": "trademark",
                     "column_order": 21
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -862,8 +893,8 @@
         {
             "action": "get process metadata",
             "identifier": "get_process_metadata",
-            "description": "Get Process Metadata",
-            "verbose": "Get process metadata from Carbon Black Cloud",
+            "description": "Get Process Metadata.",
+            "verbose": "Get process metadata from Carbon Black Cloud.",
             "type": "investigate",
             "read_only": true,
             "parameters": {
@@ -952,6 +983,10 @@
                     "data_type": "string",
                     "column_name": "device_policy",
                     "column_order": 11
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -962,8 +997,8 @@
         {
             "action": "quarantine device",
             "identifier": "quarantine_device",
-            "description": "Quarantine device in Carbon Black Cloud",
-            "verbose": "Quarantine device in Carbon Black Cloud",
+            "description": "Quarantine device in Carbon Black Cloud.",
+            "verbose": "Quarantine device in Carbon Black Cloud.",
             "type": "contain",
             "read_only": false,
             "parameters": {
@@ -993,6 +1028,10 @@
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 },
                 {
                     "data_path": "action_result.message",
@@ -1007,8 +1046,8 @@
         {
             "action": "unquarantine device",
             "identifier": "unquarantine_device",
-            "description": "Unquarantine device in Carbon Black Cloud",
-            "verbose": "Unquarantine device in Carbon Black Cloud",
+            "description": "Unquarantine device in Carbon Black Cloud.",
+            "verbose": "Unquarantine device in Carbon Black Cloud.",
             "type": "contain",
             "read_only": false,
             "parameters": {
@@ -1040,6 +1079,10 @@
                     "column_order": 1
                 },
                 {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                },
+                {
                     "data_path": "action_result.message",
                     "data_type": "string"
                 }
@@ -1052,8 +1095,8 @@
         {
             "action": "ban hash",
             "identifier": "ban_hash",
-            "description": "Ban process by hash in Carbon Black Cloud",
-            "verbose": "Ban process by hash in Carbon Black Cloud",
+            "description": "Ban process by hash in Carbon Black Cloud.",
+            "verbose": "Ban process by hash in Carbon Black Cloud.",
             "type": "contain",
             "read_only": false,
             "parameters": {
@@ -1083,6 +1126,10 @@
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 },
                 {
                     "data_path": "action_result.message",
@@ -1097,8 +1144,8 @@
         {
             "action": "unban hash",
             "identifier": "unban_hash",
-            "description": "Unban process by hash in Carbon Black Cloud",
-            "verbose": "Unban process by hash in Carbon Black Cloud",
+            "description": "Unban process by hash in Carbon Black Cloud.",
+            "verbose": "Unban process by hash in Carbon Black Cloud.",
             "type": "contain",
             "read_only": false,
             "parameters": {
@@ -1130,6 +1177,10 @@
                     "column_order": 1
                 },
                 {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                },
+                {
                     "data_path": "action_result.message",
                     "data_type": "string"
                 }
@@ -1142,8 +1193,8 @@
         {
             "action": "list policies",
             "identifier": "list_policies",
-            "description": "List device policies in Carbon Black Cloud",
-            "verbose": "List device policies in Carbon Black Cloud",
+            "description": "List device policies in Carbon Black Cloud.",
+            "verbose": "List device policies in Carbon Black Cloud.",
             "type": "investigate",
             "read_only": true,
             "parameters": {},
@@ -1184,6 +1235,10 @@
                     "column_order": 4
                 },
                 {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                },
+                {
                     "data_path": "action_result.status",
                     "data_type": "string"
                 },
@@ -1200,8 +1255,8 @@
         {
             "action": "set device policy",
             "identifier": "set_device_policy",
-            "description": "Set device policy of a Carbon Black Cloud endpoint",
-            "verbose": "Set device policy of a Carbon Black Cloud endpoint",
+            "description": "Set device policy of a Carbon Black Cloud endpoint.",
+            "verbose": "Set device policy of a Carbon Black Cloud endpoint.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -1265,6 +1320,10 @@
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -1275,8 +1334,8 @@
         {
             "action": "add ioc to feed or watchlist",
             "identifier": "add_ioc",
-            "description": "Add IOC to feed/watchlist in Carbon Black Cloud",
-            "verbose": "Add IOC to feed/watchlist in Carbon Black Cloud",
+            "description": "Add IOC to feed/watchlist in Carbon Black Cloud.",
+            "verbose": "Add IOC to feed/watchlist in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -1298,7 +1357,7 @@
                     "contains": [],
                     "value_list": [],
                     "default": "",
-                    "order": 0
+                    "order": 1
                 },
                 "report_id": {
                     "description": "Report ID",
@@ -1308,7 +1367,7 @@
                     "contains": [],
                     "value_list": [],
                     "default": "",
-                    "order": 1
+                    "order": 2
                 },
                 "ioc_id": {
                     "description": "IOC ID",
@@ -1318,7 +1377,7 @@
                     "contains": [],
                     "value_list": [],
                     "default": "",
-                    "order": 2
+                    "order": 3
                 },
                 "cbc_field": {
                     "description": "CBC IOC Field",
@@ -1328,7 +1387,7 @@
                     "contains": [],
                     "value_list": [],
                     "default": "",
-                    "order": 3
+                    "order": 4
                 },
                 "ioc_value": {
                     "description": "CBC IOC Value",
@@ -1338,7 +1397,7 @@
                     "contains": [],
                     "value_list": [],
                     "default": "",
-                    "order": 4
+                    "order": 5
                 }
             },
             "output": [
@@ -1359,6 +1418,10 @@
                     "data_type": "string",
                     "column_name": "ioc_id",
                     "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -1369,8 +1432,8 @@
         {
             "action": "remove ioc from watchlist",
             "identifier": "remove_ioc_watchlist",
-            "description": "Remove IOC from watchlist in Carbon Black Cloud",
-            "verbose": "Remove IOC from watchlist in Carbon Black Cloud",
+            "description": "Remove IOC from watchlist in Carbon Black Cloud.",
+            "verbose": "Remove IOC from watchlist in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -1416,6 +1479,10 @@
                 }
             },
             "output": [
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                },
                 {
                     "data_path": "action_result.status",
                     "data_type": "string",
@@ -1437,8 +1504,8 @@
         {
             "action": "remove ioc from feed",
             "identifier": "remove_ioc_feed",
-            "description": "Remove IOC from feed in Carbon Black Cloud",
-            "verbose": "Remove IOC from feed in Carbon Black Cloud",
+            "description": "Remove IOC from feed in Carbon Black Cloud.",
+            "verbose": "Remove IOC from feed in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -1485,6 +1552,10 @@
             },
             "output": [
                 {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                },
+                {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
@@ -1505,8 +1576,8 @@
         {
             "action": "list processes",
             "identifier": "list_processes",
-            "description": "List processes on a device in Carbon Black Cloud",
-            "verbose": "List processes on a device in Carbon Black Cloud",
+            "description": "List processes on a device in Carbon Black Cloud.",
+            "verbose": "List processes on a device in Carbon Black Cloud.",
             "type": "investigate",
             "read_only": false,
             "parameters": {
@@ -1580,6 +1651,10 @@
                     "data_type": "numeric",
                     "column_name": "process_create_time",
                     "column_order": 7
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "versions": "EQ(*)",
@@ -1591,8 +1666,8 @@
         {
             "action": "execute command",
             "identifier": "execute_command",
-            "description": "Execute command on a device in Carbon Black Cloud",
-            "verbose": "Execute command on a device in Carbon Black Cloud",
+            "description": "Execute command on a device in Carbon Black Cloud.",
+            "verbose": "Execute command on a device in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -1626,7 +1701,7 @@
                     "contains": [],
                     "value_list": [],
                     "default": "",
-                    "order": 1
+                    "order": 2
                 },
                 "work_dir": {
                     "description": "Working directory",
@@ -1636,7 +1711,7 @@
                     "contains": [],
                     "value_list": [],
                     "default": "",
-                    "order": 1
+                    "order": 3
                 }
             },
             "output": [
@@ -1668,6 +1743,10 @@
                     "column_order": 3
                 },
                 {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
+                },
+                {
                     "data_path": "action_result.message",
                     "data_type": "string"
                 }
@@ -1680,8 +1759,8 @@
         {
             "action": "create report",
             "identifier": "create_report",
-            "description": "Create a report in Carbon Black Cloud",
-            "verbose": "Create a report in Carbon Black Cloud",
+            "description": "Create a report in Carbon Black Cloud.",
+            "verbose": "Create a report in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -1764,6 +1843,10 @@
                     "data_type": "string",
                     "column_name": "report_id",
                     "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -1774,8 +1857,8 @@
         {
             "action": "delete report",
             "identifier": "delete_report",
-            "description": "Delete a report in Carbon Black Cloud feed or watchlist",
-            "verbose": "Delete a report in Carbon Black Cloud feed or watchlist",
+            "description": "Delete a report in Carbon Black Cloud feed or watchlist.",
+            "verbose": "Delete a report in Carbon Black Cloud feed or watchlist.",
             "type": "correct",
             "read_only": true,
             "parameters": {
@@ -1802,6 +1885,10 @@
                     "data_type": "string",
                     "column_name": "message",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -1812,8 +1899,8 @@
         {
             "action": "create feed",
             "identifier": "create_feed",
-            "description": "Create a feed in Carbon Black Cloud",
-            "verbose": "Create a feed in Carbon Black Cloud",
+            "description": "Create a feed in Carbon Black Cloud.",
+            "verbose": "Create a feed in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -1876,6 +1963,10 @@
                     "data_type": "string",
                     "column_name": "feed_id",
                     "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -1886,8 +1977,8 @@
         {
             "action": "create watchlist",
             "identifier": "create_watchlist",
-            "description": "Create a watchlist in Carbon Black Cloud",
-            "verbose": "Create a watchlist in Carbon Black Cloud",
+            "description": "Create a watchlist in Carbon Black Cloud.",
+            "verbose": "Create a watchlist in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -1960,6 +2051,10 @@
                     "data_type": "string",
                     "column_name": "watchlist_id",
                     "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -1970,8 +2065,8 @@
         {
             "action": "delete feed",
             "identifier": "delete_feed",
-            "description": "Delete a feed in Carbon Black Cloud",
-            "verbose": "Delete a feed in Carbon Black Cloud",
+            "description": "Delete a feed in Carbon Black Cloud.",
+            "verbose": "Delete a feed in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -1998,6 +2093,10 @@
                     "data_type": "string",
                     "column_name": "message",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -2008,8 +2107,8 @@
         {
             "action": "delete watchlist",
             "identifier": "delete_watchlist",
-            "description": "Delete a watchlist in Carbon Black Cloud",
-            "verbose": "Delete a watchlist in Carbon Black Cloud",
+            "description": "Delete a watchlist in Carbon Black Cloud.",
+            "verbose": "Delete a watchlist in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -2036,6 +2135,10 @@
                     "data_type": "string",
                     "column_name": "message",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -2046,8 +2149,8 @@
         {
             "action": "retrieve watchlist",
             "identifier": "retrieve_watchlist",
-            "description": "Retrieve a watchlist in Carbon Black Cloud",
-            "verbose": "Retrieve a watchlist in Carbon Black Cloud",
+            "description": "Retrieve a watchlist in Carbon Black Cloud.",
+            "verbose": "Retrieve a watchlist in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -2110,6 +2213,10 @@
                     "data_type": "string",
                     "column_name": "report_ids",
                     "column_order": 7
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -2120,8 +2227,8 @@
         {
             "action": "retrieve feed",
             "identifier": "retrieve_feed",
-            "description": "Retrieve a feed in Carbon Black Cloud",
-            "verbose": "Retrieve a feed in Carbon Black Cloud",
+            "description": "Retrieve a feed in Carbon Black Cloud.",
+            "verbose": "Retrieve a feed in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -2178,6 +2285,10 @@
                     "data_type": "string",
                     "column_name": "reports_count",
                     "column_order": 6
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -2188,8 +2299,8 @@
         {
             "action": "retrieve iocs",
             "identifier": "retrieve_report_iocs",
-            "description": "Retrieve IOCs for a given report in Carbon Black Cloud",
-            "verbose": "Retrieve IOCs for a given report in Carbon Black Cloud",
+            "description": "Retrieve IOCs for a given report in Carbon Black Cloud.",
+            "verbose": "Retrieve IOCs for a given report in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -2247,7 +2358,11 @@
                     "data_path": "action_result.data.*.values",
                     "data_type": "string",
                     "column_name": "values",
-                    "column_order": 2
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -2258,8 +2373,8 @@
         {
             "action": "update feed",
             "identifier": "update_feed",
-            "description": "Update a feed in Carbon Black Cloud",
-            "verbose": "Update a feed in Carbon Black Cloud",
+            "description": "Update a feed in Carbon Black Cloud.",
+            "verbose": "Update a feed in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -2332,6 +2447,10 @@
                     "data_type": "string",
                     "column_name": "feed_id",
                     "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
@@ -2342,8 +2461,8 @@
         {
             "action": "update watchlist",
             "identifier": "update_watchlist",
-            "description": "Update a watchlist in Carbon Black Cloud",
-            "verbose": "Update a watchlist in Carbon Black Cloud",
+            "description": "Update a watchlist in Carbon Black Cloud.",
+            "verbose": "Update a watchlist in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
             "parameters": {
@@ -2415,7 +2534,7 @@
                     "contains": [],
                     "value_list": [],
                     "default": "",
-                    "order": 5
+                    "order": 6
                 }
             },
             "output": [
@@ -2436,6 +2555,10 @@
                     "data_type": "string",
                     "column_name": "watchlist_id",
                     "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.summary",
+                    "data_type": "string",
                 }
             ],
             "render": {
