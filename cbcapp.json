@@ -192,11 +192,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.parameter.artifact_id",
@@ -259,11 +259,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.message",
@@ -383,11 +383,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.status",
@@ -466,11 +466,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.message",
@@ -536,11 +536,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.message",
@@ -605,11 +605,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.message",
@@ -724,11 +724,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.message",
@@ -918,11 +918,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.status",
@@ -1034,11 +1034,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.status",
@@ -1091,11 +1091,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1144,11 +1144,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1197,11 +1197,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1250,11 +1250,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1312,11 +1312,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.status",
@@ -1403,11 +1403,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.status",
@@ -1513,11 +1513,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 }
             ],
             "render": {
@@ -1577,11 +1577,11 @@
             "output": [
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.status",
@@ -1653,11 +1653,11 @@
             "output": [
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.status",
@@ -1758,11 +1758,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.status",
@@ -1860,11 +1860,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.message",
@@ -1966,11 +1966,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 }
             ],
             "render": {
@@ -2012,11 +2012,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 }
             ],
             "render": {
@@ -2094,11 +2094,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 }
             ],
             "render": {
@@ -2186,11 +2186,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 }
             ],
             "render": {
@@ -2232,11 +2232,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 }
             ],
             "render": {
@@ -2278,11 +2278,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 }
             ],
             "render": {
@@ -2360,11 +2360,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.status",
@@ -2444,11 +2444,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.status",
@@ -2530,11 +2530,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "action_result.status",
@@ -2630,11 +2630,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 }
             ],
             "render": {
@@ -2742,11 +2742,11 @@
                 },
                 {
                     "data_path": "summary.total_objects_successful",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 },
                 {
                     "data_path": "summary.total_objects",
-                    "data_type": "string"
+                    "data_type": "numeric"
                 }
             ],
             "render": {
