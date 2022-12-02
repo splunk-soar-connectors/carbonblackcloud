@@ -191,7 +191,10 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -254,7 +257,11 @@
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -374,7 +381,19 @@
                     "column_order": 13
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
                     "data_type": "string"
                 }
             ],
@@ -445,7 +464,11 @@
                     "column_order": 3
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -511,7 +534,11 @@
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -576,7 +603,11 @@
                     "column_order": 3
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -691,7 +722,11 @@
                     "column_order": 3
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -881,7 +916,19 @@
                     "column_order": 21
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
                     "data_type": "string"
                 }
             ],
@@ -985,7 +1032,19 @@
                     "column_order": 11
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
                     "data_type": "string"
                 }
             ],
@@ -1030,7 +1089,11 @@
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -1079,7 +1142,11 @@
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -1128,7 +1195,11 @@
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -1177,7 +1248,11 @@
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -1235,7 +1310,11 @@
                     "column_order": 4
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -1322,7 +1401,19 @@
                     "column_order": 3
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
                     "data_type": "string"
                 }
             ],
@@ -1420,7 +1511,11 @@
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 }
             ],
@@ -1480,7 +1575,11 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -1552,7 +1651,11 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -1653,7 +1756,19 @@
                     "column_order": 7
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
                     "data_type": "string"
                 }
             ],
@@ -1743,7 +1858,11 @@
                     "column_order": 3
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 },
                 {
@@ -1845,7 +1964,11 @@
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 }
             ],
@@ -1887,7 +2010,11 @@
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 }
             ],
@@ -1965,7 +2092,11 @@
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 }
             ],
@@ -2053,7 +2184,11 @@
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 }
             ],
@@ -2095,7 +2230,11 @@
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 }
             ],
@@ -2137,7 +2276,11 @@
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 }
             ],
@@ -2215,7 +2358,19 @@
                     "column_order": 7
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
                     "data_type": "string"
                 }
             ],
@@ -2287,7 +2442,19 @@
                     "column_order": 6
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
                     "data_type": "string"
                 }
             ],
@@ -2361,7 +2528,19 @@
                     "column_order": 3
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
                     "data_type": "string"
                 }
             ],
@@ -2449,7 +2628,11 @@
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 }
             ],
@@ -2557,7 +2740,11 @@
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.data.*.summary",
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "string"
                 }
             ],
