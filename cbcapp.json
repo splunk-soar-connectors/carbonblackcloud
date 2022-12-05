@@ -35,8 +35,6 @@
             "description": "Carbon Black Cloud Org Key",
             "data_type": "string",
             "required": true,
-            "value_list": [],
-            "default": "",
             "order": 1
         },
         "api_id": {
