@@ -12,7 +12,34 @@ import json
 
 import phantom.rules as phantom
 
-from cbcapp_consts import CEF_TYPES_MAPPING, STANDARD_CEF_MAPPING
+
+__version__ = "1.0"
+
+STANDARD_CEF_MAPPING = {"action": ["act"],
+                        "process_name": ["deviceProcessName", "dproc"],
+                        "threat_cause_actor_process_pid": ["dpid"],
+                        "device_id": ["deviceExternalId"],
+                        "device_username": ["suser", "duser"],
+                        "device_external_ip": ["src"],
+                        "threat_cause_actor_sha256": ["fileHashSha256"],
+                        "threat_cause_actor_name": ["sproc"],
+                        "name": ["msg"],
+                        "alertId": ["id"]
+                        }
+
+CEF_TYPES_MAPPING = {"_raw": ["cbc alert"],
+                     "alertId": ["cbc alert id"],
+                     "id": ["cbc alert id"],
+                     "device_id": ["cbc device id"],
+                     "deviceExternalId": ["cbc device id"],
+                     "fileHashSha256": ["cbc process hash"],
+                     "threat_cause_actor_sha256": ["cbc process hash"],
+                     "sha256": ["cbc process hash"],
+                     "threat_cause_process_guid": ["cbc process guid"],
+                     "process_pid": ["pid"],
+                     "process_name": ["process name"],
+                     "process_path": ["process name"]
+                     }
 
 
 def prepare_artifact(alert, config, container_id=None):
