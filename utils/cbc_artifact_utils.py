@@ -12,7 +12,6 @@ import json
 
 import phantom.rules as phantom
 
-
 __version__ = "1.0"
 
 STANDARD_CEF_MAPPING = {"action": ["act"],
