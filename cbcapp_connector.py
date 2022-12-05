@@ -105,6 +105,13 @@ class CarbonBlackCloudSplunkSoarAppConnector(BaseConnector):
         self.save_state(self._state)
         return phantom.APP_SUCCESS
 
+    def stub(self):
+        self.save_progress("stub")
+        self.debug_print("stub")
+
+    def _test_connectivity(self):
+        self.stub()
+
 
 def main():
     """Main Entry"""
