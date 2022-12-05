@@ -62,3 +62,7 @@ class CheckConnectivityAction(BaseAction):
             return result
 
         return result
+
+    def _handle_test_connectivity(self):
+        self.connector.save_progress("stub")
+        self.connector.debug_print("stub")
