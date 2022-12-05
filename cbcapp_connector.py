@@ -112,6 +112,102 @@ class CarbonBlackCloudSplunkSoarAppConnector(BaseConnector):
     def _test_connectivity(self):
         self.stub()
 
+    def _on_poll(self):
+        self.stub()
+
+    def _normalize_artifact(self):
+        self.stub()
+
+    def _dismiss_alert(self):
+        self.stub()
+
+    def _get_enriched_event(self):
+        self.stub()
+
+    def _get_file(self):
+        self.stub()
+
+    def _delete_file(self):
+        self.stub()
+
+    def _get_binary_file(self):
+        self.stub()
+
+    def _kill_process(self):
+        self.stub()
+
+    def _get_binary_metadata(self):
+        self.stub()
+
+    def _get_process_metadata(self):
+        self.stub()
+
+    def _quarantine_device(self):
+        self.stub()
+
+    def _unquarantine_device(self):
+        self.stub()
+
+    def _ban_hash(self):
+        self.stub()
+
+    def _unban_hash(self):
+        self.stub()
+
+    def _list_policies(self):
+        self.stub()
+
+    def _execute_command(self):
+        self.stub()
+
+    def _set_device_policy(self):
+        self.stub()
+
+    def _add_ioc(self):
+        self.stub()
+
+    def _remove_ioc_watchlist(self):
+        self.stub()
+
+    def _remove_ioc_feed(self):
+        self.stub()
+
+    def _list_processes(self):
+        self.stub()
+
+    def _create_report(self):
+        self.stub()
+
+    def _delete_report(self):
+        self.stub()
+
+    def _create_feed(self):
+        self.stub()
+
+    def _create_watchlist(self):
+        self.stub()
+
+    def _delete_feed(self):
+        self.stub()
+
+    def _delete_watchlist(self):
+        self.stub()
+
+    def _retrieve_feed(self):
+        self.stub()
+
+    def _retrieve_watchlist(self):
+        self.stub()
+
+    def _retrieve_report_iocs(self):
+        self.stub()
+
+    def _update_feed(self):
+        self.stub()
+
+    def _update_watchlist(self):
+        self.stub()
+
 
 def main():
     """Main Entry"""
