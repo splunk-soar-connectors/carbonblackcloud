@@ -1,7 +1,7 @@
 {
     "appid": "d1896254-78f3-4c75-aa7b-d48359699641",
     "name": "Carbon Black Cloud",
-    "description": "Carbon Black Cloud App for Splunk SOAR.",
+    "description": "Carbon Black Cloud App for Splunk SOAR",
     "type": "endpoint",
     "product_vendor": "VMware",
     "logo": "images/cbcapp.svg",
@@ -106,7 +106,7 @@
         {
             "action": "test connectivity",
             "identifier": "test_connectivity",
-            "description": "Validate the asset configuration for connectivity with the supplied configuration.",
+            "description": "Validate the asset configuration for connectivity with the supplied configuration",
             "type": "test",
             "read_only": true,
             "parameters": {},
@@ -115,7 +115,7 @@
         },
         {
             "action": "on poll",
-            "description": "Callback action for the on_poll ingest functionality.",
+            "description": "Callback action for the on_poll ingest functionality",
             "type": "ingest",
             "identifier": "on_poll",
             "read_only": true,
@@ -123,7 +123,7 @@
                 "container_id": {
                     "data_type": "string",
                     "order": 0,
-                    "description": "Container IDs to limit the ingestion to.",
+                    "description": "Container IDs to limit the ingestion to",
                     "allow_list": true
                 },
                 "start_time": {
@@ -154,7 +154,7 @@
         },
         {
             "action": "normalize artifact",
-            "description": "Normalize artifact ingested by Splunk App for Splunk Phantom.",
+            "description": "Normalize artifact ingested by Splunk App for Splunk Phantom",
             "type": "generic",
             "identifier": "normalize_artifact",
             "read_only": false,
@@ -225,7 +225,7 @@
         {
             "action": "dismiss alert",
             "identifier": "dismiss_alert",
-            "description": "Dismiss Carbon Black Cloud alert.",
+            "description": "Dismiss Carbon Black Cloud alert",
             "verbose": "Dismiss Alert in Carbon Black Cloud.",
             "type": "correct",
             "read_only": false,
@@ -278,7 +278,7 @@
         {
             "action": "get enriched event",
             "identifier": "get_enriched_event",
-            "description": "Get Enriched Event.",
+            "description": "Get Enriched Event",
             "verbose": "Get enriched event from Carbon Black Cloud.",
             "type": "investigate",
             "read_only": false,
@@ -406,7 +406,7 @@
         {
             "action": "get file",
             "identifier": "get_file",
-            "description": "Get File.",
+            "description": "Get File",
             "verbose": "Get file From Carbon Black Cloud endpoint.",
             "type": "investigate",
             "read_only": true,
@@ -485,7 +485,7 @@
         {
             "action": "delete file",
             "identifier": "delete_file",
-            "description": "Delete File.",
+            "description": "Delete File",
             "verbose": "Delete file from Carbon Black Cloud endpoint.",
             "type": "contain",
             "read_only": true,
@@ -555,7 +555,7 @@
         {
             "action": "get binary file",
             "identifier": "get_binary_file",
-            "description": "Get Binary File.",
+            "description": "Get Binary File",
             "verbose": "Get binary file From Carbon Black Cloud endpoint.",
             "type": "investigate",
             "read_only": true,
@@ -624,7 +624,7 @@
         {
             "action": "kill process",
             "identifier": "kill_process",
-            "description": "Kill process on Carbon Black Cloud endpoint.",
+            "description": "Kill process on Carbon Black Cloud endpoint",
             "verbose": "Kill process on a Carbon Black Cloud endpoint by PID, process name, process hash or GUID.",
             "type": "contain",
             "read_only": false,
@@ -743,7 +743,7 @@
         {
             "action": "get binary metadata",
             "identifier": "get_binary_metadata",
-            "description": "Get binary metadata from Carbon Black Cloud.",
+            "description": "Get binary metadata from Carbon Black Cloud",
             "verbose": "Get binary metadata from Carbon Black Cloud.",
             "type": "investigate",
             "read_only": true,
@@ -941,7 +941,7 @@
         {
             "action": "get process metadata",
             "identifier": "get_process_metadata",
-            "description": "Get Process Metadata.",
+            "description": "Get Process Metadata",
             "verbose": "Get process metadata from Carbon Black Cloud.",
             "type": "investigate",
             "read_only": true,
@@ -1057,7 +1057,7 @@
         {
             "action": "quarantine device",
             "identifier": "quarantine_device",
-            "description": "Quarantine device in Carbon Black Cloud.",
+            "description": "Quarantine device in Carbon Black Cloud",
             "verbose": "Quarantine device in Carbon Black Cloud.",
             "type": "contain",
             "read_only": false,
@@ -1110,7 +1110,7 @@
         {
             "action": "unquarantine device",
             "identifier": "unquarantine_device",
-            "description": "Unquarantine device in Carbon Black Cloud.",
+            "description": "Unquarantine device in Carbon Black Cloud",
             "verbose": "Unquarantine device in Carbon Black Cloud.",
             "type": "contain",
             "read_only": false,
@@ -1163,7 +1163,7 @@
         {
             "action": "ban hash",
             "identifier": "ban_hash",
-            "description": "Ban process by hash in Carbon Black Cloud.",
+            "description": "Ban process by hash in Carbon Black Cloud",
             "verbose": "Ban process by hash in Carbon Black Cloud.",
             "type": "contain",
             "read_only": false,
@@ -1216,7 +1216,7 @@
         {
             "action": "unban hash",
             "identifier": "unban_hash",
-            "description": "Unban process by hash in Carbon Black Cloud.",
+            "description": "Unban process by hash in Carbon Black Cloud",
             "verbose": "Unban process by hash in Carbon Black Cloud.",
             "type": "contain",
             "read_only": false,
@@ -1269,7 +1269,7 @@
         {
             "action": "list policies",
             "identifier": "list_policies",
-            "description": "List device policies in Carbon Black Cloud.",
+            "description": "List device policies in Carbon Black Cloud",
             "verbose": "List device policies in Carbon Black Cloud.",
             "type": "investigate",
             "read_only": true,
@@ -1335,7 +1335,7 @@
         {
             "action": "set device policy",
             "identifier": "set_device_policy",
-            "description": "Set device policy of a Carbon Black Cloud endpoint.",
+            "description": "Set device policy of a Carbon Black Cloud endpoint",
             "verbose": "Set device policy of a Carbon Black Cloud endpoint.",
             "type": "contain",
             "read_only": true,
@@ -1426,7 +1426,7 @@
         {
             "action": "add ioc to feed or watchlist",
             "identifier": "add_ioc",
-            "description": "Add IOC to feed/watchlist in Carbon Black Cloud.",
+            "description": "Add IOC to feed/watchlist in Carbon Black Cloud",
             "verbose": "Add IOC to feed/watchlist in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -1528,7 +1528,7 @@
         {
             "action": "remove ioc from watchlist",
             "identifier": "remove_ioc_watchlist",
-            "description": "Remove IOC from watchlist in Carbon Black Cloud.",
+            "description": "Remove IOC from watchlist in Carbon Black Cloud",
             "verbose": "Remove IOC from watchlist in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -1604,7 +1604,7 @@
         {
             "action": "remove ioc from feed",
             "identifier": "remove_ioc_feed",
-            "description": "Remove IOC from feed in Carbon Black Cloud.",
+            "description": "Remove IOC from feed in Carbon Black Cloud",
             "verbose": "Remove IOC from feed in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -1680,7 +1680,7 @@
         {
             "action": "list processes",
             "identifier": "list_processes",
-            "description": "List processes on a device in Carbon Black Cloud.",
+            "description": "List processes on a device in Carbon Black Cloud",
             "verbose": "List processes on a device in Carbon Black Cloud.",
             "type": "investigate",
             "read_only": false,
@@ -1782,7 +1782,7 @@
         {
             "action": "execute command",
             "identifier": "execute_command",
-            "description": "Execute command on a device in Carbon Black Cloud.",
+            "description": "Execute command on a device in Carbon Black Cloud",
             "verbose": "Execute command on a device in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -1879,7 +1879,7 @@
         {
             "action": "create report",
             "identifier": "create_report",
-            "description": "Create a report in Carbon Black Cloud.",
+            "description": "Create a report in Carbon Black Cloud",
             "verbose": "Create a report in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -1981,7 +1981,7 @@
         {
             "action": "delete report",
             "identifier": "delete_report",
-            "description": "Delete a report in Carbon Black Cloud feed or watchlist.",
+            "description": "Delete a report in Carbon Black Cloud feed or watchlist",
             "verbose": "Delete a report in Carbon Black Cloud feed or watchlist.",
             "type": "correct",
             "read_only": true,
@@ -2027,7 +2027,7 @@
         {
             "action": "create feed",
             "identifier": "create_feed",
-            "description": "Create a feed in Carbon Black Cloud.",
+            "description": "Create a feed in Carbon Black Cloud",
             "verbose": "Create a feed in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -2109,7 +2109,7 @@
         {
             "action": "create watchlist",
             "identifier": "create_watchlist",
-            "description": "Create a watchlist in Carbon Black Cloud.",
+            "description": "Create a watchlist in Carbon Black Cloud",
             "verbose": "Create a watchlist in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -2201,7 +2201,7 @@
         {
             "action": "delete feed",
             "identifier": "delete_feed",
-            "description": "Delete a feed in Carbon Black Cloud.",
+            "description": "Delete a feed in Carbon Black Cloud",
             "verbose": "Delete a feed in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -2247,7 +2247,7 @@
         {
             "action": "delete watchlist",
             "identifier": "delete_watchlist",
-            "description": "Delete a watchlist in Carbon Black Cloud.",
+            "description": "Delete a watchlist in Carbon Black Cloud",
             "verbose": "Delete a watchlist in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -2293,7 +2293,7 @@
         {
             "action": "retrieve watchlist",
             "identifier": "retrieve_watchlist",
-            "description": "Retrieve a watchlist in Carbon Black Cloud.",
+            "description": "Retrieve a watchlist in Carbon Black Cloud",
             "verbose": "Retrieve a watchlist in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -2383,7 +2383,7 @@
         {
             "action": "retrieve feed",
             "identifier": "retrieve_feed",
-            "description": "Retrieve a feed in Carbon Black Cloud.",
+            "description": "Retrieve a feed in Carbon Black Cloud",
             "verbose": "Retrieve a feed in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -2467,7 +2467,7 @@
         {
             "action": "retrieve iocs",
             "identifier": "retrieve_report_iocs",
-            "description": "Retrieve IOCs for a given report in Carbon Black Cloud.",
+            "description": "Retrieve IOCs for a given report in Carbon Black Cloud",
             "verbose": "Retrieve IOCs for a given report in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -2553,7 +2553,7 @@
         {
             "action": "update feed",
             "identifier": "update_feed",
-            "description": "Update a feed in Carbon Black Cloud.",
+            "description": "Update a feed in Carbon Black Cloud",
             "verbose": "Update a feed in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
@@ -2645,7 +2645,7 @@
         {
             "action": "update watchlist",
             "identifier": "update_watchlist",
-            "description": "Update a watchlist in Carbon Black Cloud.",
+            "description": "Update a watchlist in Carbon Black Cloud",
             "verbose": "Update a watchlist in Carbon Black Cloud.",
             "type": "contain",
             "read_only": true,
