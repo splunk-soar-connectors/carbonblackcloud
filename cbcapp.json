@@ -5,7 +5,7 @@
     "type": "endpoint",
     "product_vendor": "VMware",
     "logo": "images/cbcapp.svg",
-    "logo_dark": "images/cbcapp_dark.svg",
+    "logo_dark": "images/cbcapp-dark.svg",
     "product_name": "Carbon Black Cloud",
     "python_version": "3",
     "product_version_regex": ".*",
