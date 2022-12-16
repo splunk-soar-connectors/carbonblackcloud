@@ -1422,7 +1422,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "add ioc to feed or watchlist",
+            "action": "add ioc",
             "identifier": "add_ioc",
             "description": "Add IOC to feed/watchlist in Carbon Black Cloud",
             "verbose": "Add IOC to feed/watchlist in Carbon Black Cloud.",
@@ -1524,7 +1524,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "remove ioc from watchlist",
+            "action": "remove watchlist ioc",
             "identifier": "remove_ioc_watchlist",
             "description": "Remove IOC from watchlist in Carbon Black Cloud",
             "verbose": "Remove IOC from watchlist in Carbon Black Cloud.",
@@ -1600,7 +1600,7 @@
             "versions": "EQ(*)"
         },
         {
-            "action": "remove ioc from feed",
+            "action": "remove feed ioc",
             "identifier": "remove_ioc_feed",
             "description": "Remove IOC from feed in Carbon Black Cloud",
             "verbose": "Remove IOC from feed in Carbon Black Cloud.",
