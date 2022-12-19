@@ -10,7 +10,7 @@
 from cbc_sdk import CBCloudAPI
 from phantom.action_result import ActionResult
 
-from cbcapp_consts import __version__
+from utils.cbc_artifact_utils import __version__
 
 
 class BaseAction:
