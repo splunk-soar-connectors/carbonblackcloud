@@ -24,7 +24,6 @@ from importlib import import_module
 
 # Phantom App imports
 import phantom.app as phantom
-import pudb
 # Usage of the consts file is recommended
 # from carbonblackcloudsplunksoaraoo_consts import *
 import requests
@@ -105,112 +104,148 @@ class CarbonBlackCloudSplunkSoarAppConnector(BaseConnector):
         self.save_state(self._state)
         return phantom.APP_SUCCESS
 
-    def stub(self):
+    def _stub(self):
+        """Dummy implementation"""
         self.save_progress("stub")
         self.debug_print("stub")
 
     def _test_connectivity(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _on_poll(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _normalize_artifact(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _dismiss_alert(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _get_enriched_event(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _get_file(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _delete_file(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _get_binary_file(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _kill_process(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _get_binary_metadata(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _get_process_metadata(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _quarantine_device(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _unquarantine_device(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _ban_hash(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _unban_hash(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _list_policies(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _execute_command(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _set_device_policy(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _add_ioc(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _remove_ioc_watchlist(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _remove_ioc_feed(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _list_processes(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _create_report(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _delete_report(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _create_feed(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _create_watchlist(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _delete_feed(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _delete_watchlist(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _retrieve_feed(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _retrieve_watchlist(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _retrieve_report_iocs(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _update_feed(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
     def _update_watchlist(self):
-        self.stub()
+        """Stub"""
+        self._stub()
 
 
 def main():
     """Main Entry"""
+    import pudb
+
     pudb.set_trace()
 
     argparser = argparse.ArgumentParser()
