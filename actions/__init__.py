@@ -7,6 +7,7 @@
 # This product may include a number of subcomponents with separate copyright notices and license terms.
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
+import os
 from cbc_sdk import CBCloudAPI
 from phantom.action_result import ActionResult
 
@@ -19,6 +20,11 @@ class BaseAction:
         self.action_result = ActionResult(dict(param))
         self.connector.add_action_result(self.action_result)
         self.param = param
+        self.proxy = None
+        if os.getenv('https_proxy') is not None:
+            self.proxy = os.getenv('https_proxy')
+        elif os.getenv('HTTPS_PROXY') is not None:
+            self.proxy = os.getenv('HTTPS_PROXY'):
         self.cbc = self._get_cbc()
 
     def call(self):
@@ -32,12 +38,21 @@ class BaseAction:
         """Returns a configured CBCloudAPI instance with custom key"""
         config = self.connector.get_config()
         try:
-            custom = CBCloudAPI(
-                url=config["cbc_url"].rstrip("/"),
-                org_key=config["org_key"],
-                token=f"{config['api_secret_key']}/{config['api_id']}",
-                integration_name=f"SplunkSoar-{__version__}"
-            )
+            if self.proxy is not None:
+                custom = CBCloudAPI(
+                    url=config["cbc_url"].rstrip("/"),
+                    org_key=config["org_key"],
+                    token=f"{config['api_secret_key']}/{config['api_id']}",
+                    integration_name=f"SplunkSoar-{__version__}",
+                    proxy=self.proxy
+                )
+            else:
+                custom = CBCloudAPI(
+                    url=config["cbc_url"].rstrip("/"),
+                    org_key=config["org_key"],
+                    token=f"{config['api_secret_key']}/{config['api_id']}",
+                    integration_name=f"SplunkSoar-{__version__}"
+                )            
         except Exception:
             custom = None
         return custom
