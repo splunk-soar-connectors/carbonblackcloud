@@ -24,7 +24,7 @@ class BaseAction:
         if os.getenv('https_proxy') is not None:
             self.proxy = os.getenv('https_proxy')
         elif os.getenv('HTTPS_PROXY') is not None:
-            self.proxy = os.getenv('HTTPS_PROXY'):
+            self.proxy = os.getenv('HTTPS_PROXY')
         self.cbc = self._get_cbc()
 
     def call(self):
@@ -52,7 +52,7 @@ class BaseAction:
                     org_key=config["org_key"],
                     token=f"{config['api_secret_key']}/{config['api_id']}",
                     integration_name=f"SplunkSoar-{__version__}"
-                )            
+                )
         except Exception:
             custom = None
         return custom
