@@ -64,12 +64,12 @@ class CarbonBlackCloudSplunkSoarAppConnector(BaseConnector):
 
         # When running the action, CWD is not the same as the script directory, so glob requires a full path
         base = os.path.dirname(os.path.realpath(__file__)) + "/"
-        path = base + "actions/action_*.py"
+        path = base + "actions/cbc_action_*.py"
         for mod_path in glob(path):
             module = mod_path.replace(base, "").replace("/", ".").replace(".py", "")
             import_module(module, package="actions")
         actions = BaseAction.__subclasses__()
-        action_name = "actions.action_" + action_id
+        action_name = "actions.cbc_action_" + action_id
         action_name = action_name.replace(" ", "_")
         for action_class in actions:
             if action_class.__module__ == action_name:
