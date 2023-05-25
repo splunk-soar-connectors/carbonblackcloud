@@ -71,19 +71,22 @@ class NormalizeArtifactAction(BaseAction):
             return result
 
         artifact = prepare_artifact(raw, config, container_id=container_id)
-        if not delete_artifact(artifact_id):
-            result["success"] = False
-            result["details"] = "Could not delete original artifact, data duplication possible " + str(artifact_id)
-
         success, _, result_artifact = self.connector.save_artifact(artifact)
+
+        if not delete_artifact(artifact_id):
+            if success == phantom.APP_SUCCESS:
+                result["success"] = True
+            else:
+                result["success"] = False
+
+            result["details"] = "Could not delete original artifact, data duplication possible " + str(artifact_id)
+            return result
+
         if success == phantom.APP_SUCCESS:
             result["success"] = True
+            result["details"] = "Container: {}: artifact normalized".format(container_id)
             return result
         else:
             result["success"] = False
             result["details"] = "Could not save new artifact"
             return result
-
-        result["success"] = True
-        result["details"] = "Container: {}: artifact normalized".format(container_id)
-        return result

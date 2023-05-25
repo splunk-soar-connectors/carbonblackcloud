@@ -16,7 +16,7 @@
         }
     ],
     "license": "BSD-2",
-    "app_version": "1.0.0",
+    "app_version": "1.0.1",
     "utctime_updated": "2022-04-28T08:47:14.683021Z",
     "package_name": "phantom_cbcapp",
     "main_module": "cbcapp_connector.py",
@@ -254,6 +254,72 @@
                     "data_type": "string",
                     "column_name": "status",
                     "column_order": 1
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "dismiss future alerts",
+            "identifier": "dismiss_future_alerts",
+            "description": "Dismiss Carbon Black Cloud all future alerts",
+            "verbose": "Dismiss All Future Alerts in Carbon Black Cloud.",
+            "type": "correct",
+            "read_only": false,
+            "parameters": {
+                "alert_id": {
+                    "description": "Carbon Black Cloud Alert ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "cbc alert id"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "remediation_status": {
+                    "description": "Carbon Black Cloud remediation status to set for the alert",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                },
+                "comment": {
+                    "description": "Carbon Black Cloud comment to set for the alert",
+                    "data_type": "string",
+                    "required": false,
+                    "primary": true,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 2
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
                 },
                 {
                     "data_path": "summary.total_objects_successful",
@@ -2751,6 +2817,579 @@
                 "type": "table"
             },
             "versions": "EQ(*)"
+        },
+        {
+            "action": "get scheduled task",
+            "identifier": "get_scheduled_task",
+            "description": "Get Scheduled Task Created in Carbon Black Cloud",
+            "verbose": "Get Scheduled Task Created in Carbon Black Cloud.",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "device_id": {
+                    "description": "CBC Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "cbc device id"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.event_channel",
+                    "data_type": "string",
+                    "column_name": "event_channel",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.datetime",
+                    "data_type": "string",
+                    "column_name": "datetime",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.task",
+                    "data_type": "string",
+                    "column_name": "task",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.severity",
+                    "data_type": "numeric",
+                    "column_name": "severity",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.provider_name",
+                    "data_type": "string",
+                    "column_name": "provider_name",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.provider_guid",
+                    "data_type": "string",
+                    "column_name": "provider_guid",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.host",
+                    "data_type": "string",
+                    "column_name": "host",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.data.*.event_id",
+                    "data_type": "numeric",
+                    "column_name": "event_id",
+                    "column_order": 7
+                },
+                {
+                    "data_path": "action_result.data.*.keywords",
+                    "data_type": "string",
+                    "column_name": "keywords",
+                    "column_order": 8
+                },
+                {
+                    "data_path": "action_result.data.*.data",
+                    "data_type": "string",
+                    "column_name": "data",
+                    "column_order": 9
+                },
+                {
+                    "data_path": "action_result.data.*.process_pid",
+                    "data_type": "numeric",
+                    "column_name": "process_pid",
+                    "column_order": 10
+                },
+                {
+                    "data_path": "action_result.data.*.thread_id",
+                    "data_type": "numeric",
+                    "column_name": "thread_id",
+                    "column_order": 11
+                },
+                {
+                    "data_path": "action_result.data.*.time_range",
+                    "data_type": "string",
+                    "column_name": "time_range",
+                    "column_order": 12
+                },
+                {
+                    "data_path": "action_result.data.*.timestamp",
+                    "data_type": "string",
+                    "column_name": "timestamp",
+                    "column_order": 13
+                },
+                {
+                    "data_path": "action_result.data.*.xpath",
+                    "data_type": "string",
+                    "column_name": "xpath",
+                    "column_order": 14
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get asset info",
+            "identifier": "get_asset_info",
+            "description": "Get Asset Info",
+            "verbose": "Get asset info.",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "device_id": {
+                    "description": "CBC Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "cbc device id"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "device_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "device_name",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.os_version",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "os",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.last_internal_ip_address",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "internal_ip_address",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.last_external_ip_address",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "external_ip_address",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.status",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "status",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.last_contact_time",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "last_contact_time",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.data.*.sensor_version",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "sensor_version",
+                    "column_order": 7
+                },
+                {
+                    "data_path": "action_result.data.*.sensor_states",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "sensor_states",
+                    "column_order": 8
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 9
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get cleared eventlogs",
+            "identifier": "get_cleared_eventlogs",
+            "description": "Get Cleared Event Logs",
+            "verbose": "Get cleared event logs from Carbon Black Cloud LiveQuery.",
+            "type": "investigate",
+            "read_only": false,
+            "parameters": {
+                "device_id": {
+                    "description": "Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "cbc device id"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.datetime",
+                    "data_type": "string",
+                    "column_name": "timestamp",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.domain",
+                    "data_type": "string",
+                    "column_name": "domain",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.user",
+                    "data_type": "string",
+                    "column_name": "user",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.sid",
+                    "data_type": "string",
+                    "column_name": "sid",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "list persistence locations",
+            "identifier": "list_windows_persistence_locations",
+            "description": "List Windows Persistence Locations",
+            "verbose": "List Windows Persistence Locations.",
+            "type": "investigate",
+            "read_only": true,
+            "parameters": {
+                "device_id": {
+                    "description": "CBC Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "cbc device id"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.path",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "path",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.name",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "name",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.source",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "source",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get rdp info",
+            "identifier": "get_rdp_info",
+            "description": "Get RDP Connection Information",
+            "verbose": "Get RDP Connection Information from Carbon Black Cloud LiveQuery.",
+            "type": "investigate",
+            "read_only": false,
+            "parameters": {
+                "device_id": {
+                    "description": "Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "cbc device id"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.process_pid",
+                    "data_type": "string",
+                    "column_name": "process_pid",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.process_name",
+                    "data_type": "string",
+                    "column_name": "process_name",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.process_cmdline",
+                    "data_type": "string",
+                    "column_name": "process_cmdline",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.local_address",
+                    "data_type": "string",
+                    "column_name": "local_address",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.remote_address",
+                    "data_type": "string",
+                    "column_name": "remote_address",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.local_port",
+                    "data_type": "string",
+                    "column_name": "local_port",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.remote_port",
+                    "data_type": "string",
+                    "column_name": "remote_port",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "list logged users",
+            "identifier": "list_logged_users",
+            "description": "List Logged In Users",
+            "verbose": "List Logged In Users from Carbon Black Cloud LiveQuery.",
+            "type": "investigate",
+            "read_only": false,
+            "parameters": {
+                "device_id": {
+                    "description": "Device ID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": true,
+                    "contains": [
+                        "cbc device id"
+                    ],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.data.*.login_type",
+                    "data_type": "string",
+                    "column_name": "login_type",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.data.*.user",
+                    "data_type": "string",
+                    "column_name": "user",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.data.*.device_name",
+                    "data_type": "string",
+                    "column_name": "device_name",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.host",
+                    "data_type": "string",
+                    "column_name": "host",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.time",
+                    "data_type": "string",
+                    "column_name": "time",
+                    "column_order": 4
+                },
+                {
+                    "data_path": "action_result.data.*.process_pid",
+                    "data_type": "string",
+                    "column_name": "process_pid",
+                    "column_order": 5
+                },
+                {
+                    "data_path": "action_result.data.*.sid",
+                    "data_type": "string",
+                    "column_name": "sid",
+                    "column_order": 6
+                },
+                {
+                    "data_path": "action_result.data.*.registry_hive",
+                    "data_type": "string",
+                    "column_name": "registry_hive",
+                    "column_order": 7
+                },
+                {
+                    "data_path": "action_result.data.*.process_name",
+                    "data_type": "string",
+                    "column_name": "process_name",
+                    "column_order": 8
+                },
+                {
+                    "data_path": "action_result.data.*.cmdline",
+                    "data_type": "string",
+                    "column_name": "cmdlin",
+                    "column_order": 9
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
         }
     ],
     "pip3_dependencies": {
@@ -2769,11 +3408,11 @@
             },
             {
                 "module": "carbon_black_cloud_sdk",
-                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.4.0-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.4.2-py2.py3-none-any.whl"
             },
             {
                 "module": "certifi",
-                "input_file": "wheels/py3/certifi-2022.12.7-py3-none-any.whl"
+                "input_file": "wheels/py3/certifi-2023.5.7-py3-none-any.whl"
             },
             {
                 "module": "charset_normalizer",
@@ -2821,7 +3460,7 @@
             },
             {
                 "module": "urllib3",
-                "input_file": "wheels/shared/urllib3-1.26.14-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/urllib3-1.26.15-py2.py3-none-any.whl"
             },
             {
                 "module": "validators",
@@ -2845,11 +3484,11 @@
             },
             {
                 "module": "carbon_black_cloud_sdk",
-                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.4.0-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.4.2-py2.py3-none-any.whl"
             },
             {
                 "module": "certifi",
-                "input_file": "wheels/py3/certifi-2022.12.7-py3-none-any.whl"
+                "input_file": "wheels/py3/certifi-2023.5.7-py3-none-any.whl"
             },
             {
                 "module": "charset_normalizer",
@@ -2897,7 +3536,7 @@
             },
             {
                 "module": "urllib3",
-                "input_file": "wheels/shared/urllib3-1.26.14-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/urllib3-1.26.15-py2.py3-none-any.whl"
             },
             {
                 "module": "validators",
