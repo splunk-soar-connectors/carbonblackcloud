@@ -9,10 +9,10 @@
 # of the subcomponent's license, as noted in the LICENSE file.
 """List Logged In Users Class Action"""
 import phantom.app as phantom
-from utils.cbc_live_query import LiveQuery
-
 from cbc_sdk.platform import Device
+
 from actions import BaseAction
+from utils.cbc_live_query import LiveQuery
 
 WINDOWS_SQL_QUERY = """SELECT TYPE, USER, tty, HOST, datetime(TIME, 'unixepoch', 'localtime') AS TIME,
                        pid, sid, registry_hive FROM logged_in_users;"""
