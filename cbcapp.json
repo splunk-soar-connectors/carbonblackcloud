@@ -3408,7 +3408,7 @@
             },
             {
                 "module": "carbon_black_cloud_sdk",
-                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.4.2-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.4.0-py2.py3-none-any.whl"
             },
             {
                 "module": "certifi",
@@ -3484,7 +3484,7 @@
             },
             {
                 "module": "carbon_black_cloud_sdk",
-                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.4.2-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.4.0-py2.py3-none-any.whl"
             },
             {
                 "module": "certifi",
