@@ -16,8 +16,8 @@
         }
     ],
     "license": "BSD-2",
-    "app_version": "1.0.1",
-    "utctime_updated": "2022-04-28T08:47:14.683021Z",
+    "app_version": "1.0.2",
+    "utctime_updated": "2023-06-12T10:21:16.000000Z",
     "package_name": "phantom_cbcapp",
     "main_module": "cbcapp_connector.py",
     "min_phantom_version": "5.5.0",
@@ -3056,11 +3056,9 @@
                     "data_type": "string"
                 },
                 {
-
                     "data_path": "action_result.message",
                     "data_type": "string"
                 }
-
             ],
             "render": {
                 "type": "table"
@@ -3277,7 +3275,6 @@
                     "data_type": "string"
                 },
                 {
-
                     "data_path": "action_result.message",
                     "data_type": "string"
                 }
