@@ -241,6 +241,34 @@ class CarbonBlackCloudSplunkSoarAppConnector(BaseConnector):
         """Stub"""
         self._stub()
 
+    def _dismiss_future_alerts(self):
+        """Stub"""
+        self._stub()
+
+    def _get_scheduled_task(self):
+        """Stub"""
+        self._stub()
+
+    def _get_asset_info(self):
+        """Stub"""
+        self._stub()
+
+    def _get_cleared_eventlogs(self):
+        """Stub"""
+        self._stub()
+
+    def _list_windows_persistence_locations(self):
+        """Stub"""
+        self._stub()
+
+    def _get_rdp_info(self):
+        """Stub"""
+        self._stub()
+
+    def _list_logged_users(self):
+        """Stub"""
+        self._stub()
+
 
 def main():
     """Main Entry"""
