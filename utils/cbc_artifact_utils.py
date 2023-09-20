@@ -12,7 +12,7 @@ import json
 
 import phantom.rules as phantom
 
-__version__ = "1.1.0"
+__version__ = "1.1.1"
 
 STANDARD_CEF_MAPPING = {"action": ["act"],
                         "process_name": ["deviceProcessName", "dproc"],
