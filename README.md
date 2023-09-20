@@ -2,7 +2,7 @@
 # Carbon Black Cloud
 
 Publisher: VMware  
-Connector Version: 1.1.0  
+Connector Version: 1.1.1  
 Product Vendor: VMware  
 Product Name: Carbon Black Cloud  
 Product Version Supported (regex): ".\*"  

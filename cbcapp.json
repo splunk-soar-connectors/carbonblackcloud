@@ -16,7 +16,7 @@
         }
     ],
     "license": "BSD-2",
-    "app_version": "1.1.0",
+    "app_version": "1.1.1",
     "utctime_updated": "2022-04-28T08:47:14.683021Z",
     "package_name": "phantom_cbcapp",
     "main_module": "cbcapp_connector.py",
@@ -3409,7 +3409,7 @@
             },
             {
                 "module": "certifi",
-                "input_file": "wheels/py3/certifi-2023.5.7-py3-none-any.whl"
+                "input_file": "wheels/py3/certifi-2023.7.22-py3-none-any.whl"
             },
             {
                 "module": "charset_normalizer",
@@ -3485,7 +3485,7 @@
             },
             {
                 "module": "certifi",
-                "input_file": "wheels/py3/certifi-2023.5.7-py3-none-any.whl"
+                "input_file": "wheels/py3/certifi-2023.7.22-py3-none-any.whl"
             },
             {
                 "module": "charset_normalizer",
