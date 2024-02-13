@@ -20,7 +20,7 @@
     "utctime_updated": "2022-04-28T08:47:14.683021Z",
     "package_name": "phantom_cbcapp",
     "main_module": "cbcapp_connector.py",
-    "min_phantom_version": "5.5.0",
+    "min_phantom_version": "6.1.1",
     "app_wizard_version": "1.0.0",
     "configuration": {
         "cbc_url": {
@@ -3663,7 +3663,7 @@
             },
             {
                 "module": "validators",
-                "input_file": "wheels/py3/validators-0.20.0-py3-none-any.whl"
+                "input_file": "wheels/py3/validators-0.22.0-py3-none-any.whl"
             }
         ]
     },
