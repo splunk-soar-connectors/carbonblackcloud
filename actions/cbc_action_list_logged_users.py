@@ -9,8 +9,8 @@
 # of the subcomponent's license, as noted in the LICENSE file.
 """List Logged In Users Class Action"""
 import phantom.app as phantom
-
 from cbc_sdk.platform import Device
+
 from actions import BaseAction
 from utils.cbc_live_query import LiveQuery
 
