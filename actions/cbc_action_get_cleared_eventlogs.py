@@ -9,9 +9,9 @@
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Cleared Event Logs Class Action"""
 import phantom.app as phantom
-from utils.cbc_live_query import LiveQuery
 
 from actions import BaseAction
+from utils.cbc_live_query import LiveQuery
 
 SQL_QUERY = """SELECT datetime,
                    json_extract(DATA, '$.UserData.LogFileCleared.SubjectDomainName') AS DOMAIN,
