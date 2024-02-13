@@ -1,5 +1,5 @@
 carbon-black-cloud-sdk==1.5.0
-certifi==2023.7.22
+certifi==2023.11.17
 requests==2.31.0
 setuptools==67.7.1
 # dev dependecies
