@@ -9,11 +9,21 @@
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Scheduled Task Created Class Action"""
 import phantom.app as phantom
-
-from actions import BaseAction
 from utils.cbc_live_query import LiveQuery
 
-SQL_QUERY = """SELECT * FROM windows_eventlog WHERE channel = 'Security' AND eventid = '4698';"""
+from actions import BaseAction
+
+SQL_QUERY = """SELECT name,
+                      action,
+                      path,
+                      enabled,
+                      state,
+                      hidden,
+                      datetime(last_run_time, "unixepoch", "localtime") AS last_run_time,
+                      datetime(next_run_time, "unixepoch", "localtime") AS next_run_time,
+                      last_run_message,
+                      last_run_code
+                FROM scheduled_tasks;"""
 
 
 class GetScheduledTaskAction(BaseAction):
@@ -37,7 +47,7 @@ class GetScheduledTaskAction(BaseAction):
 
         device_id = self.param.get("device_id", "")
         self.connector.debug_print(f"Get scheduled task created action with parameters {self.param}")
-        result = {"success": False, "details": f"Could not get scheduled task created for {device_id}."}
+
         if device_id == "":
             result = {"success": False, "details": "Could not get scheduled task created, missing device_id."}
             return result
@@ -50,21 +60,18 @@ class GetScheduledTaskAction(BaseAction):
 
         for res in results:
             if res["status"] == "matched":
-                data = {"event_channel": res["fields"]["channel"],
-                        "datetime": res["fields"]["datetime"],
-                        "task": res["fields"]["task"],
-                        "severity": res["fields"]["level"],
-                        "provider_name": res["fields"]["provider_name"],
-                        "provider_guid": res["fields"]["provider_guid"],
-                        "host": res["fields"]["computer_name"],
-                        "event_id": res["fields"]["eventid"],
-                        "keywords": res["fields"]["keywords"],
-                        "data": res["fields"]["data"],
-                        "process_pid": res["fields"]["pid"],
-                        "thread_id": res["fields"]["tid"],
-                        "time_range": res["fields"]["time_range"],
-                        "timestamp": res["fields"]["timestamp"],
-                        "xpath": res["fields"]["xpath"]}
+                data = {
+                    "name": res["fields"]["name"],
+                    "action": res["fields"]["action"],
+                    "path": res["fields"]["path"],
+                    "enabled": res["fields"]["enabled"],
+                    "state": res["fields"]["state"],
+                    "hidden": res["fields"]["hidden"],
+                    "last_run_time": res["fields"]["last_run_time"],
+                    "next_run_time": res["fields"]["next_run_time"],
+                    "last_run_message": res["fields"]["last_run_message"],
+                    "last_run_code": res["fields"]["last_run_code"]
+                }
                 self.action_result.add_data(data)
 
         return result
