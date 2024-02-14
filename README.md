@@ -2,11 +2,11 @@
 # Carbon Black Cloud
 
 Publisher: VMware  
-Connector Version: 1.1.1  
+Connector Version: 2.0.0  
 Product Vendor: VMware  
 Product Name: Carbon Black Cloud  
 Product Version Supported (regex): ".\*"  
-Minimum Product Version: 5.5.0  
+Minimum Product Version: 6.1.1  
 
 Carbon Black Cloud App for Splunk SOAR
 
@@ -29,17 +29,18 @@ Platform for Identity and Access Management, OAuth App Id and OAuth App Secret c
 2.  Fill in the "Name" and "Description" fields, grant the new Access Level with the following RBAC
     permissions and click Save.
     -   Alerts (org.alerts) - READ
-    -   Alerts (org.alerts.dismiss) - EXECUTE
+    -   Alerts (org.alerts.close) - EXECUTE
     -   Applications (org.reputations) - CREATE, DELETE
+    -   Background Tasks (jobs.status) - READ
     -   Custom Detections (org.watchlists) - CREATE, READ, UPDATE, DELETE
     -   Custom Detections (org.feeds) - CREATE, READ, UPDATE, DELETE
     -   Device (device.quarantine) - EXECUTE
     -   Device (device) - READ
     -   Device (device.policy) - UPDATE
+    -   Live Query (livequery.manage) - CREATE, READ, UPDATE, DELETE
     -   Live Response File (org.liveresponse.file) - READ, DELETE
     -   Live Response Process (org.liveresponse.process) - EXECUTE, READ, DELETE
     -   Live Response Session (org.liveresponse.session) - CREATE, READ, DELETE
-    -   Live Query (livequery.manage) - CREATE,READ,UPDATE,DELETE
     -   Policies (org.policies) - READ
     -   Search (org.search.events) - CREATE, READ
     -   Unified Binary Store (ubs.org.sha256) - READ
@@ -58,7 +59,8 @@ Platform for Identity and Access Management, OAuth App Id and OAuth App Secret c
 3.  Go to "Asset Settings" Tab and add Carbon Black Cloud instance URL, Carbon Black Cloud Org Key,
     API ID and API Secret Key to their respective fields. Click on the corresponding checkbox to
     enable fetching a specific type of alerts(CB_ANALYTICS alerts, DEVICE_CONTROL alerts, WATCHLIST
-    alerts(requires Enterprise EDR), CONTAINER_RUNTIME alerts). Select minimum alerts severity.
+    alerts(requires Enterprise EDR), CONTAINER_RUNTIME alerts, HOST_BASED_FIREWALL,
+    INTRUSION_DETECTION_SYSTEM (requires Enterprise EDR)). Select minimum alerts severity.
 4.  Go to "Ingest Settings" Tab and enable polling on the asset. Select a polling interval or
     schedule to configure polling on this asset. The suggested Polling interval is 3 minutes. Click
     Save.
@@ -87,6 +89,8 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 **fetch_device_control** |  required  | boolean | Fetch DEVICE_CONTROL alerts
 **fetch_watchlist** |  required  | boolean | Fetch WATCHLIST alerts (requires Enterprise EDR)
 **fetch_container_runtime** |  required  | boolean | Fetch CONTAINER_RUNTIME alerts
+**fetch_intrusion_detection_system** |  required  | boolean | Fetch INTRUSION_DETECTION_SYSTEM alerts
+**fetch_host_based_firewall** |  required  | boolean | Fetch HOST_BASED_FIREWALL alerts
 **min_severity** |  required  | numeric | Minimum alerts severity
 
 ### Supported Actions  
@@ -96,6 +100,7 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 [dismiss alert](#action-dismiss-alert) - Dismiss Carbon Black Cloud alert  
 [dismiss future alerts](#action-dismiss-future-alerts) - Dismiss Carbon Black Cloud all future alerts  
 [get enriched event](#action-get-enriched-event) - Get Enriched Event  
+[get observations](#action-get-observations) - Get Observations  
 [get file](#action-get-file) - Get File  
 [delete file](#action-delete-file) - Delete File  
 [get binary file](#action-get-binary-file) - Get Binary File  
@@ -125,6 +130,7 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 [update feed](#action-update-feed) - Update a feed in Carbon Black Cloud  
 [update watchlist](#action-update-watchlist) - Update a watchlist in Carbon Black Cloud  
 [get scheduled task](#action-get-scheduled-task) - Get Scheduled Task Created in Carbon Black Cloud  
+[get cron jobs](#action-get-cron-jobs) - Get Cron Jobs in Carbon Black Cloud  
 [get asset info](#action-get-asset-info) - Get Asset Info  
 [get cleared eventlogs](#action-get-cleared-eventlogs) - Get Cleared Event Logs  
 [list persistence locations](#action-list-persistence-locations) - List Windows Persistence Locations  
@@ -247,6 +253,40 @@ DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 action_result.data.\*.details.event_id | string |  |  
 action_result.data.\*.details.event_type | string |  |  
 action_result.data.\*.details.event_description | string |  |  
+action_result.data.\*.details.alert_id | string |  |  
+action_result.data.\*.details.alert_category | string |  |  
+action_result.data.\*.details.backend_timestamp | string |  |  
+action_result.data.\*.details.device_id | string |  |  
+action_result.data.\*.details.device_name | string |  |  
+action_result.data.\*.details.device_os | string |  |  
+action_result.data.\*.details.device_policy | string |  |  
+action_result.data.\*.details.process_name | string |  |  
+action_result.data.\*.details.process_hash | string |  |  
+action_result.data.\*.details.parent_pid | string |  |  
+action_result.data.\*.details.process_pid | string |  |  
+summary.total_objects_successful | numeric |  |  
+summary.total_objects | numeric |  |  
+action_result.status | string |  |  
+action_result.message | string |  |    
+
+## action: 'get observations'
+Get Observations
+
+Type: **investigate**  
+Read only: **False**
+
+Get observations from Carbon Black Cloud.
+
+#### Action Parameters
+PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
+--------- | -------- | ----------- | ---- | --------
+**alert_id** |  required  | CBC Alert ID | string |  `cbc alert id` 
+
+#### Action Output
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.data.\*.details.observation_id | string |  |  
+action_result.data.\*.details.observation_type | string |  |  
 action_result.data.\*.details.alert_id | string |  |  
 action_result.data.\*.details.alert_category | string |  |  
 action_result.data.\*.details.backend_timestamp | string |  |  
@@ -1005,21 +1045,45 @@ PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
 #### Action Output
 DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
 --------- | ---- | -------- | --------------
-action_result.data.\*.event_channel | string |  |  
-action_result.data.\*.datetime | string |  |  
-action_result.data.\*.task | string |  |  
-action_result.data.\*.severity | numeric |  |  
-action_result.data.\*.provider_name | string |  |  
-action_result.data.\*.provider_guid | string |  |  
-action_result.data.\*.host | string |  |  
-action_result.data.\*.event_id | numeric |  |  
-action_result.data.\*.keywords | string |  |  
-action_result.data.\*.data | string |  |  
-action_result.data.\*.process_pid | numeric |  |  
-action_result.data.\*.thread_id | numeric |  |  
-action_result.data.\*.time_range | string |  |  
-action_result.data.\*.timestamp | string |  |  
-action_result.data.\*.xpath | string |  |  
+action_result.data.\*.name | string |  |  
+action_result.data.\*.action | string |  |  
+action_result.data.\*.path | string |  |  
+action_result.data.\*.enabled | boolean |  |  
+action_result.data.\*.state | string |  |  
+action_result.data.\*.hidden | boolean |  |  
+action_result.data.\*.last_run_time | string |  |  
+action_result.data.\*.next_run_time | string |  |  
+action_result.data.\*.last_run_message | string |  |  
+action_result.data.\*.last_run_code | string |  |  
+summary.total_objects_successful | numeric |  |  
+summary.total_objects | numeric |  |  
+action_result.status | string |  |  
+action_result.message | string |  |    
+
+## action: 'get cron jobs'
+Get Cron Jobs in Carbon Black Cloud
+
+Type: **investigate**  
+Read only: **True**
+
+Get Cron Jobs in Carbon Black Cloud.
+
+#### Action Parameters
+PARAMETER | REQUIRED | DESCRIPTION | TYPE | CONTAINS
+--------- | -------- | ----------- | ---- | --------
+**device_id** |  required  | CBC Device ID | string |  `cbc device id` 
+
+#### Action Output
+DATA PATH | TYPE | CONTAINS | EXAMPLE VALUES
+--------- | ---- | -------- | --------------
+action_result.data.\*.name | string |  |  
+action_result.data.\*.minute | string |  |  
+action_result.data.\*.hour | string |  |  
+action_result.data.\*.day_of_month | string |  |  
+action_result.data.\*.month | string |  |  
+action_result.data.\*.day_of_week | string |  |  
+action_result.data.\*.command | string |  |  
+action_result.data.\*.path | string |  |  
 summary.total_objects_successful | numeric |  |  
 summary.total_objects | numeric |  |  
 action_result.status | string |  |  

@@ -13,7 +13,7 @@ import traceback
 from datetime import timezone
 
 import phantom.app as phantom
-from cbc_sdk.platform import BaseAlert
+from cbc_sdk.platform import Alert
 
 from actions import BaseAction
 from utils.cbc_artifact_utils import prepare_artifact
@@ -64,24 +64,20 @@ class OnPollAction(BaseAction):
             alerts_list = []
             cb_start_time = start_time.replace(tzinfo=timezone.utc).isoformat()
             cb_end_time = end_time.replace(tzinfo=timezone.utc).isoformat()
+
             while not completed:
                 try:
                     alerts = (
-                        self.cbc.select(BaseAlert)
-                        .set_time_range("last_update_time", start=cb_start_time, end=cb_end_time)
-                        .set_types(self._determine_alert_types())
+                        self.cbc.select(Alert)
+                        .add_time_criteria("backend_update_timestamp", start=cb_start_time, end=cb_end_time)
+                        .add_criteria("type", self._determine_alert_types())
                         .set_minimum_severity(config["min_severity"])
                     )
                     self.connector.debug_print("{} alerts found.".format(len(alerts)))
                 except Exception as ex:
-                    if "WATCHLIST alerts are not available" in str(ex):
-                        result[
-                            "details"
-                        ] = "Failed: WATCHLIST alerts not available, please enable Enterprise EDR"
-                    else:
-                        result["details"] = "Failed: {}".format(ex)
-                    self.connector.error_print("Failed: {}".format(traceback.format_exc()))
                     result["success"] = False
+                    result["details"] = "Failed: {}".format(ex)
+                    self.connector.error_print("Failed: {}".format(traceback.format_exc()))
                     return result
 
                 current_batch = list(alerts)
@@ -95,7 +91,7 @@ class OnPollAction(BaseAction):
                 if len(alerts) < 10000:
                     completed = True
                 else:
-                    cb_start_time = alerts[-1]._info["last_update_time"]
+                    cb_start_time = alerts[-1]._info["backend_update_timestamp"]
 
             try:
                 for alert in alerts_list:
@@ -153,6 +149,10 @@ class OnPollAction(BaseAction):
             types.append("WATCHLIST")
         if config["fetch_container_runtime"]:
             types.append("CONTAINER_RUNTIME")
+        if config["fetch_intrusion_detection_system"]:
+            types.append("INTRUSION_DETECTION_SYSTEM")
+        if config["fetch_host_based_firewall"]:
+            types.append("HOST_BASED_FIREWALL")
         return types
 
     def _phantom_daterange(self, param):
@@ -181,7 +181,7 @@ class OnPollAction(BaseAction):
         container["name"] = alert["id"]
         container["custom_fields"] = dict()
         container["source_data_identifier"] = alert["id"]
-        container["start_time"] = alert["create_time"]
+        container["start_time"] = alert["backend_timestamp"]
         container["status"] = "new"
         container["ingest_app_id"] = self.connector.get_app_id()
         if "reason" in alert.keys():
@@ -194,8 +194,8 @@ class OnPollAction(BaseAction):
 
         # Custom container fields go here:
         container["custom_fields"]["alert_id"] = alert["id"]
-        container["custom_fields"]["device_id"] = alert["device_id"]
-        container["custom_fields"]["device_username"] = alert["device_username"]
+        container["custom_fields"]["device_id"] = alert.get("device_id")
+        container["custom_fields"]["device_username"] = alert.get("device_username", "")
 
         # Severity mapping (1-3:low, 4-6:medium, 7-10:high)
         if alert["severity"] < 4:
