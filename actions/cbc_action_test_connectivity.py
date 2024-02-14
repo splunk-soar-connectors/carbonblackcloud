@@ -12,7 +12,7 @@ import datetime
 
 import phantom.app as phantom
 from cbc_sdk.errors import ConnectionError, CredentialError, ObjectNotFoundError, TimeoutError, UnauthorizedError
-from cbc_sdk.platform import Alert
+from cbc_sdk.platform import BaseAlert
 
 from actions import BaseAction
 
@@ -42,9 +42,7 @@ class CheckConnectivityAction(BaseAction):
             timestamp = datetime.datetime.utcnow()
             start_time = "{}Z".format(timestamp.isoformat())
             end_time = start_time
-            alerts = self.cbc.select(Alert).add_time_criteria("backend_update_timestamp",
-                                                              start=start_time,
-                                                              end=end_time)
+            alerts = self.cbc.select(BaseAlert).set_time_range("last_update_time", start=start_time, end=end_time)
             _ = len(alerts)
         except (UnauthorizedError, CredentialError):
             result["success"] = False

@@ -17,9 +17,8 @@ Platform for Identity and Access Management, OAuth App Id and OAuth App Secret c
 2.  Fill in the "Name" and "Description" fields, grant the new Access Level with the following RBAC
     permissions and click Save.
     -   Alerts (org.alerts) - READ
-    -   Alerts (org.alerts.close) - EXECUTE
+    -   Alerts (org.alerts.dismiss) - EXECUTE
     -   Applications (org.reputations) - CREATE, DELETE
-    -   Background Tasks (jobs.status) - READ
     -   Custom Detections (org.watchlists) - CREATE, READ, UPDATE, DELETE
     -   Custom Detections (org.feeds) - CREATE, READ, UPDATE, DELETE
     -   Device (device.quarantine) - EXECUTE
@@ -28,7 +27,7 @@ Platform for Identity and Access Management, OAuth App Id and OAuth App Secret c
     -   Live Response File (org.liveresponse.file) - READ, DELETE
     -   Live Response Process (org.liveresponse.process) - EXECUTE, READ, DELETE
     -   Live Response Session (org.liveresponse.session) - CREATE, READ, DELETE
-    -   Live Query (livequery.manage) - CREATE, READ, UPDATE, DELETE
+    -   Live Query (livequery.manage) - CREATE,READ,UPDATE,DELETE
     -   Policies (org.policies) - READ
     -   Search (org.search.events) - CREATE, READ
     -   Unified Binary Store (ubs.org.sha256) - READ
@@ -47,7 +46,7 @@ Platform for Identity and Access Management, OAuth App Id and OAuth App Secret c
 3.  Go to "Asset Settings" Tab and add Carbon Black Cloud instance URL, Carbon Black Cloud Org Key,
     API ID and API Secret Key to their respective fields. Click on the corresponding checkbox to
     enable fetching a specific type of alerts(CB_ANALYTICS alerts, DEVICE_CONTROL alerts, WATCHLIST
-    alerts(requires Enterprise EDR), CONTAINER_RUNTIME alerts, HOST_BASED_FIREWALL alerts, INTRUSION_DETECTION_SYSTEM (requires Enterprise EDR) alerts). Select minimum alerts severity.
+    alerts(requires Enterprise EDR), CONTAINER_RUNTIME alerts). Select minimum alerts severity.
 4.  Go to "Ingest Settings" Tab and enable polling on the asset. Select a polling interval or
     schedule to configure polling on this asset. The suggested Polling interval is 3 minutes. Click
     Save.

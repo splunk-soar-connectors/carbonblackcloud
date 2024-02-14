@@ -129,10 +129,6 @@ class CarbonBlackCloudSplunkSoarAppConnector(BaseConnector):
         """Stub"""
         self._stub()
 
-    def _get_observations(self):
-        """Stub"""
-        self._stub()
-
     def _get_file(self):
         """Stub"""
         self._stub()
@@ -250,10 +246,6 @@ class CarbonBlackCloudSplunkSoarAppConnector(BaseConnector):
         self._stub()
 
     def _get_scheduled_task(self):
-        """Stub"""
-        self._stub()
-
-    def _get_cron_jobs(self):
         """Stub"""
         self._stub()
 

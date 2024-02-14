@@ -11,7 +11,7 @@
 import traceback
 
 import phantom.app as phantom
-from cbc_sdk.platform import Alert
+from cbc_sdk.platform import BaseAlert
 
 from actions import BaseAction
 
@@ -41,8 +41,8 @@ class DismissAlertAction(BaseAction):
 
         try:
             if alert_id:
-                alert = self.cbc.select(Alert, alert_id)
-                alert.close(closure_reason="RESOLVED", note="Dismissed via Splunk app.")
+                alert = self.cbc.select(BaseAlert, alert_id)
+                alert.dismiss("Fixed", "Dismissed via Splunk app.")
                 result["success"], result["details"] = True, f"Alert dismissed {alert_id}."
             else:
                 result["details"] = "Missing alert id."

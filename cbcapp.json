@@ -16,11 +16,11 @@
         }
     ],
     "license": "BSD-2",
-    "app_version": "2.0.0",
+    "app_version": "1.1.1",
     "utctime_updated": "2022-04-28T08:47:14.683021Z",
     "package_name": "phantom_cbcapp",
     "main_module": "cbcapp_connector.py",
-    "min_phantom_version": "6.1.1",
+    "min_phantom_version": "5.5.0",
     "app_wizard_version": "1.0.0",
     "configuration": {
         "cbc_url": {
@@ -80,20 +80,6 @@
             "required": true,
             "order": 7
         },
-        "fetch_intrusion_detection_system": {
-            "description": "Fetch INTRUSION_DETECTION_SYSTEM alerts",
-            "data_type": "boolean",
-            "default": false,
-            "required": true,
-            "order": 8
-        },
-        "fetch_host_based_firewall": {
-            "description": "Fetch HOST_BASED_FIREWALL alerts",
-            "data_type": "boolean",
-            "default": false,
-            "required": true,
-            "order": 9
-        },
         "min_severity": {
             "description": "Minimum alerts severity",
             "data_type": "numeric",
@@ -111,7 +97,7 @@
                 9,
                 10
             ],
-            "order": 10
+            "order": 8
         }
     },
     "actions": [
@@ -458,128 +444,6 @@
                     "data_type": "string",
                     "column_name": "process_pid",
                     "column_order": 13
-                },
-                {
-                    "data_path": "summary.total_objects_successful",
-                    "data_type": "numeric"
-                },
-                {
-                    "data_path": "summary.total_objects",
-                    "data_type": "numeric"
-                },
-                {
-                    "data_path": "action_result.status",
-                    "data_type": "string"
-                },
-                {
-                    "data_path": "action_result.message",
-                    "data_type": "string"
-                }
-            ],
-            "render": {
-                "type": "table"
-            },
-            "versions": "EQ(*)"
-        },
-        {
-            "action": "get observations",
-            "identifier": "get_observations",
-            "description": "Get Observations",
-            "verbose": "Get observations from Carbon Black Cloud.",
-            "type": "investigate",
-            "read_only": false,
-            "parameters": {
-                "alert_id": {
-                    "description": "CBC Alert ID",
-                    "data_type": "string",
-                    "required": true,
-                    "primary": true,
-                    "contains": [
-                        "cbc alert id"
-                    ],
-                    "value_list": [],
-                    "default": "",
-                    "order": 0
-                }
-            },
-            "output": [
-                {
-                    "data_path": "action_result.data.*.details.observation_id",
-                    "data_type": "string",
-                    "column_name": "observation_id",
-                    "column_order": 0
-                },
-                {
-                    "data_path": "action_result.data.*.details.observation_type",
-                    "data_type": "string",
-                    "column_name": "observation_type",
-                    "column_order": 1
-                },
-                {
-                    "data_path": "action_result.data.*.details.alert_id",
-                    "data_type": "string",
-                    "column_name": "alert_id",
-                    "column_order": 2
-                },
-                {
-                    "data_path": "action_result.data.*.details.alert_category",
-                    "data_type": "string",
-                    "column_name": "alert_category",
-                    "column_order": 3
-                },
-                {
-                    "data_path": "action_result.data.*.details.backend_timestamp",
-                    "data_type": "string",
-                    "column_name": "backend_timestamp",
-                    "column_order": 4
-                },
-                {
-                    "data_path": "action_result.data.*.details.device_id",
-                    "data_type": "string",
-                    "column_name": "device_id",
-                    "column_order": 5
-                },
-                {
-                    "data_path": "action_result.data.*.details.device_name",
-                    "data_type": "string",
-                    "column_name": "device_name",
-                    "column_order": 6
-                },
-                {
-                    "data_path": "action_result.data.*.details.device_os",
-                    "data_type": "string",
-                    "column_name": "device_os",
-                    "column_order": 7
-                },
-                {
-                    "data_path": "action_result.data.*.details.device_policy",
-                    "data_type": "string",
-                    "column_name": "device_policy",
-                    "column_order": 8
-                },
-                {
-                    "data_path": "action_result.data.*.details.process_name",
-                    "data_type": "string",
-                    "column_name": "process_name",
-                    "column_order": 9
-                },
-                {
-                    "data_path": "action_result.data.*.details.process_hash",
-                    "data_type": "string",
-                    "column_name": "process_hash",
-                    "column_order": 10
-                },
-                {
-                    "data_path": "action_result.data.*.details.parent_pid",
-                    "data_type": "string",
-                    "column_name": "parent_pid",
-                    "column_order": 11
-                },
-                {
-                    "data_path": "action_result.data.*.details.process_pid",
-                    "data_type": "string",
-                    "column_name": "process_pid",
-                    "column_order": 12
                 },
                 {
                     "data_path": "summary.total_objects_successful",
@@ -2977,156 +2841,94 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.data.*.name",
+                    "data_path": "action_result.data.*.event_channel",
                     "data_type": "string",
-                    "column_name": "name",
+                    "column_name": "event_channel",
                     "column_order": 0
                 },
                 {
-                    "data_path": "action_result.data.*.action",
+                    "data_path": "action_result.data.*.datetime",
                     "data_type": "string",
-                    "column_name": "action",
+                    "column_name": "datetime",
                     "column_order": 1
                 },
                 {
-                    "data_path": "action_result.data.*.path",
+                    "data_path": "action_result.data.*.task",
                     "data_type": "string",
-                    "column_name": "path",
+                    "column_name": "task",
                     "column_order": 2
                 },
                 {
-                    "data_path": "action_result.data.*.enabled",
-                    "data_type": "boolean",
-                    "column_name": "enabled",
+                    "data_path": "action_result.data.*.severity",
+                    "data_type": "numeric",
+                    "column_name": "severity",
                     "column_order": 3
                 },
                 {
-                    "data_path": "action_result.data.*.state",
+                    "data_path": "action_result.data.*.provider_name",
                     "data_type": "string",
-                    "column_name": "state",
+                    "column_name": "provider_name",
                     "column_order": 4
                 },
                 {
-                    "data_path": "action_result.data.*.hidden",
-                    "data_type": "boolean",
-                    "column_name": "hidden",
+                    "data_path": "action_result.data.*.provider_guid",
+                    "data_type": "string",
+                    "column_name": "provider_guid",
                     "column_order": 5
                 },
                 {
-                    "data_path": "action_result.data.*.last_run_time",
+                    "data_path": "action_result.data.*.host",
                     "data_type": "string",
-                    "column_name": "last_run_time",
+                    "column_name": "host",
                     "column_order": 6
                 },
                 {
-                    "data_path": "action_result.data.*.next_run_time",
-                    "data_type": "string",
-                    "column_name": "next_run_time",
+                    "data_path": "action_result.data.*.event_id",
+                    "data_type": "numeric",
+                    "column_name": "event_id",
                     "column_order": 7
                 },
                 {
-                    "data_path": "action_result.data.*.last_run_message",
+                    "data_path": "action_result.data.*.keywords",
                     "data_type": "string",
-                    "column_name": "last_run_message",
+                    "column_name": "keywords",
                     "column_order": 8
                 },
                 {
-                    "data_path": "action_result.data.*.last_run_code",
+                    "data_path": "action_result.data.*.data",
                     "data_type": "string",
-                    "column_name": "last_run_code",
+                    "column_name": "data",
                     "column_order": 9
                 },
                 {
-                    "data_path": "summary.total_objects_successful",
-                    "data_type": "numeric"
+                    "data_path": "action_result.data.*.process_pid",
+                    "data_type": "numeric",
+                    "column_name": "process_pid",
+                    "column_order": 10
                 },
                 {
-                    "data_path": "summary.total_objects",
-                    "data_type": "numeric"
+                    "data_path": "action_result.data.*.thread_id",
+                    "data_type": "numeric",
+                    "column_name": "thread_id",
+                    "column_order": 11
                 },
                 {
-                    "data_path": "action_result.status",
-                    "data_type": "string"
-                },
-                {
-                    "data_path": "action_result.message",
-                    "data_type": "string"
-                }
-            ],
-            "render": {
-                "type": "table"
-            },
-            "versions": "EQ(*)"
-        },
-        {
-            "action": "get cron jobs",
-            "identifier": "get_cron_jobs",
-            "description": "Get Cron Jobs in Carbon Black Cloud",
-            "verbose": "Get Cron Jobs in Carbon Black Cloud.",
-            "type": "investigate",
-            "read_only": true,
-            "parameters": {
-                "device_id": {
-                    "description": "CBC Device ID",
+                    "data_path": "action_result.data.*.time_range",
                     "data_type": "string",
-                    "required": true,
-                    "primary": true,
-                    "contains": [
-                        "cbc device id"
-                    ],
-                    "value_list": [],
-                    "default": "",
-                    "order": 0
-                }
-            },
-            "output": [
-                {
-                    "data_path": "action_result.data.*.name",
-                    "data_type": "string",
-                    "column_name": "name",
-                    "column_order": 0
+                    "column_name": "time_range",
+                    "column_order": 12
                 },
                 {
-                    "data_path": "action_result.data.*.minute",
+                    "data_path": "action_result.data.*.timestamp",
                     "data_type": "string",
-                    "column_name": "minute",
-                    "column_order": 1
+                    "column_name": "timestamp",
+                    "column_order": 13
                 },
                 {
-                    "data_path": "action_result.data.*.hour",
+                    "data_path": "action_result.data.*.xpath",
                     "data_type": "string",
-                    "column_name": "hour",
-                    "column_order": 2
-                },
-                {
-                    "data_path": "action_result.data.*.day_of_month",
-                    "data_type": "string",
-                    "column_name": "day_of_month",
-                    "column_order": 3
-                },
-                {
-                    "data_path": "action_result.data.*.month",
-                    "data_type": "string",
-                    "column_name": "month",
-                    "column_order": 4
-                },
-                {
-                    "data_path": "action_result.data.*.day_of_week",
-                    "data_type": "string",
-                    "column_name": "day_of_week",
-                    "column_order": 5
-                },
-                {
-                    "data_path": "action_result.data.*.command",
-                    "data_type": "string",
-                    "column_name": "command",
-                    "column_order": 6
-                },
-                {
-                    "data_path": "action_result.data.*.path",
-                    "data_type": "string",
-                    "column_name": "path",
-                    "column_order": 7
+                    "column_name": "xpath",
+                    "column_order": 14
                 },
                 {
                     "data_path": "summary.total_objects_successful",
@@ -3591,11 +3393,7 @@
         "wheel": [
             {
                 "module": "PyYAML",
-                "input_file": "wheels/py36/PyYAML-6.0.1-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
-            },
-            {
-                "module": "backports_datetime_fromisoformat",
-                "input_file": "wheels/py39/backports_datetime_fromisoformat-2.0.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+                "input_file": "wheels/py36/PyYAML-6.0-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
             },
             {
                 "module": "boto3",
@@ -3607,7 +3405,7 @@
             },
             {
                 "module": "carbon_black_cloud_sdk",
-                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.5.0-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.4.0-py2.py3-none-any.whl"
             },
             {
                 "module": "certifi",
@@ -3639,7 +3437,7 @@
             },
             {
                 "module": "requests",
-                "input_file": "wheels/shared/requests-2.31.0-py3-none-any.whl"
+                "input_file": "wheels/shared/requests-2.27.1-py2.py3-none-any.whl"
             },
             {
                 "module": "s3transfer",
@@ -3659,11 +3457,11 @@
             },
             {
                 "module": "urllib3",
-                "input_file": "wheels/shared/urllib3-1.26.18-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/urllib3-1.26.15-py2.py3-none-any.whl"
             },
             {
                 "module": "validators",
-                "input_file": "wheels/py3/validators-0.22.0-py3-none-any.whl"
+                "input_file": "wheels/py3/validators-0.20.0-py3-none-any.whl"
             }
         ]
     },
@@ -3671,11 +3469,7 @@
         "wheel": [
             {
                 "module": "PyYAML",
-                "input_file": "wheels/py39/PyYAML-6.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
-            },
-            {
-                "module": "backports_datetime_fromisoformat",
-                "input_file": "wheels/py39/backports_datetime_fromisoformat-2.0.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+                "input_file": "wheels/py39/PyYAML-6.0-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
             },
             {
                 "module": "boto3",
@@ -3687,7 +3481,7 @@
             },
             {
                 "module": "carbon_black_cloud_sdk",
-                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.5.0-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/carbon_black_cloud_sdk-1.4.0-py2.py3-none-any.whl"
             },
             {
                 "module": "certifi",
@@ -3719,7 +3513,7 @@
             },
             {
                 "module": "requests",
-                "input_file": "wheels/py3/requests-2.31.0-py3-none-any.whl"
+                "input_file": "wheels/py3/requests-2.28.2-py3-none-any.whl"
             },
             {
                 "module": "s3transfer",
@@ -3739,11 +3533,11 @@
             },
             {
                 "module": "urllib3",
-                "input_file": "wheels/shared/urllib3-1.26.18-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/urllib3-1.26.15-py2.py3-none-any.whl"
             },
             {
                 "module": "validators",
-                "input_file": "wheels/py3/validators-0.22.0-py3-none-any.whl"
+                "input_file": "wheels/py3/validators-0.20.0-py3-none-any.whl"
             }
         ]
     }
