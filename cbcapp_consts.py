@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# BSD-2
+# Copyright 2022 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -9,4 +9,3 @@
 # of the subcomponent's license, as noted in the LICENSE file.
 
 # Define your constants here
-# noqa: D100

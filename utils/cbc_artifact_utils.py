@@ -15,13 +15,11 @@ import phantom.rules as phantom
 __version__ = "1.1.1"
 
 STANDARD_CEF_MAPPING = {"action": ["act"],
-                        "process_name": ["deviceProcessName", "dproc"],
-                        "threat_cause_actor_process_pid": ["dpid"],
+                        "process_name": ["deviceProcessName", "dproc", "sproc"],
                         "device_id": ["deviceExternalId"],
                         "device_username": ["suser", "duser"],
                         "device_external_ip": ["src"],
-                        "threat_cause_actor_sha256": ["fileHashSha256"],
-                        "threat_cause_actor_name": ["sproc"],
+                        "process_sha256": ["fileHashSha256"],
                         "name": ["msg"],
                         "alertId": ["id"]
                         }
@@ -32,9 +30,9 @@ CEF_TYPES_MAPPING = {"_raw": ["cbc alert"],
                      "device_id": ["cbc device id"],
                      "deviceExternalId": ["cbc device id"],
                      "fileHashSha256": ["cbc process hash"],
-                     "threat_cause_actor_sha256": ["cbc process hash"],
+                     "process_sha256": ["cbc process hash"],
                      "sha256": ["cbc process hash"],
-                     "threat_cause_process_guid": ["cbc process guid"],
+                     "process_guid": ["cbc process guid"],
                      "process_pid": ["pid"],
                      "process_name": ["process name"],
                      "process_path": ["process name"]
@@ -71,10 +69,10 @@ def prepare_artifact(alert, config, container_id=None):
     artifact["description"] = "{} Artifact added by CBC".format(reason)
     if "type" in alert.keys():
         artifact["type"] = alert["type"]
-    if "create_time" in alert.keys():
-        artifact["start_time"] = alert["create_time"]
-    if "last_update_time" in alert.keys():
-        artifact["end_time"] = alert["last_update_time"]
+    if "backend_timestamp" in alert.keys():
+        artifact["start_time"] = alert["backend_timestamp"]
+    if "backend_update_timestamp" in alert.keys():
+        artifact["end_time"] = alert["backend_update_timestamp"]
 
     if "id" in alert.keys():
         artifact["source_data_identifier"] = alert["id"]

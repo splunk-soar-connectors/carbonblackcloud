@@ -11,7 +11,7 @@
 import traceback
 
 import phantom.app as phantom
-from cbc_sdk.platform import BaseAlert
+from cbc_sdk.platform import Alert
 
 from actions import BaseAction
 
@@ -43,7 +43,7 @@ class DismissFutureAlertsAction(BaseAction):
 
         try:
             if alert_id:
-                alert = self.cbc.select(BaseAlert, alert_id)
+                alert = self.cbc.select(Alert, alert_id)
                 alert.dismiss_threat(remediation=remediation_status, comment=comment)
                 result["success"], result["details"] = True, \
                     f"All future alerts that are associated with the threat_id {alert.threat_id} will be dismissed."
