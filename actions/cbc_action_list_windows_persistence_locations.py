@@ -1,4 +1,4 @@
-# Copyright 2023 VMware, Inc.
+# Copyright 2023-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -7,16 +7,19 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """List Windows Persistence Locations Class Action"""
+
 import phantom.app as phantom
 
 from actions import BaseAction
 from utils.cbc_live_query import LiveQuery
+
 
 SQL_QUERY = """SELECT * FROM autoexec;"""
 
 
 class ListWindowsPersistenceLocationsAction(BaseAction):
     """Class to handle list windows persistence locations action (utilizing Live Query)"""
+
     def call(self):
         """Execute list windows persistence locations action."""
         result = self._list_windows_persistence_locations()
@@ -49,9 +52,7 @@ class ListWindowsPersistenceLocationsAction(BaseAction):
 
         for res in results:
             if res["status"] == "matched":
-                data = {"path": res["fields"]["path"],
-                        "name": res["fields"]["name"],
-                        "source": res["fields"]["source"]}
+                data = {"path": res["fields"]["path"], "name": res["fields"]["name"], "source": res["fields"]["source"]}
                 self.action_result.add_data(data)
 
         return result

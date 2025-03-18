@@ -230,6 +230,13 @@
                     "example_values": [
                         "Artifact updated successfully."
                     ]
+                },
+                {
+                    "data_path": "action_result.parameter.raw",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc alert"
+                    ]
                 }
             ],
             "versions": "EQ(*)"
@@ -345,6 +352,21 @@
                 },
                 {
                     "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.alert_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc alert id"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.remediation_status",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.comment",
                     "data_type": "string"
                 }
             ],
@@ -474,6 +496,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.alert_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc alert id"
+                    ]
                 }
             ],
             "render": {
@@ -596,6 +625,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.alert_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc alert id"
+                    ]
                 }
             ],
             "render": {
@@ -675,6 +711,17 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.file_name",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -745,6 +792,17 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.file_name",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -814,6 +872,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.file_hash",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc process hash"
+                    ]
                 }
             ],
             "render": {
@@ -933,6 +998,41 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.process_pid",
+                    "data_type": "numeric",
+                    "contains": [
+                        "pid"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.process_name",
+                    "data_type": "string",
+                    "contains": [
+                        "process name"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.process_hash",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc process hash"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.process_guid",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc process guid"
+                    ]
                 }
             ],
             "render": {
@@ -1131,6 +1231,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.file_hash",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc process hash"
+                    ]
                 }
             ],
             "render": {
@@ -1247,6 +1354,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.process_guid",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc process guid"
+                    ]
                 }
             ],
             "render": {
@@ -1616,6 +1730,21 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.policy_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.policy_name",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -1718,6 +1847,30 @@
                 {
                     "data_path": "summary.total_objects",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.report_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.ioc_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.cbc_field",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.ioc_value",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -1794,6 +1947,22 @@
                     "column_name": "message",
                     "data_type": "string",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.report_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.ioc_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.ioc_value",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -1870,6 +2039,22 @@
                     "column_name": "message",
                     "data_type": "string",
                     "column_order": 1
+                },
+                {
+                    "data_path": "action_result.parameter.feed_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.report_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.ioc_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.ioc_value",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -1971,6 +2156,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
                 }
             ],
             "versions": "EQ(*)",
@@ -2068,6 +2260,25 @@
                 },
                 {
                     "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.command_line",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.timeout",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.work_dir",
                     "data_type": "string"
                 }
             ],
@@ -2171,6 +2382,30 @@
                 {
                     "data_path": "summary.total_objects",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.report_save_as_watchlist",
+                    "data_type": "boolean"
+                },
+                {
+                    "data_path": "action_result.parameter.report_name",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.report_severity",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.report_summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.report_tags",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -2217,6 +2452,10 @@
                 {
                     "data_path": "summary.total_objects",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.report_id",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -2299,6 +2538,22 @@
                 {
                     "data_path": "summary.total_objects",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_name",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_provider_url",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_category",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -2391,6 +2646,26 @@
                 {
                     "data_path": "summary.total_objects",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_name",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_description",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_tags_enabled",
+                    "data_type": "boolean"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_alerts_enabled",
+                    "data_type": "boolean"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_report_ids",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -2437,6 +2712,10 @@
                 {
                     "data_path": "summary.total_objects",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_id",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -2483,6 +2762,10 @@
                 {
                     "data_path": "summary.total_objects",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_id",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -2573,6 +2856,10 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_id",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -2656,6 +2943,10 @@
                 },
                 {
                     "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_id",
                     "data_type": "string"
                 }
             ],
@@ -2742,6 +3033,18 @@
                 },
                 {
                     "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.report_id",
                     "data_type": "string"
                 }
             ],
@@ -2835,6 +3138,26 @@
                 {
                     "data_path": "summary.total_objects",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_name",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_provider_url",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_summary",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.feed_category",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -2947,6 +3270,34 @@
                 {
                     "data_path": "summary.total_objects",
                     "data_type": "numeric"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_id",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_name",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_description",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_tags_enabled",
+                    "data_type": "boolean"
+                },
+                {
+                    "data_path": "action_result.parameter.watchlist_alerts_enabled",
+                    "data_type": "boolean"
+                },
+                {
+                    "data_path": "action_result.parameter.add_report_ids",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.remove_report_ids",
+                    "data_type": "string"
                 }
             ],
             "render": {
@@ -3051,6 +3402,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
                 }
             ],
             "render": {
@@ -3143,6 +3501,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
                 }
             ],
             "render": {
@@ -3256,6 +3621,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
                 }
             ],
             "render": {
@@ -3324,6 +3696,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
                 }
             ],
             "render": {
@@ -3389,6 +3768,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
                 }
             ],
             "render": {
@@ -3475,6 +3861,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
                 }
             ],
             "render": {
@@ -3579,6 +3972,13 @@
                 {
                     "data_path": "action_result.message",
                     "data_type": "string"
+                },
+                {
+                    "data_path": "action_result.parameter.device_id",
+                    "data_type": "string",
+                    "contains": [
+                        "cbc device id"
+                    ]
                 }
             ],
             "render": {

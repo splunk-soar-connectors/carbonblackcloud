@@ -1,5 +1,17 @@
+# Copyright (c) 2025 Splunk Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 #!/usr/bin/python
-# -*- coding: utf-8 -*-
 # VMware Carbon Black Cloud App for Splunk SOAR
 # BSD-2
 #
@@ -12,18 +24,17 @@
 
 """Phantom sample App Connector python file"""
 
-
-from __future__ import print_function, unicode_literals
-
 import argparse
 import json
 import os
 from glob import glob
+
 # Dynamically imported actions
 from importlib import import_module
 
 # Phantom App imports
 import phantom.app as phantom
+
 # Usage of the consts file is recommended
 # from carbonblackcloudsplunksoaraoo_consts import *
 import requests
@@ -34,6 +45,7 @@ from actions import BaseAction
 
 class RetVal(tuple):
     """Helper class RetVal"""
+
     def __new__(cls, val1, val2=None):
         """New magic method"""
         return tuple.__new__(RetVal, (val1, val2))
@@ -45,7 +57,7 @@ class CarbonBlackCloudSplunkSoarAppConnector(BaseConnector):
     def __init__(self):
         """Initializer of CarbonBlackCloudSplunkSoarAppConnector"""
         # Call the BaseConnectors init first
-        super(CarbonBlackCloudSplunkSoarAppConnector, self).__init__()
+        super().__init__()
 
         self._state = None
 
@@ -289,7 +301,7 @@ def main():
     argparser.add_argument("input_test_json", help="Input Test JSON file")
     argparser.add_argument("-u", "--username", help="username", required=False)
     argparser.add_argument("-p", "--password", help="password", required=False)
-    argparser.add_argument('-v', '--verify', action='store_true', help='verify', required=False, default=False)
+    argparser.add_argument("-v", "--verify", action="store_true", help="verify", required=False, default=False)
 
     args = argparser.parse_args()
     session_id = None
@@ -299,7 +311,6 @@ def main():
     verify = args.verify
 
     if username is not None and password is None:
-
         # User specified a username but not a password, so ask
         import getpass
 
@@ -307,7 +318,7 @@ def main():
 
     if username and password:
         try:
-            login_url = (CarbonBlackCloudSplunkSoarAppConnector._get_phantom_base_url() + "/login")
+            login_url = CarbonBlackCloudSplunkSoarAppConnector._get_phantom_base_url() + "/login"
 
             print("Accessing the Login page")
             r = requests.get(login_url, verify=verify)

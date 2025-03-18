@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Unban Hash Class Action"""
+
 import traceback
 
 import phantom.app as phantom
@@ -18,6 +19,7 @@ from actions import BaseAction
 
 class UnbanHashAction(BaseAction):
     """Class to handle Unban hash action."""
+
     def call(self):
         """Execute unban hash action."""
         result = self._unban_hash()
@@ -40,9 +42,7 @@ class UnbanHashAction(BaseAction):
 
         try:
             if process_hash:
-                overrides = self.cbc.select(ReputationOverride).where(process_hash) \
-                    .set_override_list("BLACK_LIST") \
-                    .set_override_type("SHA256")
+                overrides = self.cbc.select(ReputationOverride).where(process_hash).set_override_list("BLACK_LIST").set_override_type("SHA256")
                 if len(overrides) == 0:
                     self.connector.error_print(f"There was no record for {process_hash}.")
                     result["success"], result["details"] = True, f"The process {process_hash} was not banned."

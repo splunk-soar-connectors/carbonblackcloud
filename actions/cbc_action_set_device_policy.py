@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Set Device Policy Class Action"""
+
 import traceback
 
 import phantom.app as phantom
@@ -32,9 +33,7 @@ class SetDevicePolicyAction(BaseAction):
     def _set_device_policy(self):
         """Set Device Policy action"""
         device_id = self.param.get("device_id", "")
-        self.connector.debug_print(
-            f"Set Device Policy action with parameters {self.param}"
-        )
+        self.connector.debug_print(f"Set Device Policy action with parameters {self.param}")
         result = {"success": True, "details": "Successfully set device policy"}
 
         # generic checks
@@ -55,14 +54,13 @@ class SetDevicePolicyAction(BaseAction):
                 try:
                     policy = self.cbc.select(Policy, policy_id)
                     if policy_name and policy.name != policy_name:
-                        result["details"] = "Policy ID and policy name mismatch, Set Device Policy " \
-                                            "action with policy ID {}".format(policy_id)
+                        result["details"] = f"Policy ID and policy name mismatch, Set Device Policy action with policy ID {policy_id}"
                         self.connector.debug_print(result["details"])
 
                 # Exception due to Policy select error
                 except Exception as e:
                     self.connector.error_print(traceback.format_exc())
-                    result["details"] = "Could not get device policy: {}".format(e)
+                    result["details"] = f"Could not get device policy: {e}"
                     result["success"] = False
                     return result
             else:
@@ -71,12 +69,12 @@ class SetDevicePolicyAction(BaseAction):
                 # Exception due to Policy select error
                 except IndexError:
                     self.connector.error_print(traceback.format_exc())
-                    result["details"] = "Could not get device policy - no such policy {}".format(policy_name)
+                    result["details"] = f"Could not get device policy - no such policy {policy_name}"
                     result["success"] = False
                     return result
                 except Exception as e:
                     self.connector.error_print(traceback.format_exc())
-                    result["details"] = "Could not get device policy - {}".format(e)
+                    result["details"] = f"Could not get device policy - {e}"
                     result["success"] = False
                     return result
             try:
@@ -84,7 +82,7 @@ class SetDevicePolicyAction(BaseAction):
             # Exception due to Device select error
             except Exception as e:
                 self.connector.error_print(traceback.format_exc())
-                result["details"] = "Could not select device - {}".format(e)
+                result["details"] = f"Could not select device - {e}"
                 result["success"] = False
                 return result
             try:
@@ -99,7 +97,7 @@ class SetDevicePolicyAction(BaseAction):
             # Exception due to update policy error
             except Exception as e:
                 self.connector.error_print(traceback.format_exc())
-                result["details"] = "Could not set device policy - {}".format(e)
+                result["details"] = f"Could not set device policy - {e}"
                 result["success"] = False
         # No device ID provided
         else:

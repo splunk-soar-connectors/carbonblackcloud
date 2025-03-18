@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Delete File Action Class"""
+
 import traceback
 
 import phantom.app as phantom
@@ -37,9 +38,7 @@ class DeleteFileAction(BaseAction):
             return {"success": False, "details": "No file_name provided."}
 
         filename = self.param["file_name"]
-        self.connector.debug_print(
-            f"Delete File Live Response action with parameters {self.param}"
-        )
+        self.connector.debug_print(f"Delete File Live Response action with parameters {self.param}")
         result = {
             "success": False,
             "details": f"Could not delete file for {device_id}.",
@@ -58,32 +57,29 @@ class DeleteFileAction(BaseAction):
                 except Exception as e:
                     self.connector.error_print(traceback.format_exc())
                     result["success"] = False
-                    result["details"] = "Could not establish LR session - {}".format(e)
+                    result["details"] = f"Could not establish LR session - {e}"
                     return result
                 try:
                     lr_session.delete_file(filename)
                 except LiveResponseError as ex:
                     result["success"] = False
-                    if (
-                        "ERROR_PATH_NOT_FOUND" in ex.message
-                        or "ERROR_FILE_NOT_FOUND" in ex.message
-                    ):
-                        result["details"] = "No such file {}.".format(filename)
+                    if "ERROR_PATH_NOT_FOUND" in ex.message or "ERROR_FILE_NOT_FOUND" in ex.message:
+                        result["details"] = f"No such file {filename}."
                     else:
                         self.connector.error_print(traceback.format_exc())
-                        result["details"] = "Could not delete file contents - {}".format(ex)
+                        result["details"] = f"Could not delete file contents - {ex}"
                     return result
                 except Exception as e:
                     self.connector.error_print(traceback.format_exc())
                     result["success"] = False
-                    result["details"] = "Could not delete file contents - {}.".format(e)
+                    result["details"] = f"Could not delete file contents - {e}."
                     return result
                 result_data = {"device_id": device_id, "file_name": filename}
                 self.action_result.add_data(result_data)
                 result["success"], result["details"] = True, "File successfully deleted."
             except Exception as e:
                 self.connector.error_print(traceback.format_exc())
-                result["details"] = "Could not delete file - {}".format(e)
+                result["details"] = f"Could not delete file - {e}"
         else:
             result["details"] = "Missing device id."
         return result

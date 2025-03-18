@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2023 VMware, Inc.
+# Copyright 2023-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,10 +8,12 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get RDP Connection Info Class Action"""
+
 import phantom.app as phantom
 
 from actions import BaseAction
 from utils.cbc_live_query import LiveQuery
+
 
 SQL_QUERY = """SELECT processes.pid,
                    processes.name,
@@ -28,6 +30,7 @@ SQL_QUERY = """SELECT processes.pid,
 
 class GetRDPInfoAction(BaseAction):
     """Class to handle get RDP connection information action (utilizing Live Query)"""
+
     def call(self):
         """Execute get RDP info action."""
         result = self._get_rdp_info()
@@ -60,13 +63,15 @@ class GetRDPInfoAction(BaseAction):
 
         for res in results:
             if res["status"] == "matched":
-                data = {"process_pid": res["fields"]["pid"],
-                        "process_name": res["fields"]["name"],
-                        "process_cmdline": res["fields"]["cmdline"],
-                        "local_address": res["fields"]["local_address"],
-                        "remote_address": res["fields"]["remote_address"],
-                        "local_port": res["fields"]["local_port"],
-                        "remote_port": res["fields"]["remote_port"]}
+                data = {
+                    "process_pid": res["fields"]["pid"],
+                    "process_name": res["fields"]["name"],
+                    "process_cmdline": res["fields"]["cmdline"],
+                    "local_address": res["fields"]["local_address"],
+                    "remote_address": res["fields"]["remote_address"],
+                    "local_port": res["fields"]["local_port"],
+                    "remote_port": res["fields"]["remote_port"],
+                }
                 self.action_result.add_data(data)
 
         return result

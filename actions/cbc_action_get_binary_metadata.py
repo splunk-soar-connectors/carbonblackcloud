@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Binary File Metadata Action Class"""
+
 import copy
 import traceback
 
@@ -20,6 +21,7 @@ from actions import BaseAction
 
 class GetBinaryMetadataAction(BaseAction):
     """Class to handle get binary file metadata from UBS action."""
+
     def call(self):
         """Execute get binary file metadata action."""
         result = self._get_binary_metadata()
@@ -50,7 +52,7 @@ class GetBinaryMetadataAction(BaseAction):
             result["success"], result["details"] = True, "Get UBS metadata successfully retrieved."
         except ObjectNotFoundError:
             self.connector.error_print(traceback.format_exc())
-            result["details"] = "Could not find hash in UBS: {}.".format(file_hash)
+            result["details"] = f"Could not find hash in UBS: {file_hash}."
         except Exception as e:
             result["details"] = f"Could not retrieve binary metadata for {file_hash} - {e}."
             self.connector.error_print(traceback.format_exc())

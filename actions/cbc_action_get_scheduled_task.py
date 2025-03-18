@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2023 VMware, Inc.
+# Copyright 2023-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,10 +8,12 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Scheduled Task Created Class Action"""
+
 import phantom.app as phantom
 
 from actions import BaseAction
 from utils.cbc_live_query import LiveQuery
+
 
 SQL_QUERY = """SELECT name,
                       action,
@@ -28,6 +30,7 @@ SQL_QUERY = """SELECT name,
 
 class GetScheduledTaskAction(BaseAction):
     """Class to handle get scheduled task created action (utilizing Live Query)"""
+
     def call(self):
         """Execute get scheduled task created action."""
         result = self._get_scheduled_task()
@@ -70,7 +73,7 @@ class GetScheduledTaskAction(BaseAction):
                     "last_run_time": res["fields"]["last_run_time"],
                     "next_run_time": res["fields"]["next_run_time"],
                     "last_run_message": res["fields"]["last_run_message"],
-                    "last_run_code": res["fields"]["last_run_code"]
+                    "last_run_code": res["fields"]["last_run_code"],
                 }
                 self.action_result.add_data(data)
 

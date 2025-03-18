@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Kill Process Action Class"""
+
 import traceback
 
 import phantom.app as phantom
@@ -77,7 +78,7 @@ class KillProcessAction(BaseAction):
                 except Exception as e:
                     self.connector.error_print(traceback.format_exc())
                     result["success"] = False
-                    result["details"] = "Could not establish LR session - {}".format(e)
+                    result["details"] = f"Could not establish LR session - {e}"
                     return result
 
                 try:
@@ -100,11 +101,7 @@ class KillProcessAction(BaseAction):
                     processes = lr_session.list_processes()
                     for process in processes:
                         # We have process name match, kill the process
-                        if (
-                            proc_name is not None
-                            and proc_name in process["process_path"]
-                            and process["process_pid"] not in pid_list
-                        ):
+                        if proc_name is not None and proc_name in process["process_path"] and process["process_pid"] not in pid_list:
                             self._kill_pid(
                                 lr_session,
                                 device_id,
@@ -129,14 +126,14 @@ class KillProcessAction(BaseAction):
                 except Exception as e:
                     self.connector.error_print(traceback.format_exc())
                     result["success"] = False
-                    result["details"] = "Could not kill process - {}".format(e)
+                    result["details"] = f"Could not kill process - {e}"
                     return result
                 result["success"], result["details"] = True, "Process(es) successfully killed"
 
             # Exception due to Device select error
             except Exception as e:
                 self.connector.error_print(traceback.format_exc())
-                result["details"] = "Could not kill process - {}".format(e)
+                result["details"] = f"Could not kill process - {e}"
         # No device ID provided
         else:
             result["details"] = "Missing device id."

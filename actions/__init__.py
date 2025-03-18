@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -22,10 +22,10 @@ class BaseAction:
         self.connector.add_action_result(self.action_result)
         self.param = param
         self.proxy = None
-        if os.getenv('https_proxy') is not None:
-            self.proxy = os.getenv('https_proxy')
-        elif os.getenv('HTTPS_PROXY') is not None:
-            self.proxy = os.getenv('HTTPS_PROXY')
+        if os.getenv("https_proxy") is not None:
+            self.proxy = os.getenv("https_proxy")
+        elif os.getenv("HTTPS_PROXY") is not None:
+            self.proxy = os.getenv("HTTPS_PROXY")
         self.cbc = self._get_cbc()
 
     def call(self):
@@ -45,14 +45,14 @@ class BaseAction:
                     org_key=config["org_key"],
                     token=f"{config['api_secret_key']}/{config['api_id']}",
                     integration_name=f"SplunkSoar-{__version__}",
-                    proxy=self.proxy
+                    proxy=self.proxy,
                 )
             else:
                 custom = CBCloudAPI(
                     url=config["cbc_url"].rstrip("/"),
                     org_key=config["org_key"],
                     token=f"{config['api_secret_key']}/{config['api_id']}",
-                    integration_name=f"SplunkSoar-{__version__}"
+                    integration_name=f"SplunkSoar-{__version__}",
                 )
         except Exception:
             custom = None
