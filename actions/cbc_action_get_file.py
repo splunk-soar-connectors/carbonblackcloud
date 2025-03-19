@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get File Action Class"""
+
 import traceback
 
 import phantom.app as phantom
@@ -19,6 +20,7 @@ from actions import BaseAction
 
 class GetFileAction(BaseAction):
     """Class to handle get file live response action."""
+
     def call(self):
         """Execute get file action."""
         result = self._get_file()
@@ -52,31 +54,27 @@ class GetFileAction(BaseAction):
                 except Exception as e:
                     self.connector.error_print(traceback.format_exc())
                     result["success"] = False
-                    result["details"] = "Could not establish LR session - {}".format(e)
+                    result["details"] = f"Could not establish LR session - {e}"
                     return result
                 try:
                     file_contents = lr_session.get_file(filename)
                 except Exception as e:
                     self.connector.error_print(traceback.format_exc())
                     result["success"] = False
-                    result["details"] = "Could not get file contents - {}".format(e)
+                    result["details"] = f"Could not get file contents - {e}"
                     return result
-                status = Vault.create_attachment(file_contents,
-                                                 self.connector.get_container_id(),
-                                                 file_name=filename)
+                status = Vault.create_attachment(file_contents, self.connector.get_container_id(), file_name=filename)
                 if not status.get("succeeded", False):
                     result["success"] = False
                     result["details"] = "Could not create vault"
                     return result
 
-                result_data = {"device_id": device_id,
-                               "vault_id": status.get("vault_id", None),
-                               "file_name": filename}
+                result_data = {"device_id": device_id, "vault_id": status.get("vault_id", None), "file_name": filename}
                 self.action_result.add_data(result_data)
                 result["success"], result["details"] = True, "File successfully retrieved"
             except Exception as e:
                 self.connector.error_print(traceback.format_exc())
-                result["details"] = "Could not get file - {}".format(e)
+                result["details"] = f"Could not get file - {e}"
         else:
             result["details"] = "Missing device id."
         return result

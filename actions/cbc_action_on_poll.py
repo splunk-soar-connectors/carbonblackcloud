@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Data Ingestion Action Class"""
+
 import datetime
 import traceback
 from datetime import timezone
@@ -35,7 +36,7 @@ class OnPollAction(BaseAction):
 
     def _poll_data(self):
         """Ingest alerts and create artifact containers"""
-        self.connector.debug_print("Polling data, params={}".format(self.param))
+        self.connector.debug_print(f"Polling data, params={self.param}")
         start_time, end_time = self._phantom_daterange(self.param)
         self.connector.save_progress("Start fetching alerts")
         result = {"success": True, "details": ""}
@@ -50,15 +51,9 @@ class OnPollAction(BaseAction):
             artifact_limit = self.param.get("artifact_count", -1)
             alerts_limit = max(container_limit, artifact_limit)
             if alerts_limit > 0:
-                self.connector.save_progress(
-                    "Ingesting up to {} alerts from {} to {}".format(
-                        alerts_limit, start_time, end_time
-                    )
-                )
+                self.connector.save_progress(f"Ingesting up to {alerts_limit} alerts from {start_time} to {end_time}")
             else:
-                self.connector.save_progress(
-                    "Ingesting alerts from {} to {}".format(str(start_time), str(end_time))
-                )
+                self.connector.save_progress(f"Ingesting alerts from {start_time!s} to {end_time!s}")
 
             completed = False
             alerts_list = []
@@ -73,11 +68,11 @@ class OnPollAction(BaseAction):
                         .add_criteria("type", self._determine_alert_types())
                         .set_minimum_severity(config["min_severity"])
                     )
-                    self.connector.debug_print("{} alerts found.".format(len(alerts)))
+                    self.connector.debug_print(f"{len(alerts)} alerts found.")
                 except Exception as ex:
                     result["success"] = False
-                    result["details"] = "Failed: {}".format(ex)
-                    self.connector.error_print("Failed: {}".format(traceback.format_exc()))
+                    result["details"] = f"Failed: {ex}"
+                    self.connector.error_print(f"Failed: {traceback.format_exc()}")
                     return result
 
                 current_batch = list(alerts)
@@ -99,41 +94,23 @@ class OnPollAction(BaseAction):
                         container = self._prepare_alert_container(alert._info)
                         status, message, container_id = self.connector.save_container(container)
                         container["id"] = container_id
-                        self.connector.debug_print(
-                            "Saved container {}/{}/{}".format(status, message, container_id)
-                        )
+                        self.connector.debug_print(f"Saved container {status}/{message}/{container_id}")
                     except Exception:
-                        self.connector.error_print(
-                            "Error creating container: {}".format(traceback.format_exc())
-                        )
-                        self.connector.save_progress(
-                            "Error creating container: {}".format(traceback.format_exc())
-                        )
+                        self.connector.error_print(f"Error creating container: {traceback.format_exc()}")
+                        self.connector.save_progress(f"Error creating container: {traceback.format_exc()}")
                     else:
-                        if (
-                            container
-                            and status == phantom.APP_SUCCESS
-                            and message != "Duplicate container found"
-                        ):
-                            artifact = prepare_artifact(
-                                alert._info, config, container_id=container_id
-                            )
+                        if container and status == phantom.APP_SUCCESS and message != "Duplicate container found":
+                            artifact = prepare_artifact(alert._info, config, container_id=container_id)
                             self.connector.save_artifact(artifact)
-                            self.connector.save_progress(
-                                "Created container {} successfully".format(container_id)
-                            )
+                            self.connector.save_progress(f"Created container {container_id} successfully")
 
                 result["success"] = True
-                result["details"] = "Polling complete. Found {} alerts.".format(len(alerts_list))
+                result["details"] = f"Polling complete. Found {len(alerts_list)} alerts."
 
             except Exception:
-                self.connector.error_print(
-                    "Error fetching alerts: {}".format(traceback.format_exc())
-                )
+                self.connector.error_print(f"Error fetching alerts: {traceback.format_exc()}")
                 result["success"] = False
-                result["details"] = "Error fetching alerts from CBC: {}".format(
-                    traceback.format_exc()
-                )
+                result["details"] = f"Error fetching alerts from CBC: {traceback.format_exc()}"
             finally:
                 return result
 

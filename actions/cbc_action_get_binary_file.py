@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Binary File Action Class"""
+
 import traceback
 import urllib
 
@@ -20,6 +21,7 @@ from actions import BaseAction
 
 class GetBinaryFileAction(BaseAction):
     """Class to handle get binary file from UBS action."""
+
     def call(self):
         """Execute get binary file action."""
         result = self._get_file()
@@ -49,27 +51,23 @@ class GetBinaryFileAction(BaseAction):
             except Exception as e:
                 self.connector.error_print(traceback.format_exc())
                 result["success"] = False
-                result["details"] = "Could not find file in UBS: {}".format(e)
+                result["details"] = f"Could not find file in UBS: {e}"
                 return result
             try:
                 file_contents = urllib.request.urlopen(download_url).read()
             except Exception as e:
                 self.connector.error_print(traceback.format_exc())
                 result["success"] = False
-                result["details"] = "Could not fetch file: {}".format(e)
+                result["details"] = f"Could not fetch file: {e}"
                 return result
 
-            status = Vault.create_attachment(file_contents,
-                                             self.connector.get_container_id(),
-                                             file_name=binary.original_filename)
+            status = Vault.create_attachment(file_contents, self.connector.get_container_id(), file_name=binary.original_filename)
             if not status.get("succeeded", False):
                 result["success"] = False
                 result["details"] = "Could not create vault"
                 return result
 
-            result_data = {"file_hash": file_hash,
-                           "vault_id": status.get("vault_id", None),
-                           "file_name": binary.original_filename}
+            result_data = {"file_hash": file_hash, "vault_id": status.get("vault_id", None), "file_name": binary.original_filename}
 
             self.action_result.add_data(result_data)
             result["success"], result["details"] = True, "File successfully retrieved"

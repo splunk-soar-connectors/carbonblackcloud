@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Unquarantine Device Class Action"""
+
 import traceback
 
 import phantom.app as phantom
@@ -18,6 +19,7 @@ from actions import BaseAction
 
 class UnquarantineAction(BaseAction):
     """Class to handle unquarantine device action."""
+
     def call(self):
         """Execute unquarantine device action."""
         result = self._unquarantine_device()

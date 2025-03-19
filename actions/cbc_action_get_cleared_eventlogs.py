@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2023 VMware, Inc.
+# Copyright 2023-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,10 +8,12 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Cleared Event Logs Class Action"""
+
 import phantom.app as phantom
 
 from actions import BaseAction
 from utils.cbc_live_query import LiveQuery
+
 
 SQL_QUERY = """SELECT datetime,
                    json_extract(DATA, '$.UserData.LogFileCleared.SubjectDomainName') AS DOMAIN,
@@ -24,6 +26,7 @@ SQL_QUERY = """SELECT datetime,
 
 class GetClearedEventlogsAction(BaseAction):
     """Class to handle get cleared eventlogs action (utilizing Live Query)"""
+
     def call(self):
         """Execute get clered eventlogs action."""
         result = self._get_cleared_eventlogs()
@@ -56,10 +59,12 @@ class GetClearedEventlogsAction(BaseAction):
 
         for res in results:
             if res["status"] == "matched":
-                data = {"datetime": res["fields"]["datetime"],
-                        "domain": res["fields"]["DOMAIN"],
-                        "user": res["fields"]["USER"],
-                        "sid": res["fields"]["sid"]}
+                data = {
+                    "datetime": res["fields"]["datetime"],
+                    "domain": res["fields"]["DOMAIN"],
+                    "user": res["fields"]["USER"],
+                    "sid": res["fields"]["sid"],
+                }
                 self.action_result.add_data(data)
 
         return result

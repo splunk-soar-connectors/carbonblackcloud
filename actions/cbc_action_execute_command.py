@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Execute Command Action Class"""
+
 import traceback
 
 import phantom.app as phantom
@@ -19,6 +20,7 @@ from actions import BaseAction
 
 class ExecuteCommandAction(BaseAction):
     """Class to handle execute command live response action."""
+
     def call(self):
         """Execute execute command action."""
         result = self._execute_command()
@@ -52,14 +54,12 @@ class ExecuteCommandAction(BaseAction):
                 except Exception as e:
                     self.connector.error_print(traceback.format_exc())
                     result["success"] = False
-                    result["details"] = "Could not establish LR session - {}".format(e)
+                    result["details"] = f"Could not establish LR session - {e}"
                     return result
                 try:
-                    stdout = lr_session.create_process(commandline,
-                                                       wait_for_output=True,
-                                                       wait_timeout=timeout,
-                                                       wait_for_completion=True,
-                                                       working_directory=work_dir)
+                    stdout = lr_session.create_process(
+                        commandline, wait_for_output=True, wait_timeout=timeout, wait_for_completion=True, working_directory=work_dir
+                    )
                 except TimeoutError:
                     self.connector.error_print(traceback.format_exc())
                     result["success"] = False
@@ -68,17 +68,15 @@ class ExecuteCommandAction(BaseAction):
                 except Exception as e:
                     self.connector.error_print(traceback.format_exc())
                     result["success"] = False
-                    result["details"] = "Could not execute command {}: {}".format(commandline, e)
+                    result["details"] = f"Could not execute command {commandline}: {e}"
                     return result
 
-                result_data = {"device_id": device_id,
-                               "command_line": commandline,
-                               "stdout": stdout}
+                result_data = {"device_id": device_id, "command_line": commandline, "stdout": stdout}
                 self.action_result.add_data(result_data)
                 result["success"], result["details"] = True, "Command successfully executed"
             except Exception as e:
                 self.connector.error_print(traceback.format_exc())
-                result["details"] = "Could not execute command {}: {}".format(commandline, e)
+                result["details"] = f"Could not execute command {commandline}: {e}"
         else:
             result["details"] = "Missing device id."
         return result

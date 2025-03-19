@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Normalize artifact action"""
+
 import json
 import traceback
 
@@ -38,7 +39,7 @@ class NormalizeArtifactAction(BaseAction):
         status, container, _ = self.connector.get_container_info(container_id)
         if status != phantom.APP_SUCCESS:
             result["success"] = False
-            result["details"] = "Could not find container id:{}".format(container_id)
+            result["details"] = f"Could not find container id:{container_id}"
             return result
 
         # Check for input parameters
@@ -49,10 +50,12 @@ class NormalizeArtifactAction(BaseAction):
 
         # Check if the container is of ingested data from Splunk SIEM
 
-        if container["artifact_count"] != 1 \
-           or container["description"] != "Container added by Splunk" \
-           or "Splunk Log Entry" not in container["name"] \
-           or container["status"] != "new":
+        if (
+            container["artifact_count"] != 1
+            or container["description"] != "Container added by Splunk"
+            or "Splunk Log Entry" not in container["name"]
+            or container["status"] != "new"
+        ):
             result["success"] = True
 
             result["details"] = "Container does not contain Splunk SIEM ingested data"
@@ -67,7 +70,7 @@ class NormalizeArtifactAction(BaseAction):
         except:
             result["success"] = False
             exc = traceback.format_exc()
-            result["details"] = "Invalid JSON data in raw parameter: {}".format(exc)
+            result["details"] = f"Invalid JSON data in raw parameter: {exc}"
             return result
 
         artifact = prepare_artifact(raw, config, container_id=container_id)
@@ -84,7 +87,7 @@ class NormalizeArtifactAction(BaseAction):
 
         if success == phantom.APP_SUCCESS:
             result["success"] = True
-            result["details"] = "Container: {}: artifact normalized".format(container_id)
+            result["details"] = f"Container: {container_id}: artifact normalized"
             return result
         else:
             result["success"] = False

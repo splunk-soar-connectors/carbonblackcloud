@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """List Policies Class Action"""
+
 import traceback
 
 import phantom.app as phantom
@@ -18,6 +19,7 @@ from actions import BaseAction
 
 class ListPoliciesAction(BaseAction):
     """Class to handle list policies action."""
+
     def call(self):
         """Execute list policies action."""
         result = self._list_policies()
@@ -44,6 +46,6 @@ class ListPoliciesAction(BaseAction):
                 self.action_result.add_data(policy._info)
         except Exception as e:
             self.connector.error_print(traceback.format_exc())
-            result["details"] = "Could not list policies - {}".format(e)
+            result["details"] = f"Could not list policies - {e}"
             result["success"] = False
         return result

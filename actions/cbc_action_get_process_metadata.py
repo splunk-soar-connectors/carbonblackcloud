@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Process Metadata Class Action"""
+
 import traceback
 
 import phantom.app as phantom
@@ -18,6 +19,7 @@ from actions import BaseAction
 
 class GetProcessMetadataAction(BaseAction):
     """Class to handle process metadata action."""
+
     def call(self):
         """Execute process metadata action."""
         result = self._get_process_meta_data()
@@ -57,14 +59,10 @@ class GetProcessMetadataAction(BaseAction):
                     "device_id": process_details.get("device_id"),
                     "device_name": process_details.get("device_name"),
                     "device_os": process_details.get("device_os"),
-                    "device_policy": process_details.get("device_policy")
+                    "device_policy": process_details.get("device_policy"),
                 }
-                self.action_result.add_data({
-                    "raw_details": process_details,
-                    "details": process_info
-                })
-                result["success"], result["details"] = True, "Successfully retrieved metadata for "\
-                                                             f"{process_guid}."
+                self.action_result.add_data({"raw_details": process_details, "details": process_info})
+                result["success"], result["details"] = True, f"Successfully retrieved metadata for {process_guid}."
             except Exception as e:
                 result["details"] = f"Could not get process metadata for {process_guid} - {e}."
                 self.connector.error_print(traceback.format_exc())

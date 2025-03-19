@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2023 VMware, Inc.
+# Copyright 2023-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Asset Info Action Class"""
+
 import traceback
 
 import phantom.app as phantom
@@ -18,6 +19,7 @@ from actions import BaseAction
 
 class GetAssetInfoAction(BaseAction):
     """Class to handle get asset info action."""
+
     def call(self):
         """Execute get asset info action."""
         result = self._get_asset_info()

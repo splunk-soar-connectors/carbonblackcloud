@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Observations By Alert Class Action"""
+
 import traceback
 
 import phantom.app as phantom
@@ -19,6 +20,7 @@ from actions import BaseAction
 
 class GetObservationsAction(BaseAction):
     """Class to handle get observations by alert action."""
+
     def call(self):
         """Execute get observations by alert action."""
         result = self._get_observations()
@@ -62,12 +64,9 @@ class GetObservationsAction(BaseAction):
                             "process_name": obs._info.get("process_name"),
                             "process_hash": obs._info.get("process_hash", [""])[-1],
                             "parent_pid": obs._info.get("parent_pid", ""),
-                            "process_pid": ",".join(map(str, obs._info.get("process_pid", [])))
+                            "process_pid": ",".join(map(str, obs._info.get("process_pid", []))),
                         }
-                        self.action_result.add_data({
-                            "raw_details": obs._info,
-                            "details": obs_info
-                        })
+                        self.action_result.add_data({"raw_details": obs._info, "details": obs_info})
                     result["success"] = True
                     result["details"] = f"Successfully retrieved {len(observations)} observations for {alert_id}."
             else:

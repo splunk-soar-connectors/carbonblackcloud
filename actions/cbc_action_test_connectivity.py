@@ -1,5 +1,5 @@
 # VMware Carbon Black Cloud App for Splunk SOAR
-# Copyright 2022 VMware, Inc.
+# Copyright 2022-2025 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.
@@ -8,6 +8,7 @@
 # Your use of these subcomponents is subject to the terms and conditions
 # of the subcomponent's license, as noted in the LICENSE file.
 """Test Connectivity Action Class"""
+
 import datetime
 
 import phantom.app as phantom
@@ -19,6 +20,7 @@ from actions import BaseAction
 
 class CheckConnectivityAction(BaseAction):
     """Class to handle test connectivity action."""
+
     def call(self):
         """Execute test connectivity action."""
         result = self._test_cbc_connectivity()
@@ -40,11 +42,9 @@ class CheckConnectivityAction(BaseAction):
 
         try:
             timestamp = datetime.datetime.utcnow()
-            start_time = "{}Z".format(timestamp.isoformat())
+            start_time = f"{timestamp.isoformat()}Z"
             end_time = start_time
-            alerts = self.cbc.select(Alert).add_time_criteria("backend_update_timestamp",
-                                                              start=start_time,
-                                                              end=end_time)
+            alerts = self.cbc.select(Alert).add_time_criteria("backend_update_timestamp", start=start_time, end=end_time)
             _ = len(alerts)
         except (UnauthorizedError, CredentialError):
             result["success"] = False
