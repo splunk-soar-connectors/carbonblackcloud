@@ -3991,7 +3991,11 @@
         "wheel": [
             {
                 "module": "PyYAML",
-                "input_file": "wheels/py36/PyYAML-6.0.1-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+                "input_file": "wheels/py39/PyYAML-6.0.2-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
+            },
+            {
+                "module": "attrs",
+                "input_file": "wheels/py3/attrs-25.3.0-py3-none-any.whl"
             },
             {
                 "module": "backports_datetime_fromisoformat",
@@ -3999,71 +4003,123 @@
             },
             {
                 "module": "boto3",
-                "input_file": "wheels/py3/boto3-1.23.10-py3-none-any.whl"
+                "input_file": "wheels/py3/boto3-1.37.21-py3-none-any.whl"
             },
             {
                 "module": "botocore",
-                "input_file": "wheels/py3/botocore-1.26.10-py3-none-any.whl"
+                "input_file": "wheels/py3/botocore-1.37.21-py3-none-any.whl"
             },
             {
                 "module": "carbon_black_cloud_sdk",
                 "input_file": "wheels/shared/carbon_black_cloud_sdk-1.5.0-py2.py3-none-any.whl"
             },
             {
-                "module": "certifi",
-                "input_file": "wheels/py3/certifi-2023.7.22-py3-none-any.whl"
+                "module": "coverage",
+                "input_file": "wheels/py39/coverage-6.2-cp39-cp39-manylinux1_x86_64.manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_5_x86_64.manylinux_2_28_x86_64.whl"
             },
             {
-                "module": "charset_normalizer",
-                "input_file": "wheels/py3/charset_normalizer-2.0.12-py3-none-any.whl"
+                "module": "coveralls",
+                "input_file": "wheels/shared/coveralls-3.3.1-py2.py3-none-any.whl"
             },
             {
-                "module": "contextlib2",
-                "input_file": "wheels/shared/contextlib2-21.6.0-py2.py3-none-any.whl"
+                "module": "docopt",
+                "input_file": "wheels/shared/docopt-0.6.2-py2.py3-none-any.whl"
             },
             {
-                "module": "decorator",
-                "input_file": "wheels/py3/decorator-5.1.1-py3-none-any.whl"
+                "module": "exceptiongroup",
+                "input_file": "wheels/py3/exceptiongroup-1.2.2-py3-none-any.whl"
             },
             {
-                "module": "idna",
-                "input_file": "wheels/py3/idna-3.4-py3-none-any.whl"
+                "module": "flake8",
+                "input_file": "wheels/shared/flake8-4.0.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "flake8_colors",
+                "input_file": "wheels/py3/flake8_colors-0.1.9-py3-none-any.whl"
+            },
+            {
+                "module": "flake8_docstrings",
+                "input_file": "wheels/shared/flake8_docstrings-1.6.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "iniconfig",
+                "input_file": "wheels/py3/iniconfig-2.1.0-py3-none-any.whl"
             },
             {
                 "module": "jmespath",
-                "input_file": "wheels/shared/jmespath-0.10.0-py2.py3-none-any.whl"
+                "input_file": "wheels/py3/jmespath-1.0.1-py3-none-any.whl"
             },
             {
-                "module": "python_dateutil",
-                "input_file": "wheels/shared/python_dateutil-2.8.2-py2.py3-none-any.whl"
+                "module": "jsonschema",
+                "input_file": "wheels/py3/jsonschema-4.23.0-py3-none-any.whl"
             },
             {
-                "module": "requests",
-                "input_file": "wheels/shared/requests-2.31.0-py3-none-any.whl"
+                "module": "jsonschema_specifications",
+                "input_file": "wheels/py3/jsonschema_specifications-2024.10.1-py3-none-any.whl"
+            },
+            {
+                "module": "mccabe",
+                "input_file": "wheels/shared/mccabe-0.6.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "packaging",
+                "input_file": "wheels/py3/packaging-24.2-py3-none-any.whl"
+            },
+            {
+                "module": "pluggy",
+                "input_file": "wheels/py3/pluggy-1.5.0-py3-none-any.whl"
+            },
+            {
+                "module": "pycodestyle",
+                "input_file": "wheels/shared/pycodestyle-2.8.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "pydocstyle",
+                "input_file": "wheels/py3/pydocstyle-6.3.0-py3-none-any.whl"
+            },
+            {
+                "module": "pyflakes",
+                "input_file": "wheels/shared/pyflakes-2.4.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "pytest",
+                "input_file": "wheels/py3/pytest-7.3.0-py3-none-any.whl"
+            },
+            {
+                "module": "referencing",
+                "input_file": "wheels/py3/referencing-0.36.2-py3-none-any.whl"
+            },
+            {
+                "module": "rpds_py",
+                "input_file": "wheels/py39/rpds_py-0.24.0-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
             },
             {
                 "module": "s3transfer",
-                "input_file": "wheels/py3/s3transfer-0.5.2-py3-none-any.whl"
+                "input_file": "wheels/py3/s3transfer-0.11.4-py3-none-any.whl"
             },
             {
                 "module": "schema",
-                "input_file": "wheels/shared/schema-0.7.5-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/schema-0.7.7-py2.py3-none-any.whl"
             },
             {
-                "module": "six",
-                "input_file": "wheels/shared/six-1.16.0-py2.py3-none-any.whl"
+                "module": "snowballstemmer",
+                "input_file": "wheels/shared/snowballstemmer-2.2.0-py2.py3-none-any.whl"
             },
             {
                 "module": "solrq",
                 "input_file": "wheels/shared/solrq-1.1.2-py2.py3-none-any.whl"
             },
             {
-                "module": "urllib3",
-                "input_file": "wheels/shared/urllib3-1.26.18-py2.py3-none-any.whl"
+                "module": "tomli",
+                "input_file": "wheels/py3/tomli-2.2.1-py3-none-any.whl"
+            },
+            {
+                "module": "typing_extensions",
+                "input_file": "wheels/py3/typing_extensions-4.13.0-py3-none-any.whl"
             },
             {
                 "module": "validators",
-                "input_file": "wheels/py3/validators-0.22.0-py3-none-any.whl"
+                "input_file": "wheels/py3/validators-0.34.0-py3-none-any.whl"
             }
         ]
     },
@@ -4071,7 +4127,11 @@
         "wheel": [
             {
                 "module": "PyYAML",
-                "input_file": "wheels/py39/PyYAML-6.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+                "input_file": "wheels/py39/PyYAML-6.0.2-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
+            },
+            {
+                "module": "attrs",
+                "input_file": "wheels/py3/attrs-25.3.0-py3-none-any.whl"
             },
             {
                 "module": "backports_datetime_fromisoformat",
@@ -4079,71 +4139,123 @@
             },
             {
                 "module": "boto3",
-                "input_file": "wheels/py3/boto3-1.26.49-py3-none-any.whl"
+                "input_file": "wheels/py3/boto3-1.37.21-py3-none-any.whl"
             },
             {
                 "module": "botocore",
-                "input_file": "wheels/py3/botocore-1.29.49-py3-none-any.whl"
+                "input_file": "wheels/py3/botocore-1.37.21-py3-none-any.whl"
             },
             {
                 "module": "carbon_black_cloud_sdk",
                 "input_file": "wheels/shared/carbon_black_cloud_sdk-1.5.0-py2.py3-none-any.whl"
             },
             {
-                "module": "certifi",
-                "input_file": "wheels/py3/certifi-2023.7.22-py3-none-any.whl"
+                "module": "coverage",
+                "input_file": "wheels/py39/coverage-6.2-cp39-cp39-manylinux1_x86_64.manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl"
             },
             {
-                "module": "charset_normalizer",
-                "input_file": "wheels/py39/charset_normalizer-3.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl"
+                "module": "coveralls",
+                "input_file": "wheels/shared/coveralls-3.3.1-py2.py3-none-any.whl"
             },
             {
-                "module": "contextlib2",
-                "input_file": "wheels/shared/contextlib2-21.6.0-py2.py3-none-any.whl"
+                "module": "docopt",
+                "input_file": "wheels/shared/docopt-0.6.2-py2.py3-none-any.whl"
             },
             {
-                "module": "decorator",
-                "input_file": "wheels/py3/decorator-5.1.1-py3-none-any.whl"
+                "module": "exceptiongroup",
+                "input_file": "wheels/py3/exceptiongroup-1.2.2-py3-none-any.whl"
             },
             {
-                "module": "idna",
-                "input_file": "wheels/py3/idna-3.4-py3-none-any.whl"
+                "module": "flake8",
+                "input_file": "wheels/shared/flake8-4.0.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "flake8_colors",
+                "input_file": "wheels/py3/flake8_colors-0.1.9-py3-none-any.whl"
+            },
+            {
+                "module": "flake8_docstrings",
+                "input_file": "wheels/shared/flake8_docstrings-1.6.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "iniconfig",
+                "input_file": "wheels/py3/iniconfig-2.1.0-py3-none-any.whl"
             },
             {
                 "module": "jmespath",
                 "input_file": "wheels/py3/jmespath-1.0.1-py3-none-any.whl"
             },
             {
-                "module": "python_dateutil",
-                "input_file": "wheels/shared/python_dateutil-2.8.2-py2.py3-none-any.whl"
+                "module": "jsonschema",
+                "input_file": "wheels/py3/jsonschema-4.23.0-py3-none-any.whl"
             },
             {
-                "module": "requests",
-                "input_file": "wheels/py3/requests-2.31.0-py3-none-any.whl"
+                "module": "jsonschema_specifications",
+                "input_file": "wheels/py3/jsonschema_specifications-2024.10.1-py3-none-any.whl"
+            },
+            {
+                "module": "mccabe",
+                "input_file": "wheels/shared/mccabe-0.6.1-py2.py3-none-any.whl"
+            },
+            {
+                "module": "packaging",
+                "input_file": "wheels/py3/packaging-24.2-py3-none-any.whl"
+            },
+            {
+                "module": "pluggy",
+                "input_file": "wheels/py3/pluggy-1.5.0-py3-none-any.whl"
+            },
+            {
+                "module": "pycodestyle",
+                "input_file": "wheels/shared/pycodestyle-2.8.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "pydocstyle",
+                "input_file": "wheels/py3/pydocstyle-6.3.0-py3-none-any.whl"
+            },
+            {
+                "module": "pyflakes",
+                "input_file": "wheels/shared/pyflakes-2.4.0-py2.py3-none-any.whl"
+            },
+            {
+                "module": "pytest",
+                "input_file": "wheels/py3/pytest-7.3.0-py3-none-any.whl"
+            },
+            {
+                "module": "referencing",
+                "input_file": "wheels/py3/referencing-0.36.2-py3-none-any.whl"
+            },
+            {
+                "module": "rpds_py",
+                "input_file": "wheels/py39/rpds_py-0.24.0-cp39-cp39-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl"
             },
             {
                 "module": "s3transfer",
-                "input_file": "wheels/py3/s3transfer-0.6.0-py3-none-any.whl"
+                "input_file": "wheels/py3/s3transfer-0.11.4-py3-none-any.whl"
             },
             {
                 "module": "schema",
-                "input_file": "wheels/shared/schema-0.7.5-py2.py3-none-any.whl"
+                "input_file": "wheels/shared/schema-0.7.7-py2.py3-none-any.whl"
             },
             {
-                "module": "six",
-                "input_file": "wheels/shared/six-1.16.0-py2.py3-none-any.whl"
+                "module": "snowballstemmer",
+                "input_file": "wheels/shared/snowballstemmer-2.2.0-py2.py3-none-any.whl"
             },
             {
                 "module": "solrq",
                 "input_file": "wheels/shared/solrq-1.1.2-py2.py3-none-any.whl"
             },
             {
-                "module": "urllib3",
-                "input_file": "wheels/shared/urllib3-1.26.18-py2.py3-none-any.whl"
+                "module": "tomli",
+                "input_file": "wheels/py3/tomli-2.2.1-py3-none-any.whl"
+            },
+            {
+                "module": "typing_extensions",
+                "input_file": "wheels/py3/typing_extensions-4.13.0-py3-none-any.whl"
             },
             {
                 "module": "validators",
-                "input_file": "wheels/py3/validators-0.22.0-py3-none-any.whl"
+                "input_file": "wheels/py3/validators-0.34.0-py3-none-any.whl"
             }
         ]
     }

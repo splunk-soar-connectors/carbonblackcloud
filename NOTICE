@@ -1,0 +1,205 @@
+Splunk SOAR Carbon Black Cloud
+BSD-2
+
+Third Party Software Attributions:
+
+Name: attrs
+Version: 25.3.0
+Author: 
+License: 
+
+Name: backports-datetime-fromisoformat
+Version: 2.0.1
+Author: 
+License: MIT License
+
+Name: boto3
+Version: 1.37.21
+Author: Amazon Web Services
+License: Apache License 2.0
+
+Name: botocore
+Version: 1.37.21
+Author: Amazon Web Services
+License: Apache License 2.0
+
+Name: carbon-black-cloud-sdk
+Version: 1.5.0
+Author: VMware Carbon Black
+License: MIT
+
+Name: certifi
+Version: 2025.1.31
+Author: Kenneth Reitz
+License: MPL-2.0
+
+Name: charset-normalizer
+Version: 3.4.1
+Author: 
+License: MIT
+
+Name: coverage
+Version: 6.2
+Author: Ned Batchelder and 146 others
+License: Apache 2.0
+
+Name: coveralls
+Version: 3.3.1
+Author: TheKevJames
+License: MIT
+
+Name: docopt
+Version: 0.6.2
+Author: Vladimir Keleshev
+License: MIT
+
+Name: exceptiongroup
+Version: 1.2.2
+Author: 
+License: 
+
+Name: flake8
+Version: 4.0.1
+Author: Tarek Ziade
+License: MIT
+
+Name: flake8-colors
+Version: 0.1.9
+Author: Andrew Dunai
+License: MIT
+
+Name: flake8-docstrings
+Version: 1.6.0
+Author: Simon ANDRÉ
+License: MIT License
+
+Name: idna
+Version: 3.10
+Author: 
+License: 
+
+Name: iniconfig
+Version: 2.1.0
+Author: 
+License: 
+
+Name: jmespath
+Version: 1.0.1
+Author: James Saryerwinnie
+License: MIT
+
+Name: jsonschema
+Version: 4.23.0
+Author: 
+License: MIT
+
+Name: jsonschema-specifications
+Version: 2024.10.1
+Author: 
+License: 
+
+Name: mccabe
+Version: 0.6.1
+Author: Ian Cordasco
+License: Expat license
+
+Name: packaging
+Version: 24.2
+Author: 
+License: 
+
+Name: pluggy
+Version: 1.5.0
+Author: Holger Krekel
+License: MIT
+
+Name: pycodestyle
+Version: 2.8.0
+Author: Johann C. Rocholl
+License: Expat license
+
+Name: pydocstyle
+Version: 6.3.0
+Author: Amir Rachum
+License: MIT
+
+Name: pyflakes
+Version: 2.4.0
+Author: A lot of people
+License: MIT
+
+Name: pytest
+Version: 7.3.0
+Author: Holger Krekel, Bruno Oliveira, Ronny Pfannschmidt, Floris Bruynooghe, Brianna Laugher, Florian Bruhin and others
+License: MIT
+
+Name: python-dateutil
+Version: 2.9.0.post0
+Author: Gustavo Niemeyer
+License: Dual License
+
+Name: PyYAML
+Version: 6.0.2
+Author: Kirill Simonov
+License: MIT
+
+Name: referencing
+Version: 0.36.2
+Author: 
+License: 
+
+Name: requests
+Version: 2.32.3
+Author: Kenneth Reitz
+License: Apache-2.0
+
+Name: rpds-py
+Version: 0.24.0
+Author: 
+License: MIT
+
+Name: s3transfer
+Version: 0.11.4
+Author: Amazon Web Services
+License: Apache License 2.0
+
+Name: schema
+Version: 0.7.7
+Author: Vladimir Keleshev
+License: MIT
+
+Name: six
+Version: 1.17.0
+Author: Benjamin Peterson
+License: MIT
+
+Name: snowballstemmer
+Version: 2.2.0
+Author: Snowball Developers
+License: BSD-3-Clause
+
+Name: solrq
+Version: 1.1.2
+Author: Michał Jaworski
+License: BSD
+
+Name: tomli
+Version: 2.2.1
+Author: 
+License: 
+
+Name: typing_extensions
+Version: 4.13.0
+Author: 
+License: 
+
+Name: urllib3
+Version: 1.26.20
+Author: Andrey Petrov
+License: MIT
+
+Name: validators
+Version: 0.34.0
+Author: 
+License: MIT
+
