@@ -16,8 +16,8 @@
         }
     ],
     "license": "BSD-2",
-    "app_version": "2.0.0",
-    "utctime_updated": "2022-04-28T08:47:14.683021Z",
+    "app_version": "2.0.1",
+    "utctime_updated": "2025-04-30T19:40:51.793080Z",
     "package_name": "phantom_cbcapp",
     "main_module": "cbcapp_connector.py",
     "min_phantom_version": "6.1.1",

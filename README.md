@@ -1,7 +1,7 @@
 # Carbon Black Cloud
 
 Publisher: VMware \
-Connector Version: 2.0.0 \
+Connector Version: 2.0.1 \
 Product Vendor: VMware \
 Product Name: Carbon Black Cloud \
 Minimum Product Version: 6.1.1
