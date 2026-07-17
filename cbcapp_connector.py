@@ -27,6 +27,7 @@
 import argparse
 import json
 import os
+import re
 from glob import glob
 
 # Dynamically imported actions
@@ -38,9 +39,14 @@ import phantom.app as phantom
 # Usage of the consts file is recommended
 # from carbonblackcloudsplunksoaraoo_consts import *
 import requests
+from phantom.action_result import ActionResult
 from phantom.base_connector import BaseConnector
 
 from actions import BaseAction
+
+
+PATH_IDENTIFIER_PATTERN = re.compile(r"^[A-Za-z0-9_-]+$")
+PATH_IDENTIFIER_FIELDS = {"device_id", "watchlist_id", "feed_id", "report_id"}
 
 
 class RetVal(tuple):
@@ -69,6 +75,11 @@ class CarbonBlackCloudSplunkSoarAppConnector(BaseConnector):
     def handle_action(self, params):
         """Handle action method"""
         ret_val = phantom.APP_ERROR
+
+        for field in PATH_IDENTIFIER_FIELDS:
+            if field in params and not PATH_IDENTIFIER_PATTERN.fullmatch(str(params[field])):
+                action_result = self.add_action_result(ActionResult(dict(params)))
+                return action_result.set_status(phantom.APP_ERROR, f"Invalid {field}: expected an identifier without path syntax")
 
         # Get the action that we are supposed to execute for this App Run
         action_id = self.get_action_identifier()
