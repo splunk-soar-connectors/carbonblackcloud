@@ -1,4 +1,4 @@
-# Copyright 2023-2025 VMware, Inc.
+# Copyright 2023-2026 VMware, Inc.
 #
 # This product is licensed to you under the BSD-2 license (the "License").
 # You may not use this product except in compliance with the BSD-2 License.

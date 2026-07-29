@@ -1,9 +1,9 @@
 # Carbon Black Cloud
 
-Publisher: VMware \
-Connector Version: 2.0.1 \
-Product Vendor: VMware \
-Product Name: Carbon Black Cloud \
+Publisher: VMware <br>
+Connector Version: 2.0.1 <br>
+Product Vendor: VMware <br>
+Product Name: Carbon Black Cloud <br>
 Minimum Product Version: 6.1.1
 
 Carbon Black Cloud App for Splunk SOAR
@@ -89,54 +89,54 @@ VARIABLE | REQUIRED | TYPE | DESCRIPTION
 
 ### Supported Actions
 
-[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity with the supplied configuration \
-[on poll](#action-on-poll) - Callback action for the on_poll ingest functionality \
-[normalize artifact](#action-normalize-artifact) - Normalize artifact ingested by Splunk App for Splunk Phantom \
-[dismiss alert](#action-dismiss-alert) - Dismiss Carbon Black Cloud alert \
-[dismiss future alerts](#action-dismiss-future-alerts) - Dismiss Carbon Black Cloud all future alerts \
-[get enriched event](#action-get-enriched-event) - Get Enriched Event \
-[get observations](#action-get-observations) - Get Observations \
-[get file](#action-get-file) - Get File \
-[delete file](#action-delete-file) - Delete File \
-[get binary file](#action-get-binary-file) - Get Binary File \
-[kill process](#action-kill-process) - Kill process on Carbon Black Cloud endpoint \
-[get binary metadata](#action-get-binary-metadata) - Get binary metadata from Carbon Black Cloud \
-[get process metadata](#action-get-process-metadata) - Get Process Metadata \
-[quarantine device](#action-quarantine-device) - Quarantine device in Carbon Black Cloud \
-[unquarantine device](#action-unquarantine-device) - Unquarantine device in Carbon Black Cloud \
-[ban hash](#action-ban-hash) - Ban process by hash in Carbon Black Cloud \
-[unban hash](#action-unban-hash) - Unban process by hash in Carbon Black Cloud \
-[list policies](#action-list-policies) - List device policies in Carbon Black Cloud \
-[set device policy](#action-set-device-policy) - Set device policy of a Carbon Black Cloud endpoint \
-[add ioc](#action-add-ioc) - Add IOC to feed/watchlist in Carbon Black Cloud \
-[remove watchlist ioc](#action-remove-watchlist-ioc) - Remove IOC from watchlist in Carbon Black Cloud \
-[remove feed ioc](#action-remove-feed-ioc) - Remove IOC from feed in Carbon Black Cloud \
-[list processes](#action-list-processes) - List processes on a device in Carbon Black Cloud \
-[execute command](#action-execute-command) - Execute command on a device in Carbon Black Cloud \
-[create report](#action-create-report) - Create a report in Carbon Black Cloud \
-[delete report](#action-delete-report) - Delete a report in Carbon Black Cloud feed or watchlist \
-[create feed](#action-create-feed) - Create a feed in Carbon Black Cloud \
-[create watchlist](#action-create-watchlist) - Create a watchlist in Carbon Black Cloud \
-[delete feed](#action-delete-feed) - Delete a feed in Carbon Black Cloud \
-[delete watchlist](#action-delete-watchlist) - Delete a watchlist in Carbon Black Cloud \
-[retrieve watchlist](#action-retrieve-watchlist) - Retrieve a watchlist in Carbon Black Cloud \
-[retrieve feed](#action-retrieve-feed) - Retrieve a feed in Carbon Black Cloud \
-[retrieve iocs](#action-retrieve-iocs) - Retrieve IOCs for a given report in Carbon Black Cloud \
-[update feed](#action-update-feed) - Update a feed in Carbon Black Cloud \
-[update watchlist](#action-update-watchlist) - Update a watchlist in Carbon Black Cloud \
-[get scheduled task](#action-get-scheduled-task) - Get Scheduled Task Created in Carbon Black Cloud \
-[get cron jobs](#action-get-cron-jobs) - Get Cron Jobs in Carbon Black Cloud \
-[get asset info](#action-get-asset-info) - Get Asset Info \
-[get cleared eventlogs](#action-get-cleared-eventlogs) - Get Cleared Event Logs \
-[list persistence locations](#action-list-persistence-locations) - List Windows Persistence Locations \
-[get rdp info](#action-get-rdp-info) - Get RDP Connection Information \
+[test connectivity](#action-test-connectivity) - Validate the asset configuration for connectivity with the supplied configuration <br>
+[on poll](#action-on-poll) - Callback action for the on_poll ingest functionality <br>
+[normalize artifact](#action-normalize-artifact) - Normalize artifact ingested by Splunk App for Splunk Phantom <br>
+[dismiss alert](#action-dismiss-alert) - Dismiss Carbon Black Cloud alert <br>
+[dismiss future alerts](#action-dismiss-future-alerts) - Dismiss Carbon Black Cloud all future alerts <br>
+[get enriched event](#action-get-enriched-event) - Get Enriched Event <br>
+[get observations](#action-get-observations) - Get Observations <br>
+[get file](#action-get-file) - Get File <br>
+[delete file](#action-delete-file) - Delete File <br>
+[get binary file](#action-get-binary-file) - Get Binary File <br>
+[kill process](#action-kill-process) - Kill process on Carbon Black Cloud endpoint <br>
+[get binary metadata](#action-get-binary-metadata) - Get binary metadata from Carbon Black Cloud <br>
+[get process metadata](#action-get-process-metadata) - Get Process Metadata <br>
+[quarantine device](#action-quarantine-device) - Quarantine device in Carbon Black Cloud <br>
+[unquarantine device](#action-unquarantine-device) - Unquarantine device in Carbon Black Cloud <br>
+[ban hash](#action-ban-hash) - Ban process by hash in Carbon Black Cloud <br>
+[unban hash](#action-unban-hash) - Unban process by hash in Carbon Black Cloud <br>
+[list policies](#action-list-policies) - List device policies in Carbon Black Cloud <br>
+[set device policy](#action-set-device-policy) - Set device policy of a Carbon Black Cloud endpoint <br>
+[add ioc](#action-add-ioc) - Add IOC to feed/watchlist in Carbon Black Cloud <br>
+[remove watchlist ioc](#action-remove-watchlist-ioc) - Remove IOC from watchlist in Carbon Black Cloud <br>
+[remove feed ioc](#action-remove-feed-ioc) - Remove IOC from feed in Carbon Black Cloud <br>
+[list processes](#action-list-processes) - List processes on a device in Carbon Black Cloud <br>
+[execute command](#action-execute-command) - Execute command on a device in Carbon Black Cloud <br>
+[create report](#action-create-report) - Create a report in Carbon Black Cloud <br>
+[delete report](#action-delete-report) - Delete a report in Carbon Black Cloud feed or watchlist <br>
+[create feed](#action-create-feed) - Create a feed in Carbon Black Cloud <br>
+[create watchlist](#action-create-watchlist) - Create a watchlist in Carbon Black Cloud <br>
+[delete feed](#action-delete-feed) - Delete a feed in Carbon Black Cloud <br>
+[delete watchlist](#action-delete-watchlist) - Delete a watchlist in Carbon Black Cloud <br>
+[retrieve watchlist](#action-retrieve-watchlist) - Retrieve a watchlist in Carbon Black Cloud <br>
+[retrieve feed](#action-retrieve-feed) - Retrieve a feed in Carbon Black Cloud <br>
+[retrieve iocs](#action-retrieve-iocs) - Retrieve IOCs for a given report in Carbon Black Cloud <br>
+[update feed](#action-update-feed) - Update a feed in Carbon Black Cloud <br>
+[update watchlist](#action-update-watchlist) - Update a watchlist in Carbon Black Cloud <br>
+[get scheduled task](#action-get-scheduled-task) - Get Scheduled Task Created in Carbon Black Cloud <br>
+[get cron jobs](#action-get-cron-jobs) - Get Cron Jobs in Carbon Black Cloud <br>
+[get asset info](#action-get-asset-info) - Get Asset Info <br>
+[get cleared eventlogs](#action-get-cleared-eventlogs) - Get Cleared Event Logs <br>
+[list persistence locations](#action-list-persistence-locations) - List Windows Persistence Locations <br>
+[get rdp info](#action-get-rdp-info) - Get RDP Connection Information <br>
 [list logged users](#action-list-logged-users) - List Logged In Users
 
 ## action: 'test connectivity'
 
 Validate the asset configuration for connectivity with the supplied configuration
 
-Type: **test** \
+Type: **test** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -151,7 +151,7 @@ No Output
 
 Callback action for the on_poll ingest functionality
 
-Type: **ingest** \
+Type: **ingest** <br>
 Read only: **True**
 
 #### Action Parameters
@@ -172,7 +172,7 @@ No Output
 
 Normalize artifact ingested by Splunk App for Splunk Phantom
 
-Type: **generic** \
+Type: **generic** <br>
 Read only: **False**
 
 #### Action Parameters
@@ -198,7 +198,7 @@ action_result.parameter.raw | string | `cbc alert` | |
 
 Dismiss Carbon Black Cloud alert
 
-Type: **correct** \
+Type: **correct** <br>
 Read only: **False**
 
 Dismiss Alert in Carbon Black Cloud.
@@ -223,7 +223,7 @@ action_result.message | string | | |
 
 Dismiss Carbon Black Cloud all future alerts
 
-Type: **correct** \
+Type: **correct** <br>
 Read only: **False**
 
 Dismiss All Future Alerts in Carbon Black Cloud.
@@ -252,7 +252,7 @@ action_result.parameter.comment | string | | |
 
 Get Enriched Event
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **False**
 
 Get enriched event from Carbon Black Cloud.
@@ -291,7 +291,7 @@ action_result.parameter.alert_id | string | `cbc alert id` | |
 
 Get Observations
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **False**
 
 Get observations from Carbon Black Cloud.
@@ -329,7 +329,7 @@ action_result.parameter.alert_id | string | `cbc alert id` | |
 
 Get File
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Get file From Carbon Black Cloud endpoint.
@@ -359,7 +359,7 @@ action_result.parameter.file_name | string | | |
 
 Delete File
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Delete file from Carbon Black Cloud endpoint.
@@ -388,7 +388,7 @@ action_result.parameter.file_name | string | | |
 
 Get Binary File
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Get binary file From Carbon Black Cloud endpoint.
@@ -416,7 +416,7 @@ action_result.parameter.file_hash | string | `cbc process hash` | |
 
 Kill process on Carbon Black Cloud endpoint
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **False**
 
 Kill process on a Carbon Black Cloud endpoint by PID, process name, process hash or GUID.
@@ -452,7 +452,7 @@ action_result.parameter.process_guid | string | `cbc process guid` | |
 
 Get binary metadata from Carbon Black Cloud
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Get binary metadata from Carbon Black Cloud.
@@ -499,7 +499,7 @@ action_result.parameter.file_hash | string | `cbc process hash` | |
 
 Get Process Metadata
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Get process metadata from Carbon Black Cloud.
@@ -536,7 +536,7 @@ action_result.parameter.process_guid | string | `cbc process guid` | |
 
 Quarantine device in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **False**
 
 Quarantine device in Carbon Black Cloud.
@@ -561,7 +561,7 @@ action_result.message | string | | |
 
 Unquarantine device in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **False**
 
 Unquarantine device in Carbon Black Cloud.
@@ -586,7 +586,7 @@ action_result.message | string | | |
 
 Ban process by hash in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **False**
 
 Ban process by hash in Carbon Black Cloud.
@@ -611,7 +611,7 @@ action_result.message | string | | |
 
 Unban process by hash in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **False**
 
 Unban process by hash in Carbon Black Cloud.
@@ -636,7 +636,7 @@ action_result.message | string | | |
 
 List device policies in Carbon Black Cloud
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 List device policies in Carbon Black Cloud.
@@ -663,7 +663,7 @@ action_result.message | string | | |
 
 Set device policy of a Carbon Black Cloud endpoint
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Set device policy of a Carbon Black Cloud endpoint.
@@ -696,7 +696,7 @@ action_result.parameter.policy_name | string | | |
 
 Add IOC to feed/watchlist in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Add IOC to feed/watchlist in Carbon Black Cloud.
@@ -732,7 +732,7 @@ action_result.parameter.ioc_value | string | | |
 
 Remove IOC from watchlist in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Remove IOC from watchlist in Carbon Black Cloud.
@@ -763,7 +763,7 @@ action_result.parameter.ioc_value | string | | |
 
 Remove IOC from feed in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Remove IOC from feed in Carbon Black Cloud.
@@ -794,7 +794,7 @@ action_result.parameter.ioc_value | string | | |
 
 List processes on a device in Carbon Black Cloud
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **False**
 
 List processes on a device in Carbon Black Cloud.
@@ -827,7 +827,7 @@ action_result.parameter.device_id | string | `cbc device id` | |
 
 Execute command on a device in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Execute command on a device in Carbon Black Cloud.
@@ -861,7 +861,7 @@ action_result.parameter.work_dir | string | | |
 
 Create a report in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Create a report in Carbon Black Cloud.
@@ -897,7 +897,7 @@ action_result.parameter.report_tags | string | | |
 
 Delete a report in Carbon Black Cloud feed or watchlist
 
-Type: **correct** \
+Type: **correct** <br>
 Read only: **True**
 
 Delete a report in Carbon Black Cloud feed or watchlist.
@@ -922,7 +922,7 @@ action_result.parameter.report_id | string | | |
 
 Create a feed in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Create a feed in Carbon Black Cloud.
@@ -954,7 +954,7 @@ action_result.parameter.feed_category | string | | |
 
 Create a watchlist in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Create a watchlist in Carbon Black Cloud.
@@ -988,7 +988,7 @@ action_result.parameter.watchlist_report_ids | string | | |
 
 Delete a feed in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Delete a feed in Carbon Black Cloud.
@@ -1013,7 +1013,7 @@ action_result.parameter.feed_id | string | | |
 
 Delete a watchlist in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Delete a watchlist in Carbon Black Cloud.
@@ -1038,7 +1038,7 @@ action_result.parameter.watchlist_id | string | | |
 
 Retrieve a watchlist in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Retrieve a watchlist in Carbon Black Cloud.
@@ -1071,7 +1071,7 @@ action_result.parameter.watchlist_id | string | | |
 
 Retrieve a feed in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Retrieve a feed in Carbon Black Cloud.
@@ -1103,7 +1103,7 @@ action_result.parameter.feed_id | string | | |
 
 Retrieve IOCs for a given report in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Retrieve IOCs for a given report in Carbon Black Cloud.
@@ -1136,7 +1136,7 @@ action_result.parameter.report_id | string | | |
 
 Update a feed in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Update a feed in Carbon Black Cloud.
@@ -1170,7 +1170,7 @@ action_result.parameter.feed_category | string | | |
 
 Update a watchlist in Carbon Black Cloud
 
-Type: **contain** \
+Type: **contain** <br>
 Read only: **True**
 
 Update a watchlist in Carbon Black Cloud.
@@ -1208,7 +1208,7 @@ action_result.parameter.remove_report_ids | string | | |
 
 Get Scheduled Task Created in Carbon Black Cloud
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Get Scheduled Task Created in Carbon Black Cloud.
@@ -1243,7 +1243,7 @@ action_result.parameter.device_id | string | `cbc device id` | |
 
 Get Cron Jobs in Carbon Black Cloud
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Get Cron Jobs in Carbon Black Cloud.
@@ -1276,7 +1276,7 @@ action_result.parameter.device_id | string | `cbc device id` | |
 
 Get Asset Info
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 Get asset info.
@@ -1311,7 +1311,7 @@ action_result.parameter.device_id | string | `cbc device id` | |
 
 Get Cleared Event Logs
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **False**
 
 Get cleared event logs from Carbon Black Cloud LiveQuery.
@@ -1340,7 +1340,7 @@ action_result.parameter.device_id | string | `cbc device id` | |
 
 List Windows Persistence Locations
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **True**
 
 List Windows Persistence Locations.
@@ -1368,7 +1368,7 @@ action_result.parameter.device_id | string | `cbc device id` | |
 
 Get RDP Connection Information
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **False**
 
 Get RDP Connection Information from Carbon Black Cloud LiveQuery.
@@ -1400,7 +1400,7 @@ action_result.parameter.device_id | string | `cbc device id` | |
 
 List Logged In Users
 
-Type: **investigate** \
+Type: **investigate** <br>
 Read only: **False**
 
 List Logged In Users from Carbon Black Cloud LiveQuery.
@@ -1435,7 +1435,7 @@ ______________________________________________________________________
 
 Auto-generated Splunk SOAR Connector documentation.
 
-Copyright 2025 Splunk Inc.
+Copyright 2026 Splunk Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
