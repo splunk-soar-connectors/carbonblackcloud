@@ -9,10 +9,7 @@
 # of the subcomponent's license, as noted in the LICENSE file.
 """Get Binary File Action Class"""
 
-import ipaddress
-import socket
 import traceback
-from urllib.parse import urlsplit
 
 import phantom.app as phantom
 import requests
@@ -20,18 +17,7 @@ from cbc_sdk.enterprise_edr.ubs import Binary
 from phantom.vault import Vault
 
 from actions import BaseAction
-
-
-def _validate_download_url(download_url):
-    parsed = urlsplit(download_url)
-    if parsed.scheme != "https" or not parsed.hostname or parsed.username or parsed.password:
-        raise ValueError("Carbon Black Cloud returned an invalid download URL")
-
-    addresses = socket.getaddrinfo(parsed.hostname, parsed.port or 443, type=socket.SOCK_STREAM)
-    if not addresses or any(not ipaddress.ip_address(address[4][0]).is_global for address in addresses):
-        raise ValueError("Carbon Black Cloud returned a non-public download URL")
-
-    return download_url
+from utils.cbc_download_url import validate_ubs_download_url
 
 
 class GetBinaryFileAction(BaseAction):
@@ -69,7 +55,7 @@ class GetBinaryFileAction(BaseAction):
                 result["details"] = f"Could not find file in UBS: {e}"
                 return result
             try:
-                response = requests.get(_validate_download_url(download_url), timeout=60, allow_redirects=False)
+                response = requests.get(validate_ubs_download_url(download_url), timeout=60, allow_redirects=False)
                 if 300 <= response.status_code < 400:
                     raise ValueError("Carbon Black Cloud download redirects are not allowed")
                 response.raise_for_status()
