@@ -37,7 +37,7 @@ def test_accepts_public_aws_s3_hosts(monkeypatch, hostname):
     "url",
     (
         "http://bucket.s3.amazonaws.com/sample.zip",
-        "https://user:password@bucket.s3.amazonaws.com/sample.zip",
+        "https://user@bucket.s3.amazonaws.com/sample.zip",
         "https://bucket.s3.amazonaws.com:8443/sample.zip",
         "https://ec2.amazonaws.com/sample.zip",
         "https://s3.amazonaws.com.example.test/sample.zip",
